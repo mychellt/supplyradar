@@ -1,0 +1,18 @@
+package br.com.supplyradar.domain.commons;
+
+import br.com.supplyradar.domain.AbstractDomainObject;
+import lombok.*;
+
+import java.util.UUID;
+
+
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+public class AtribuicaoVinculo extends AbstractDomainObject<UUID> {
+    private Permissao permissao;
+    private VinculoUsuario vinculo;
+    private boolean atribuido;
+}
