@@ -150,80 +150,90 @@
 
 
 	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+		<finalName>${project.artifactId}</finalName>
 
 		<plugins>
 			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<useSystemClassLoader>false</useSystemClassLoader>
-					<argLine>${surefire-argLine} -Dfile.encoding=${project.build.sourceEncoding}</argLine>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<inherited>true</inherited>
-				<configuration>
-					<updateReleaseInfo>true</updateReleaseInfo>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<inherited>true</inherited>
-				<configuration>
-					<localCheckout>true</localCheckout>
-					<pushChanges>false</pushChanges>
-					<mavenExecutorId>forked-path</mavenExecutorId>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-install-plugin</artifactId>
-				<inherited>true</inherited>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
-					<debug>false</debug>
-					<optimize>true</optimize>
-					<showDeprecation>true</showDeprecation>
-					<showWarnings>true</showWarnings>
+
 					<annotationProcessorPaths>
-						<annotationProcessorPath>
-							<groupId>org.springframework.boot</groupId>
-							<artifactId>spring-boot-configuration-processor</artifactId>
-							<version>${spring.boot.version}</version>
-						</annotationProcessorPath>
-						<annotationProcessorPath>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${org.projectlombok.version}</version>
+						</path>
+
+						<path>
 							<groupId>org.mapstruct</groupId>
 							<artifactId>mapstruct-processor</artifactId>
 							<version>${org.mapstruct.version}</version>
-						</annotationProcessorPath>
-						<annotationProcessorPath>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-							<version>${lombok.version}</version>
-						</annotationProcessorPath>
+						</path>
 					</annotationProcessorPaths>
+
+					<compilerArgs>
+						<compilerArg>-Amapstruct.defaultComponentModel=spring</compilerArg>
+					</compilerArgs>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>jar</id>
+
+			<properties>
+				<packaging.type>jar</packaging.type>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>war</id>
+
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<properties>
+				<packaging.type>war</packaging.type>
+			</properties>
+
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<archive>
+								<manifest>
+									<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+									<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+								</manifest>
+							</archive>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

@@ -8,12 +8,16 @@ import br.com.supplyradar.administrativo.dto.PermissaoDTO;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PermissaoMapperUTest {
+    @Autowired
+    private PermissaoMapper mapper;
+
     @BeforeAll
     public static void setUp() {
         FixtureFactoryLoader.loadTemplates("br.com.supplyrdar.six2six.fixture.templates.domain.commons");
@@ -24,7 +28,6 @@ class PermissaoMapperUTest {
     @Test
     void testMapFromDtoToDomain() {
         PermissaoDTO permissaoDTO = Fixture.from(PermissaoDTO.class).gimme("valido");
-        PermissaoMapper mapper = PermissaoMapper.getInstance();
         Permissao permissao = mapper.mapFrom(permissaoDTO);
         assertThat(permissao, notNullValue());
         assertEquals(permissao.getDescricao(), permissaoDTO.getDescricao());
@@ -38,7 +41,6 @@ class PermissaoMapperUTest {
     @Test
     void testMapFromDomainToDto() {
         Permissao permissao = Fixture.from(Permissao.class).gimme("valido");
-        PermissaoMapper mapper = PermissaoMapper.getInstance();
         PermissaoDTO permissaoDTO = mapper.mapFrom(permissao);
         assertThat(permissaoDTO, notNullValue());
         assertEquals(permissaoDTO.getDescricao(), permissao.getDescricao());

@@ -7,6 +7,7 @@ import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+
 @Mapper(builder = @Builder(disableBuilder = true))
 public abstract class PermissaoEntityMapper {
 

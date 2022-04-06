@@ -7,6 +7,8 @@ import br.com.supplyradar.domain.commons.Permissao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class CreatePermissaoCommandProcessor implements Command<Permissao> {
@@ -15,6 +17,8 @@ public class CreatePermissaoCommandProcessor implements Command<Permissao> {
     @Override
     public Permissao process(CommandContext context) {
         final Permissao permissao = context.getData(Permissao.class);
+        permissao.setDateOfCreate(LocalDateTime.now());
+        permissao.setDateOfChange(LocalDateTime.now());
         return permissaoRepository.save(permissao);
     }
 }

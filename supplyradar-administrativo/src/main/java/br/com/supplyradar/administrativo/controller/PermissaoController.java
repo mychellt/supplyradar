@@ -27,10 +27,10 @@ public class PermissaoController {
     private final PermissaoMandatoryFieldValidator permissaoMandatoryFieldValidator;
     private final FetchPermissaoCommandProcessor fetchPermissaoCommandProcessor;
     private final ListPermissaoCommandProcessor listPermissaoCommandProcessor;
+    private final PermissaoMapper mapper;
 
     @PostMapping(value = "/permissao")
     public ResponseEntity<PermissaoDTO> create(@RequestBody final PermissaoDTO permissaoDTO) {
-        final PermissaoMapper mapper = PermissaoMapper.getInstance();
 
         permissaoMandatoryFieldValidator.validate(permissaoDTO).isInvalidThrow(MandatoryFieldException.class);
 
@@ -44,7 +44,6 @@ public class PermissaoController {
 
     @PutMapping(path = "/permissao/{id}")
     public ResponseEntity<PermissaoDTO> update(@RequestBody final PermissaoDTO permissaoDTO, @PathVariable final String id) {
-        final PermissaoMapper mapper = PermissaoMapper.getInstance();
 
         permissaoMandatoryFieldValidator.validate(permissaoDTO).isInvalidThrow(MandatoryFieldException.class);
 
@@ -59,7 +58,6 @@ public class PermissaoController {
 
     @DeleteMapping(path = "/permissao/{id}")
     public ResponseEntity<PermissaoDTO> delete(@PathVariable final String id) {
-        final PermissaoMapper mapper = PermissaoMapper.getInstance();
         final CommandContext commandContext = new CommandContext();
         commandContext.put("id", id);
 
@@ -70,7 +68,6 @@ public class PermissaoController {
 
     @GetMapping(path = "/permissao/{id}")
     public ResponseEntity<PermissaoDTO> findOne(final String id) {
-        final PermissaoMapper mapper = PermissaoMapper.getInstance();
         final CommandContext commandContext = new CommandContext();
         commandContext.put("id", id);
 
@@ -82,7 +79,6 @@ public class PermissaoController {
 
     @GetMapping(path = "/permissao/")
     public ResponseEntity<List<PermissaoDTO>> findAll() {
-        final PermissaoMapper mapper = PermissaoMapper.getInstance();
         final CommandContext commandContext = new CommandContext();
         final List<Permissao> permissoes = listPermissaoCommandProcessor.process(commandContext);
         final List<PermissaoDTO> permissoesDTOS = permissoes.stream().map(mapper::mapFrom).collect(Collectors.toList());

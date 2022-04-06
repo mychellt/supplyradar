@@ -1,6 +1,8 @@
 package br.com.supplyradar.domain.commons;
 
 import br.com.supplyradar.domain.AbstractDomainObject;
+import br.com.supplyradar.domain.visitors.Visitable;
+import br.com.supplyradar.domain.visitors.Visitor;
 import lombok.*;
 
 import java.util.UUID;
@@ -10,10 +12,15 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-public class Permissao extends AbstractDomainObject<UUID> {
+public class Permissao extends AbstractDomainObject<UUID> implements Visitable<Permissao> {
     private String sigla;
     private String nome;
     private String descricao;
     private TipoAtribuicao tipo;
     private Integer ordem;
+
+    @Override
+    public void accept(Visitor<Permissao, ?> visitor) {
+        visitor.visit(this);
+    }
 }
