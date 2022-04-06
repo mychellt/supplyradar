@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Validated
-@ConfigurationProperties("app.supplyradar.core")
+@ConfigurationProperties("app.core")
 public class CoreProperties {
     @NotNull
     private Boolean h2Enabled;

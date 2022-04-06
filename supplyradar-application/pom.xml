@@ -11,9 +11,76 @@
 
     <artifactId>supplyradar-application</artifactId>
 
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>br.com.supplyradar</groupId>
+            <artifactId>supplyradar-administrativo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>br.com.supplyradar</groupId>
+            <artifactId>supplyradar-services</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>br.com.supplyradar</groupId>
+            <artifactId>supplyradar-persistence</artifactId>
+        </dependency>
+    </dependencies>
 
+    <build>
+        <finalName>supplyradar</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>META-INF/**</include>
+                    <include>bootstrap.properties</include>
+                    <include>application-dev.properties</include>
+                    <include>application-homolog.properties</include>
+                    <include>application-prod.properties</include>
+                </includes>
+            </resource>
+        </resources>
+
+
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                            <goal>build-info</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>app</finalName>
+                            <classifier>supplyradar-application</classifier>
+                            <mainClass>br.com.supplyradar.Application</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-spring-boot-application-file</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target name="copy application to parent target">
+                                <copy file="target/app-supplyradar-application.jar" tofile="../target/supplyradar.jar"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+
+    </build>
+    
 </project>

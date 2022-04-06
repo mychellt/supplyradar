@@ -22,11 +22,11 @@ public class CommandContext extends HashMap<String, Object> implements Serializa
         return ofNullable(get(key)).map(clazz::cast).orElse(null);
     }
 
-    public <T extends Objects> T getData(final Class<T> clazz) {
+    public <T extends Object> T getData(final Class<T> clazz) {
         return getProperty(DATA, clazz);
     }
 
-    public void setData(final Objects data) {
+    public void setData(final Object data) {
         put(DATA, data);
     }
 
