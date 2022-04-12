@@ -12,4 +12,5 @@ public interface PermissaoRepository {
     List<Permissao> save(final Collection<Permissao> permissoes);
     List<Permissao> findAll();
     Optional<Permissao> findOne(final UUID id);
+    void remove(final UUID id);
 }

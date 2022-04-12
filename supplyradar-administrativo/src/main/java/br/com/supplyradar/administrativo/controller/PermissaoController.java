@@ -1,20 +1,18 @@
 package br.com.supplyradar.administrativo.controller;
 
-import br.com.supplyradar.administrativo.processor.permissao.FetchPermissaoCommandProcessor;
-import br.com.supplyradar.administrativo.processor.permissao.ListPermissaoCommandProcessor;
+import br.com.supplyradar.administrativo.processor.permissao.*;
 import br.com.supplyradar.administrativo.validator.PermissaoMandatoryFieldValidator;
 import br.com.supplyradar.core.command.CommandContext;
 import br.com.supplyradar.domain.commons.Permissao;
 import br.com.supplyradar.domain.exceptions.MandatoryFieldException;
 import br.com.supplyradar.administrativo.dto.PermissaoDTO;
 import br.com.supplyradar.administrativo.mapper.PermissaoMapper;
-import br.com.supplyradar.administrativo.processor.permissao.CreatePermissaoCommandProcessor;
-import br.com.supplyradar.administrativo.processor.permissao.UpdatePermissaoCommandProcessor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -27,6 +25,7 @@ public class PermissaoController {
     private final PermissaoMandatoryFieldValidator permissaoMandatoryFieldValidator;
     private final FetchPermissaoCommandProcessor fetchPermissaoCommandProcessor;
     private final ListPermissaoCommandProcessor listPermissaoCommandProcessor;
+    private final DeletePermissaoCommandProcessor deletePermissaoCommandProcessor;
     private final PermissaoMapper mapper;
 
     @PostMapping(value = "/permissao")
@@ -43,7 +42,7 @@ public class PermissaoController {
     }
 
     @PutMapping(path = "/permissao/{id}")
-    public ResponseEntity<PermissaoDTO> update(@RequestBody final PermissaoDTO permissaoDTO, @PathVariable final String id) {
+    public ResponseEntity<PermissaoDTO> update(@RequestBody final PermissaoDTO permissaoDTO, @PathVariable final UUID id) {
 
         permissaoMandatoryFieldValidator.validate(permissaoDTO).isInvalidThrow(MandatoryFieldException.class);
 
@@ -57,17 +56,17 @@ public class PermissaoController {
     }
 
     @DeleteMapping(path = "/permissao/{id}")
-    public ResponseEntity<PermissaoDTO> delete(@PathVariable final String id) {
+    public ResponseEntity<PermissaoDTO> delete(@PathVariable final UUID id) {
         final CommandContext commandContext = new CommandContext();
         commandContext.put("id", id);
 
-        Permissao permissao = fetchPermissaoCommandProcessor.process(commandContext);
+        deletePermissaoCommandProcessor.process(commandContext);
 
-        return ResponseEntity.ok(mapper.mapFrom(permissao));
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping(path = "/permissao/{id}")
-    public ResponseEntity<PermissaoDTO> findOne(final String id) {
+    public ResponseEntity<PermissaoDTO> findOne(@PathVariable final UUID id) {
         final CommandContext commandContext = new CommandContext();
         commandContext.put("id", id);
 

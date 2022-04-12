@@ -10,8 +10,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@AllArgsConstructor
+@NoArgsConstructor
 public class Permissao extends AbstractDomainObject<UUID> implements Visitable<Permissao> {
     private String sigla;
     private String nome;

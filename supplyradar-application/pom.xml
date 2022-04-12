@@ -18,6 +18,11 @@
         </dependency>
         <dependency>
             <groupId>br.com.supplyradar</groupId>
+            <artifactId>supplyradar-usuario</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>br.com.supplyradar</groupId>
             <artifactId>supplyradar-services</artifactId>
         </dependency>
         <dependency>

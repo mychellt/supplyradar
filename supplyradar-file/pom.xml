@@ -11,4 +11,11 @@
 
     <artifactId>supplyradar-file</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>br.com.supplyradar</groupId>
+            <artifactId>supplyradar-core</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

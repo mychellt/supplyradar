@@ -50,4 +50,9 @@ public class PermissaoRepositoryAdapter implements PermissaoRepository {
     public Optional<Permissao> findOne(final UUID id) {
         return Optional.of(jpa.findById(id).map(mapper::mapFrom)).orElse(null);
     }
+
+    @Override
+    public void remove(UUID id) {
+        jpa.deleteById(id);
+    }
 }

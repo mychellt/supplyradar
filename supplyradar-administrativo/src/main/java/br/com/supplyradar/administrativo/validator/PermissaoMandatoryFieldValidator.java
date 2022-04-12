@@ -12,7 +12,7 @@ import static br.com.fluentvalidator.predicate.StringPredicate.stringEmptyOrNull
 public class PermissaoMandatoryFieldValidator extends AbstractValidator<PermissaoDTO> {
     @Override
     public void rules() {
-        ruleFor(permissao -> permissao)
+        ruleFor(permission -> permission)
                 .must(not(stringEmptyOrNull(PermissaoDTO::getSigla)))
                 .withMessage("Campo obrigatório não informado")
                 .withAttempedValue(PermissaoDTO::getSigla)

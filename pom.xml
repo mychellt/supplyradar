@@ -21,6 +21,7 @@
 		<module>supplyradar-administrativo</module>
 		<module>supplyradar-queue</module>
 		<module>supplyradar-file</module>
+		<module>supplyradar-usuario</module>
 	</modules>
 
 	<parent>
@@ -142,6 +143,12 @@
 			<dependency>
 				<groupId>br.com.supplyradar</groupId>
 				<artifactId>supplyradar-administrativo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.supplyradar</groupId>
+				<artifactId>supplyradar-usuario</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 

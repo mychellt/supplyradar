@@ -1,8 +1,10 @@
 package br.com.supplyradar.domain.commons;
 
 import br.com.supplyradar.domain.AbstractDomainObject;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 import java.util.UUID;

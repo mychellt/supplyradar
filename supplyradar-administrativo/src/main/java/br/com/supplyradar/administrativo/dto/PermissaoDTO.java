@@ -17,4 +17,5 @@ public class PermissaoDTO {
     private String descricao;
     private TipoAtribuicao tipo;
     private Integer ordem;
+    private UUID id;
 }
