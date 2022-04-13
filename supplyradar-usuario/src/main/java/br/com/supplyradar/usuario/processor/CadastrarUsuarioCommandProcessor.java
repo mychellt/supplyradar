@@ -87,10 +87,4 @@ public class CadastrarUsuarioCommandProcessor implements Command<CreateUsuario> 
         return createUsuario;
 
     }
-
-    private TokenSolicitacaoAcesso gerarSolicitacao(Usuario usuario) {
-//        SolicitacaoAcesso solicitacao = criarNovaSolicitacao(usuario);
-//        return tokenService.gerar(solicitacao, "", DateUtils.formatCurrentDate("yyyyMMddHHmmss"));
-    }
-
 }
