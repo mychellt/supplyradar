@@ -11,9 +11,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PessoaFisica extends Pessoa {
-    private Date dataNascimento;
-    private String nomeMae;
-    private String nomePai;
     private String nome;
     private String cpfPassaporte;
     private boolean passaporte;

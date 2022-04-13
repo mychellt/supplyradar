@@ -12,20 +12,17 @@ import java.util.UUID;
 @Getter
 @Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor
 public class Usuario extends AbstractDomainObject<UUID> implements Visitable<Usuario> {
-	private String login;
-	private String senha;
-	private PessoaFisica pessoa;
-	private TipoUsuario tipo;
-	private boolean termoAdesao;
-	private boolean autorizado;
-	private boolean concordaPoliticaPrivacidade;
-	private String confirmarSenha;
-	private String novaSenha;
-	private List<VinculoUsuario> vinculos;
+    private String login;
+    private String senha;
+    private PessoaFisica pessoa;
+    private TipoUsuario tipo;
+    private boolean autorizado;
+    private List<VinculoUsuario> vinculos;
 
-	@Override
-	public void accept(Visitor<Usuario, ?> visitor) {
-		visitor.visit(this);
-	}
+    @Override
+    public void accept(Visitor<Usuario, ?> visitor) {
+        visitor.visit(this);
+    }
 }

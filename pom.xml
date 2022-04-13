@@ -118,6 +118,18 @@
 
 			<dependency>
 				<groupId>br.com.supplyradar</groupId>
+				<artifactId>supplyradar-domain</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.supplyradar</groupId>
+				<artifactId>supplyradar-six2six-fixture</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.supplyradar</groupId>
 				<artifactId>supplyradar-persistence</artifactId>
 				<version>${project.version}</version>
 			</dependency>

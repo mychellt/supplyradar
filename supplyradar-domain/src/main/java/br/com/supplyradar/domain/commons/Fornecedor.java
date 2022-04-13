@@ -6,7 +6,6 @@ import br.com.supplyradar.domain.processo.CodigoFornecedorProcesso;
 import br.com.supplyradar.domain.visitors.Visitable;
 import br.com.supplyradar.domain.visitors.Visitor;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class Fornecedor extends Empresa implements Visitable<Fornecedor> {
 	private List<Servico> servicos;
 	private List<Produto> produtos;
 	private List<CategoriaFornecedor> categorias;
-	private Usuario administrador;
+	private CreateUsuario administrador;
 	private ContratoFornecedor contrato;
 	private CodigoFornecedorProcesso codigo;
 

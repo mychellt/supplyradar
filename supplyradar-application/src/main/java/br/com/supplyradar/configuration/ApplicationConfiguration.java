@@ -1,12 +1,11 @@
 package br.com.supplyradar.configuration;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -31,6 +30,7 @@ public class ApplicationConfiguration {
         mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
         mapper.registerModule(new JavaTimeModule());
         mapper.registerModule(new SimpleModule());
+        mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
         return mapper;
     }
 }

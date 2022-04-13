@@ -15,5 +15,4 @@ public abstract class Pessoa extends AbstractDomainObject<UUID> implements Visit
 	private String telefone;
 	private Email email;
 	private List<Endereco> enderecos;
-	private String confirmarEmail;
 }
