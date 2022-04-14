@@ -3,6 +3,7 @@ package br.com.supplyradar.persistence.mapper;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 import br.com.supplyradar.domain.commons.Permissao;
+import br.com.supplyradar.persistence.AbstractPersistenceTest;
 import br.com.supplyradar.persistence.model.commons.PermissaoEntity;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -12,13 +13,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class PermissaoEntityMapperTest {
-
-    @BeforeAll
-    public static void setUp() {
-        FixtureFactoryLoader.loadTemplates("br.com.supplyradar.persistence.six2six.fixture.templates");
-        FixtureFactoryLoader.loadTemplates("br.com.supplyrdar.six2six.fixture.templates.domain.commons");
-    }
+class PermissaoEntityMapperTest extends AbstractPersistenceTest {
 
     @DisplayName(value = "Deve ser capaz de mapear os dados de Entity para Domain")
     @Test

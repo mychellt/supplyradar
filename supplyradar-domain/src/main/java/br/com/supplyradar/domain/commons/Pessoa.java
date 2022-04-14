@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Getter
@@ -15,4 +16,12 @@ public abstract class Pessoa extends AbstractDomainObject<UUID> implements Visit
 	private String telefone;
 	private Email email;
 	private List<Endereco> enderecos;
+
+	public boolean isPessoaJuridica() {
+		return Objects.nonNull(tipo) && tipo.equals(TipoPessoa.PESSOA_JURIDICA);
+	}
+
+	public boolean isPessoaFisica() {
+		return Objects.nonNull(tipo) && tipo.equals(TipoPessoa.PESSOA_FISICA);
+	}
 }

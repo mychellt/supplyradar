@@ -7,16 +7,15 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.UUID;
 
+
 @Setter
 @Getter
-@Table(name = "solicitacao_acesso", schema = "supplyradar")
+@Table(name = "unidade_federativa", schema = "supplyradar")
 @Entity
-public class SolicitacaoAcessoEntity extends AbstractEntity<UUID> {
+public class UnidadeFederativaEntity extends AbstractEntity<UUID> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-
-    @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private UsuarioEntity usuario;
+    private String nome;
+    private String sigla;
 }

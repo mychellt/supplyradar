@@ -16,9 +16,6 @@ import java.util.UUID;
 public class UnidadeFederativa extends AbstractDomainObject<UUID> implements DomainObject, Comparable<UnidadeFederativa>, Visitable<UnidadeFederativa> {
 	private String nome;
 	private String sigla;
-	private boolean selecionado;
-	private boolean desabilitado;
-	private Long quantidade;
 
 	@Override
 	public void accept(Visitor<UnidadeFederativa, ?> visitor) {

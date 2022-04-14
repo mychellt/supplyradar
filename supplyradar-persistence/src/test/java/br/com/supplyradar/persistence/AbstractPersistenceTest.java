@@ -20,7 +20,7 @@ public abstract class AbstractPersistenceTest {
     @BeforeAll
     protected static void setUp() {
         FixtureFactoryLoader.loadTemplates("br.com.supplyradar.persistence.six2six.fixture.templates");
-        FixtureFactoryLoader.loadTemplates("br.com.supplyrdar.six2six.fixture.templates.domain.commons");
+        FixtureFactoryLoader.loadTemplates("br.com.supplyradar.six2six.fixture.templates.domain.commons");
     }
 
 }
