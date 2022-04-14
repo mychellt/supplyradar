@@ -1,6 +1,6 @@
 package br.com.supplyradar.mail.adapter;
 
-import br.com.supplyradar.core.mail.MailSender;
+import br.com.supplyradar.core.queue.mail.MailSender;
 import br.com.supplyradar.domain.exceptions.mail.MailException;
 import br.com.supplyradar.domain.mail.MailAttachment;
 import br.com.supplyradar.domain.mail.MailMessage;
@@ -12,21 +12,20 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.util.StringUtils;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 @RequiredArgsConstructor
 @Slf4j
-@Service
-public class MailSenderAdapter implements MailSender {
+@Component
+public class MailQueueSenderAdapter implements MailSender {
 	private final JavaMailSender javaMailSender;
 	private final Configuration freemarkerConfiguration;
 
@@ -46,28 +45,24 @@ public class MailSenderAdapter implements MailSender {
 			helper.setTo(message.getTo());
 			helper.setSubject(message.getSubject());
 
-			if(message.isContainsAttachments()){
+			if (message.isContainsAttachments()) {
 				final Map<String, Object> mapProperties = message.getProperties();
 
-				@SuppressWarnings("unchecked")
-				final List<MailAttachment>  attachments = (List<MailAttachment>) mapProperties.get(MailProperties.ATTACHMENTS.name());
+				@SuppressWarnings("unchecked") final List<MailAttachment> attachments = (List<MailAttachment>) mapProperties.get(MailProperties.ATTACHMENTS.name());
 
-				for(MailAttachment attachment : attachments ){
+				for (MailAttachment attachment : attachments) {
 					helper.addAttachment(attachment.getName(), new ByteArrayResource(attachment.getFile()), attachment.getType());
 				}
 			}
 
 			if (message.isTemplateBased()) {
 				helper.setText(FreeMarkerTemplateUtils.processTemplateIntoString(freemarkerConfiguration.getTemplate(message.getTemplate()), message.getProperties()), true);
-			}
-			else if (message.isHtml()) {
+			} else if (message.isHtml()) {
 				helper.setText(message.getContent(), true);
-			}
-			else {
+			} else {
 				helper.setText(message.getContent());
 			}
-		}
-		catch (MessagingException | IOException | TemplateException e) {
+		} catch (MessagingException | IOException | TemplateException e) {
 			log.error(e.getMessage(), e.getCause());
 			throw new MailException("Erro ao tentar enviar e-mail.");
 		}
@@ -75,10 +70,5 @@ public class MailSenderAdapter implements MailSender {
 		javaMailSender.send(mimeMessage);
 
 		log.info("E-mail enviado com sucesso!");
-	}
-
-	@Override
-	public void sendMessages(MailMessage... messages){
-		Arrays.stream(messages).parallel().forEach(this::sendMessage);
 	}
 }

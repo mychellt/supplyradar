@@ -4,12 +4,14 @@ import br.com.fluentvalidator.context.Error;
 import br.com.fluentvalidator.context.ValidationResult;
 import br.com.supplyradar.core.command.Command;
 import br.com.supplyradar.core.command.CommandContext;
+import br.com.supplyradar.core.queue.mail.MailQueue;
 import br.com.supplyradar.core.persistence.PessoaRepository;
 import br.com.supplyradar.core.persistence.SolicitacaoAcessoRepository;
 import br.com.supplyradar.core.persistence.UsuarioRepository;
 import br.com.supplyradar.domain.commons.*;
 import br.com.supplyradar.domain.exceptions.DomainException;
 import br.com.supplyradar.domain.exceptions.UsuarioJaExisteException;
+import br.com.supplyradar.domain.mail.MailMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,7 @@ public class CadastrarUsuarioCommandProcessor implements Command<CreateUsuario> 
     private final SolicitacaoAcessoRepository solicitacaoAcessoRepository;
     private final PessoaRepository pessoaRepository;
     private final TokenSolicitacaoAcessoProcessor tokenSolicitacaoAcessoProcessor;
+    private final MailQueue mailQueue;
 
     @Override
     public CreateUsuario process(CommandContext context) {
@@ -82,9 +85,19 @@ public class CadastrarUsuarioCommandProcessor implements Command<CreateUsuario> 
         final CommandContext commandContext = new CommandContext();
         commandContext.setData(solicitacaoAcesso);
 
-        tokenSolicitacaoAcessoProcessor.process(commandContext);
+        TokenSolicitacaoAcesso tokenSolicitacaoAcesso = tokenSolicitacaoAcessoProcessor.process(commandContext);
+
+        final MailMessage mailMessage = MailMessage.builder()
+                .subject("Solicitação de acesso ao sistema SupplyRadar")
+                .to(createUsuario.getEmail())
+                .content("Teste de cadastro de usuário")
+                .build();
+
+        mailQueue.push(mailMessage);
 
         return createUsuario;
 
     }
+
+
 }

@@ -16,7 +16,13 @@
 
         <dependency>
             <groupId>br.com.supplyradar</groupId>
-            <artifactId>supplyradar-core</artifactId>
+            <artifactId>supplyradar-mail</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.supplyradar</groupId>
+            <artifactId>supplyradar-persistence</artifactId>
             <version>${project.version}</version>
         </dependency>
 

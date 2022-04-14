@@ -20,10 +20,6 @@ public enum StatusFase {
 	@Getter
 	private final String nome;
 
-	public String getNome() {
-		return nome;
-	}
-	
 	public String getStyle() {
 		if(this.equals(AGUARDANDO)) {
 			return "label-info";

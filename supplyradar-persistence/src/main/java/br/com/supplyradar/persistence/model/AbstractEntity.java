@@ -17,6 +17,9 @@ public abstract class AbstractEntity<T> implements Serializable {
 
 	public abstract void setId(T id);
 
+	@Column(name = "ativo", nullable = false, columnDefinition = "boolean default true")
+	private boolean ativo;
+
 	@Column(updatable = false, name = "date_of_create")
 	@CreatedDate
 	private LocalDateTime dateOfCreate;
@@ -40,4 +43,13 @@ public abstract class AbstractEntity<T> implements Serializable {
 	public void setDateOfChange(LocalDateTime dateOfChange) {
 		this.dateOfChange = dateOfChange;
 	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
 }

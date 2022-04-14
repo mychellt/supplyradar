@@ -11,5 +11,6 @@ create table IF not exists supplyradar.permissao
     primary key(id),
     date_of_change timestamp not null,
     date_of_create timestamp not null,
+    ativo boolean default true,
     constraint un_sigla_permissao unique (sigla)
 );
