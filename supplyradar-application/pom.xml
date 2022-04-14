@@ -56,6 +56,7 @@
                     <include>application-dev.properties</include>
                     <include>application-homolog.properties</include>
                     <include>application-prod.properties</include>
+                    <include>javamail-sender.properties</include>
                 </includes>
             </resource>
         </resources>

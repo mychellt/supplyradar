@@ -14,3 +14,41 @@ create table IF not exists supplyradar.permissao
     ativo boolean default true,
     constraint un_sigla_permissao unique (sigla)
 );
+
+create table if not exists supplyradar.usuario
+(
+    id uuid not null,
+    login varchar not null,
+    date_of_change timestamp not null,
+    date_of_create timestamp not null,
+    ativo boolean default true,
+    primary key(id),
+    constraint un_login_usuario unique (login)
+);
+
+create table if not exists supplyradar.solicitacao_acesso
+(
+    id uuid not null,
+    date_of_change timestamp not null,
+    date_of_create timestamp not null,
+    ativo boolean default true,
+    primary key(id)
+);
+
+create table if not exists supplyradar.pessoa
+(
+    id uuid not null,
+    date_of_change timestamp not null,
+    date_of_create timestamp not null,
+    ativo boolean default true,
+    primary key(id)
+);
+
+create table if not exists supplyradar.token_solicitacao_acesso
+(
+    id uuid not null,
+    date_of_change timestamp not null,
+    date_of_create timestamp not null,
+    ativo boolean default true,
+    primary key(id)
+);

@@ -88,6 +88,7 @@ public class CadastrarUsuarioCommandProcessor implements Command<CreateUsuario> 
         TokenSolicitacaoAcesso tokenSolicitacaoAcesso = tokenSolicitacaoAcessoProcessor.process(commandContext);
 
         final MailMessage mailMessage = MailMessage.builder()
+                .from("supplyradarsmart@gmail.com")
                 .subject("Solicitação de acesso ao sistema SupplyRadar")
                 .to(createUsuario.getEmail())
                 .content("Teste de cadastro de usuário")
