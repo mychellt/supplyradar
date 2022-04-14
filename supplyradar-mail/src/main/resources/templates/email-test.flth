@@ -1,0 +1,10 @@
+<html>
+<head>
+    <title>Teste da Plataforma Supply Radar</title>
+</head>
+<body>
+<p>${nome},</p>
+<p>Este &eacute; um e-mail de teste da Plataforma <b>Supply Radar.</b></p>
+<p>Obrigado!</p>
+</body>
+</html>

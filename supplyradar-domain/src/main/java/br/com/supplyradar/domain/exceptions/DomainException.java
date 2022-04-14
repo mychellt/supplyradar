@@ -4,8 +4,8 @@ import br.com.fluentvalidator.context.ValidationResult;
 import br.com.fluentvalidator.exception.ValidationException;
 
 
-public class BusinessException extends ValidationException {
-    public BusinessException(ValidationResult validationResult) {
+public class DomainException extends ValidationException {
+    public DomainException(ValidationResult validationResult) {
         super(validationResult);
     }
 }

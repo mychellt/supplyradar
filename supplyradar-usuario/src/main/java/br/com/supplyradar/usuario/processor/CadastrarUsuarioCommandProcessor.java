@@ -8,7 +8,7 @@ import br.com.supplyradar.core.persistence.PessoaRepository;
 import br.com.supplyradar.core.persistence.SolicitacaoAcessoRepository;
 import br.com.supplyradar.core.persistence.UsuarioRepository;
 import br.com.supplyradar.domain.commons.*;
-import br.com.supplyradar.domain.exceptions.BusinessException;
+import br.com.supplyradar.domain.exceptions.DomainException;
 import br.com.supplyradar.domain.exceptions.UsuarioJaExisteException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -40,12 +40,12 @@ public class CadastrarUsuarioCommandProcessor implements Command<CreateUsuario> 
 
         if(!createUsuario.getEmail().equals(createUsuario.getEmailConfirmacao())) {
             final Error error = Error.create("email", "Erro no e-mail: os valores informados não são iguais", valueOf(HttpStatus.BAD_REQUEST.value()), createUsuario.getEmail());
-            throw new BusinessException(ValidationResult.fail(List.of(error)));
+            throw new DomainException(ValidationResult.fail(List.of(error)));
         }
 
         if(!createUsuario.getSenha().equals(createUsuario.getSenhaConfirmacao())) {
             final Error error = Error.create("senha", "Erro na senha: os valores informados não são iguais", valueOf(HttpStatus.BAD_REQUEST.value()), null);
-            throw new BusinessException(ValidationResult.fail(List.of(error)));
+            throw new DomainException(ValidationResult.fail(List.of(error)));
         }
 
         final PessoaFisica pessoa = new PessoaFisica();
