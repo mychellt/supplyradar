@@ -21,7 +21,7 @@ public abstract class PessoaEntity extends AbstractEntity<UUID> {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private TipoPessoa tipoPessoa;
+    private TipoPessoa tipo;
 
     @Column(nullable = false)
     private String telefone;

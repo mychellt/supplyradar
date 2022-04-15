@@ -14,13 +14,13 @@ public class PessoaFactory {
 
     @ObjectFactory
     public Pessoa build(PessoaEntity pessoaEntity) {
-        final Pessoa pessoa = pessoaEntity.getTipoPessoa().equals(TipoPessoa.PESSOA_JURIDICA) ? new PessoaJuridica() :  new PessoaFisica();
+        final Pessoa pessoa = pessoaEntity.getTipo().equals(TipoPessoa.PESSOA_JURIDICA) ? new PessoaJuridica() :  new PessoaFisica();
         pessoa.setId(pessoaEntity.getId());
         pessoa.setDateOfCreate(pessoaEntity.getDateOfCreate());
         pessoa.setDateOfChange(pessoaEntity.getDateOfChange());
         pessoa.setAtivo(pessoaEntity.isAtivo());
         pessoa.setTelefone(pessoaEntity.getTelefone());
-        pessoa.setTipo(pessoaEntity.getTipoPessoa());
+        pessoa.setTipo(pessoaEntity.getTipo());
         pessoa.setEmail(Email.builder().address(pessoaEntity.getEmail()).build());
         return pessoa;
     }
