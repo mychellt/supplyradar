@@ -14,9 +14,8 @@ import java.util.UUID;
 @NoArgsConstructor
 public class TokenSolicitacaoAcesso extends AbstractDomainObject<UUID> implements Visitable<TokenSolicitacaoAcesso> {
 	private String key;
-	private boolean utilizado;
 	private SolicitacaoAcesso solicitacao;
-	private boolean valido;
+	private boolean expirado;
 
 	@Override
 	public void accept(Visitor<TokenSolicitacaoAcesso, ?> visitor) {

@@ -4,19 +4,19 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 import br.com.supplyradar.domain.commons.PessoaFisica;
+import br.com.supplyradar.domain.commons.TipoPessoa;
 import br.com.supplyradar.domain.commons.TipoUsuario;
 import br.com.supplyradar.domain.commons.Usuario;
 
-public class UsuarioTemplateLoader implements TemplateLoader {
+import java.util.UUID;
+
+public class PessoaFisicaTemplateLoader implements TemplateLoader {
     @Override
     public void load() {
-        Fixture.of(Usuario.class).addTemplate("valido", new Rule() {
+        Fixture.of(PessoaFisica.class).addTemplate("valido", new Rule() {
             {
-                add("login", "login-usuario-valido");
-                add("senha", "senha-usuario-valido");
-                add("tipo", TipoUsuario.OPERADOR);
-                add("autorizado", Boolean.TRUE.toString());
-                add("pessoa", one(PessoaFisica.class, "valido"));
+                add("id", UUID.randomUUID());
+                add("tipo", TipoPessoa.PESSOA_FISICA);
             }
         });
     }

@@ -21,7 +21,7 @@ import static org.apache.commons.collections4.CollectionUtils.emptyIfNull;
 @Repository
 public class PermissaoRepositoryAdapter implements PermissaoRepository {
     private final PermissaoJpaRepository jpa;
-    private final PermissaoEntityMapper mapper = PermissaoEntityMapper.getInstance();
+    private final PermissaoEntityMapper mapper;
 
     @Override
     public Permissao save(final Permissao permissao) {

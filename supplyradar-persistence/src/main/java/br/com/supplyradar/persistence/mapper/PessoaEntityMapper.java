@@ -10,20 +10,19 @@ import br.com.supplyradar.persistence.model.commons.PessoaJuridicaEntity;
 import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
-import org.mapstruct.factory.Mappers;
 
 
 @Mapper(builder = @Builder(disableBuilder = true),
-        uses = {PessoaEntityFactory.class, PessoaFactory.class, EmailEntityMapper.class, CNPJEntityMapper.class},
+        uses = {
+            PessoaEntityFactory.class,
+            PessoaFactory.class,
+            EmailEntityMapper.class,
+            CNPJEntityMapper.class
+        },
         nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
-public abstract class PessoaEntityMapper {
-    private static final PessoaEntityMapper instance = Mappers.getMapper(PessoaEntityMapper.class);
-    public static PessoaEntityMapper getInstance() {
-        return instance;
-    }
-
-    public abstract PessoaJuridica mapFrom(PessoaJuridicaEntity source);
-    public abstract PessoaJuridicaEntity mapFrom(PessoaJuridica source);
-    public abstract PessoaFisica mapFrom(PessoaFisicaEntity source);
-    public abstract PessoaFisicaEntity mapFrom(PessoaFisica source);
+public interface PessoaEntityMapper {
+    PessoaJuridica mapFrom(PessoaJuridicaEntity source);
+    PessoaJuridicaEntity mapFrom(PessoaJuridica source);
+    PessoaFisica mapFrom(PessoaFisicaEntity source);
+    PessoaFisicaEntity mapFrom(PessoaFisica source);
 }

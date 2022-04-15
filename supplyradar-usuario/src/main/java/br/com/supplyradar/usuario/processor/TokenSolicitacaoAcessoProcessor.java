@@ -28,7 +28,7 @@ public class TokenSolicitacaoAcessoProcessor implements Command<TokenSolicitacao
 
         try {
             final TokenSolicitacaoAcesso token = new TokenSolicitacaoAcesso();
-            token.setUtilizado(false);
+            token.setExpirado(false);
             token.setKey(createKeyWithMD5(currentDateFormatted));
             token.setSolicitacao(solicitacao);
 

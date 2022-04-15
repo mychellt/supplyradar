@@ -1,25 +1,25 @@
 package br.com.supplyradar.persistence.mapper;
 
 import br.com.six2six.fixturefactory.Fixture;
-import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 import br.com.supplyradar.domain.commons.Permissao;
 import br.com.supplyradar.persistence.AbstractPersistenceTest;
 import br.com.supplyradar.persistence.model.commons.PermissaoEntity;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PermissaoEntityMapperTest extends AbstractPersistenceTest {
+    @Autowired
+    private PermissaoEntityMapper mapper;
 
     @DisplayName(value = "Deve ser capaz de mapear os dados de Entity para Domain")
     @Test
-    void testMapFromEntityToDomain() {
+    void mapFromEntity() {
         PermissaoEntity entity = Fixture.from(PermissaoEntity.class).gimme("valido");
-        PermissaoEntityMapper mapper = PermissaoEntityMapper.getInstance();
         Permissao permissao = mapper.mapFrom(entity);
         assertThat(permissao, notNullValue());
         assertEquals(permissao.getDescricao(), entity.getDescricao());
@@ -33,9 +33,8 @@ class PermissaoEntityMapperTest extends AbstractPersistenceTest {
 
     @DisplayName(value = "Deve ser capaz de mapear os dados de Domain para Entity")
     @Test
-    void testMapFromDomainToEntity() {
+    void mapFromDomain() {
         Permissao permissao = Fixture.from(Permissao.class).gimme("valido");
-        PermissaoEntityMapper mapper = PermissaoEntityMapper.getInstance();
         PermissaoEntity entity = mapper.mapFrom(permissao);
         assertThat(entity, notNullValue());
         assertEquals(entity.getDescricao(), permissao.getDescricao());

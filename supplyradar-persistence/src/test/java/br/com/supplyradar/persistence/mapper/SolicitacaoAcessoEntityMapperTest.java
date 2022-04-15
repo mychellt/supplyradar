@@ -12,6 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 public class SolicitacaoAcessoEntityMapperTest extends AbstractPersistenceTest {
 
     @Autowired
@@ -19,7 +20,7 @@ public class SolicitacaoAcessoEntityMapperTest extends AbstractPersistenceTest {
 
     @DisplayName(value = "Deve ser capaz de mapear os dados de Entity para Domain")
     @Test
-    void testMapFromEntityToDomain() {
+    void mapFromEntity() {
         final SolicitacaoAcessoEntity solicitacaoAcessoEntity = Fixture.from(SolicitacaoAcessoEntity.class).gimme("valido");
         final SolicitacaoAcesso solicitacaoAcesso = solicitacaoAcessoEntityMapper.mapFrom(solicitacaoAcessoEntity);
         assertThat(solicitacaoAcesso, notNullValue());
@@ -37,7 +38,7 @@ public class SolicitacaoAcessoEntityMapperTest extends AbstractPersistenceTest {
 
     @DisplayName(value = "Deve ser capaz de mapear os dados de Domain para Entity")
     @Test
-    void testMapFromDomainToEntity() {
+    void mapFromDomain() {
         final SolicitacaoAcesso solicitacaoAcesso = Fixture.from(SolicitacaoAcesso.class).gimme("valido");
         final SolicitacaoAcessoEntity solicitacaoAcessoEntity = solicitacaoAcessoEntityMapper.mapFrom(solicitacaoAcesso);
         assertThat(solicitacaoAcesso, notNullValue());

@@ -9,12 +9,7 @@ import org.mapstruct.factory.Mappers;
 
 
 @Mapper(builder = @Builder(disableBuilder = true))
-public abstract class PermissaoEntityMapper {
-    private static final PermissaoEntityMapper instance = Mappers.getMapper(PermissaoEntityMapper.class);
-    public static PermissaoEntityMapper getInstance() {
-        return instance;
-    }
-
-    public abstract Permissao mapFrom(PermissaoEntity source);
-    public abstract PermissaoEntity mapFrom(Permissao source);
+public interface PermissaoEntityMapper {
+    Permissao mapFrom(PermissaoEntity source);
+    PermissaoEntity mapFrom(Permissao source);
 }

@@ -20,7 +20,7 @@ public class TokenSolicitacaoAcessoEntity extends AbstractEntity<UUID> {
     private String key;
 
     @Column(nullable = false)
-    private boolean utilizado;
+    private boolean expirado;
 
     @OneToOne
     @JoinColumn(name="id_solicitacao")

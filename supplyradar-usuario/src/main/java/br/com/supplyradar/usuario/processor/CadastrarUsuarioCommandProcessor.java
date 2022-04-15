@@ -24,7 +24,7 @@ import static java.util.Objects.nonNull;
 
 @Service
 @RequiredArgsConstructor
-public class CadastrarUsuarioCommandProcessor implements Command<CreateUsuario> {
+public class CadastrarUsuarioCommandProcessor implements Command<Usuario> {
     private final UsuarioRepository usuarioRepository;
     private final SolicitacaoAcessoRepository solicitacaoAcessoRepository;
     private final PessoaRepository pessoaRepository;
@@ -32,7 +32,7 @@ public class CadastrarUsuarioCommandProcessor implements Command<CreateUsuario> 
     private final MailQueue mailQueue;
 
     @Override
-    public CreateUsuario process(CommandContext context) {
+    public Usuario process(CommandContext context) {
         final CreateUsuario createUsuario = context.getData(CreateUsuario.class);
         final Usuario usuarioJaCadastrado = usuarioRepository.findByLogin(createUsuario.getLogin());
 
@@ -95,9 +95,7 @@ public class CadastrarUsuarioCommandProcessor implements Command<CreateUsuario> 
                 .build();
 
         mailQueue.push(mailMessage);
-
-        return createUsuario;
-
+        return usuario;
     }
 
 

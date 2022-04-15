@@ -6,11 +6,14 @@ import br.com.six2six.fixturefactory.loader.TemplateLoader;
 import br.com.supplyradar.persistence.model.commons.CidadeEntity;
 import br.com.supplyradar.persistence.model.commons.UnidadeFederativaEntity;
 
+import java.util.UUID;
+
 public class CidadeEntityTemplateLoader implements TemplateLoader {
     @Override
     public void load() {
         Fixture.of(CidadeEntity.class).addTemplate("valido", new Rule() {
             {
+                add("id", UUID.randomUUID());
                 add("unidadeFederativa", one(UnidadeFederativaEntity.class, "valido"));
                 add("nome", "nome-cidade-valido");
             }
