@@ -14,7 +14,6 @@ public class TokenSolicitacaoAcessoEntityTemplateLoader implements TemplateLoade
     public void load() {
         Fixture.of(TokenSolicitacaoAcessoEntity.class).addTemplate("valido", new Rule() {
             {
-                add("id", UUID.randomUUID());
                 add("key", UUID.randomUUID().toString());
                 add("expirado", Boolean.FALSE.toString());
                 add("solicitacao", one(SolicitacaoAcessoEntity.class, "valido"));

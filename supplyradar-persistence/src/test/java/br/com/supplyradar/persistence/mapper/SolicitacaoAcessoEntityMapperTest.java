@@ -42,7 +42,6 @@ public class SolicitacaoAcessoEntityMapperTest extends AbstractPersistenceTest {
         final SolicitacaoAcesso solicitacaoAcesso = Fixture.from(SolicitacaoAcesso.class).gimme("valido");
         final SolicitacaoAcessoEntity solicitacaoAcessoEntity = solicitacaoAcessoEntityMapper.mapFrom(solicitacaoAcesso);
         assertThat(solicitacaoAcesso, notNullValue());
-        assertThat(solicitacaoAcesso.getId(), notNullValue());
         assertThat(solicitacaoAcesso.getUsuario(), notNullValue());
         assertEquals(solicitacaoAcessoEntity.getId(), solicitacaoAcesso.getId());
         assertEquals(solicitacaoAcessoEntity.isAtivo(), solicitacaoAcesso.isAtivo());

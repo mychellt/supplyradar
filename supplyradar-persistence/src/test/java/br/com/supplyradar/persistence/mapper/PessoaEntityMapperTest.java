@@ -55,7 +55,6 @@ class PessoaEntityMapperTest extends AbstractPersistenceTest {
         PessoaFisica pessoaFisica = Fixture.from(PessoaFisica.class).gimme("valido");
         PessoaFisicaEntity pessoaFisicaEntity = mapper.mapFrom(pessoaFisica);
         assertThat(pessoaFisicaEntity, notNullValue());
-        assertThat(pessoaFisicaEntity.getId(), notNullValue());
         assertEquals(pessoaFisicaEntity.getNome(), pessoaFisica.getNome());
         assertEquals(pessoaFisicaEntity.getTelefone(), pessoaFisica.getTelefone());
         assertEquals(pessoaFisicaEntity.getCpfPassaporte(), pessoaFisica.getCpfPassaporte());
@@ -67,7 +66,6 @@ class PessoaEntityMapperTest extends AbstractPersistenceTest {
         PessoaJuridica pessoaJuridica = Fixture.from(PessoaJuridica.class).gimme("valido");
         PessoaJuridicaEntity pessoaJuridicaEntity = mapper.mapFrom(pessoaJuridica);
         assertThat(pessoaJuridicaEntity, notNullValue());
-        assertThat(pessoaJuridicaEntity.getId(), notNullValue());
         assertEquals(pessoaJuridicaEntity.getTelefone(), pessoaJuridica.getTelefone());
         assertEquals(pessoaJuridicaEntity.isAtivo(), pessoaJuridica.isAtivo());
         assertEquals(pessoaJuridicaEntity.getCnpj(), pessoaJuridica.getCnpj().getNumber());

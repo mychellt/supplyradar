@@ -22,7 +22,6 @@ class EnderecoEntityMapperTest extends AbstractPersistenceTest {
         EnderecoEntity enderecoEntity = Fixture.from(EnderecoEntity.class).gimme("valido");
         Endereco endereco = mapper.mapFrom(enderecoEntity);
         assertThat(endereco, notNullValue());
-        assertThat(endereco.getId(), notNullValue());
         assertEquals(endereco.isAtivo(), enderecoEntity.isAtivo());
         assertEquals(endereco.getDateOfChange(), enderecoEntity.getDateOfChange());
         assertEquals(endereco.getDateOfCreate(), enderecoEntity.getDateOfCreate());
@@ -34,7 +33,6 @@ class EnderecoEntityMapperTest extends AbstractPersistenceTest {
         Endereco endereco = Fixture.from(Endereco.class).gimme("valido");
         EnderecoEntity enderecoEntity = mapper.mapFrom(endereco);
         assertThat(enderecoEntity, notNullValue());
-        assertThat(enderecoEntity.getId(), notNullValue());
         assertEquals(enderecoEntity.isAtivo(), endereco.isAtivo());
         assertEquals(enderecoEntity.getDateOfChange(), endereco.getDateOfChange());
         assertEquals(enderecoEntity.getDateOfCreate(), endereco.getDateOfCreate());

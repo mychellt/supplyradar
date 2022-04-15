@@ -26,7 +26,6 @@ class CidadeEntityMapperTest extends AbstractPersistenceTest {
         assertThat(cidade, notNullValue());
         assertThat(cidade.getId(), notNullValue());
         assertThat(cidade.getUnidadeFederativa(), notNullValue());
-        assertThat(cidade.getUnidadeFederativa().getId(), notNullValue());
         assertEquals(cidade.getUnidadeFederativa().getNome(), cidadeEntity.getUnidadeFederativa().getNome());
         assertEquals(cidade.getUnidadeFederativa().getSigla(), cidadeEntity.getUnidadeFederativa().getSigla());
         assertEquals(cidade.getUnidadeFederativa().getDateOfChange(), cidadeEntity.getUnidadeFederativa().getDateOfChange());
@@ -44,9 +43,7 @@ class CidadeEntityMapperTest extends AbstractPersistenceTest {
         Cidade cidade = Fixture.from(Cidade.class).gimme("valido");
         CidadeEntity cidadeEntity = mapper.mapFrom(cidade);
         assertThat(cidadeEntity, notNullValue());
-        assertThat(cidadeEntity.getId(), notNullValue());
         assertThat(cidadeEntity.getUnidadeFederativa(), notNullValue());
-        assertThat(cidadeEntity.getUnidadeFederativa().getId(), notNullValue());
         assertEquals(cidadeEntity.getUnidadeFederativa().getNome(), cidade.getUnidadeFederativa().getNome());
         assertEquals(cidadeEntity.getUnidadeFederativa().getSigla(), cidade.getUnidadeFederativa().getSigla());
         assertEquals(cidadeEntity.getUnidadeFederativa().getDateOfChange(), cidade.getUnidadeFederativa().getDateOfChange());

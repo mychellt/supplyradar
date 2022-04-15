@@ -15,7 +15,6 @@ public class PessoaJuridicaTemplateLoader implements TemplateLoader {
     public void load() {
         Fixture.of(PessoaJuridica.class).addTemplate("valido", new Rule() {
             {
-                add("id", UUID.randomUUID());
                 add("telefone", "fake-telefone");
                 add("email", Email.builder().address("fake-email@exemplo.com").build());
                 add("tipo", TipoPessoa.PESSOA_JURIDICA);

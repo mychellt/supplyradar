@@ -13,7 +13,6 @@ public class SolicitacaoAcessoTemplateLoader implements TemplateLoader {
     public void load() {
         Fixture.of(SolicitacaoAcesso.class).addTemplate("valido", new Rule() {
             {
-                add("id", UUID.randomUUID());
                 add("usuario", one(Usuario.class, "valido"));
             }
         });

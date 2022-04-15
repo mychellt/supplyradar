@@ -14,7 +14,6 @@ public class EnderecoTemplateLoader implements TemplateLoader {
     public void load() {
         Fixture.of(Endereco.class).addTemplate("valido", new Rule() {
             {
-                add("id", UUID.randomUUID());
                 add("logradouro", "logradouro-endereco-valido");
                 add("cep", "cep-endereco-valido");
                 add("numero", "numero-endereco-valido");

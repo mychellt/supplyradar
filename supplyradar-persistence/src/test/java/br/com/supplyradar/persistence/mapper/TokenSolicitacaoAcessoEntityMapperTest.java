@@ -24,7 +24,6 @@ public class TokenSolicitacaoAcessoEntityMapperTest extends AbstractPersistenceT
         final TokenSolicitacaoAcessoEntity tokenSolicitacaoAcessoEntity = Fixture.from(TokenSolicitacaoAcessoEntity.class).gimme("valido");
         final TokenSolicitacaoAcesso tokenSolicitacaoAcesso = mapper.mapFrom(tokenSolicitacaoAcessoEntity);
         assertThat(tokenSolicitacaoAcesso, notNullValue());
-        assertThat(tokenSolicitacaoAcesso.getId(), notNullValue());
     }
 
     @DisplayName(value = "Deve ser capaz de mapear os dados de Domain para Entity")
@@ -33,6 +32,5 @@ public class TokenSolicitacaoAcessoEntityMapperTest extends AbstractPersistenceT
         final TokenSolicitacaoAcesso tokenSolicitacaoAcesso = Fixture.from(TokenSolicitacaoAcesso.class).gimme("valido");
         final TokenSolicitacaoAcessoEntity tokenSolicitacaoAcessoEntity = mapper.mapFrom(tokenSolicitacaoAcesso);
         assertThat(tokenSolicitacaoAcessoEntity, notNullValue());
-        assertThat(tokenSolicitacaoAcessoEntity.getId(), notNullValue());
     }
 }

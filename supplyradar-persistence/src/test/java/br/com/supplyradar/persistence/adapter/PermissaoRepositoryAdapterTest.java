@@ -4,7 +4,6 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.supplyradar.core.persistence.PermissaoRepository;
 import br.com.supplyradar.domain.commons.Permissao;
 import br.com.supplyradar.persistence.AbstractPersistenceTest;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ class PermissaoRepositoryAdapterTest extends AbstractPersistenceTest {
 
     @DisplayName(value = "Dado uma permissão válida, deve ser capaz de realizar a persistência.")
     @Test
-    void testSave() {
+    void save() {
         final Permissao permissao = Fixture.from(Permissao.class).gimme("valido");
         final Permissao savedPermissao = repository.save(permissao);
         assertThat(savedPermissao, notNullValue());

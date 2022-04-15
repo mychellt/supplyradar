@@ -13,7 +13,6 @@ public class CidadeTemplateLoader implements TemplateLoader {
     public void load() {
         Fixture.of(Cidade.class).addTemplate("valido", new Rule() {
             {
-                add("id", UUID.randomUUID());
                 add("unidadeFederativa", one(UnidadeFederativa.class, "valido"));
                 add("nome", "nome-cidade-valido");
             }

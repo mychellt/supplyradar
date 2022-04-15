@@ -24,7 +24,6 @@ class UnidadeFederativaEntityMapperTest extends AbstractPersistenceTest {
         UnidadeFederativaEntity unidadeFederativaEntity = Fixture.from(UnidadeFederativaEntity.class).gimme("valido");
         UnidadeFederativa unidadeFederativa = mapper.mapFrom(unidadeFederativaEntity);
         assertThat(unidadeFederativa, notNullValue());
-        assertThat(unidadeFederativa.getId(), notNullValue());
         assertEquals(unidadeFederativa.getSigla(), unidadeFederativaEntity.getSigla());
         assertEquals(unidadeFederativa.getNome(), unidadeFederativaEntity.getNome());
         assertEquals(unidadeFederativa.isAtivo(), unidadeFederativaEntity.isAtivo());
@@ -38,7 +37,6 @@ class UnidadeFederativaEntityMapperTest extends AbstractPersistenceTest {
         UnidadeFederativa unidadeFederativa = Fixture.from(UnidadeFederativa.class).gimme("valido");
         UnidadeFederativaEntity unidadeFederativaEntity = mapper.mapFrom(unidadeFederativa);
         assertThat(unidadeFederativaEntity, notNullValue());
-        assertThat(unidadeFederativaEntity.getId(), notNullValue());
         assertEquals(unidadeFederativaEntity.getSigla(), unidadeFederativa.getSigla());
         assertEquals(unidadeFederativaEntity.getNome(), unidadeFederativa.getNome());
         assertEquals(unidadeFederativaEntity.isAtivo(), unidadeFederativa.isAtivo());

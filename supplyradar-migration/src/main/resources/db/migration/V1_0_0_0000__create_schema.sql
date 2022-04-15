@@ -47,8 +47,12 @@ create table if not exists supplyradar.pessoa
 create table if not exists supplyradar.token_solicitacao_acesso
 (
     id uuid not null,
+    key varchar not null,
+    expirado boolean not null default false,
     date_of_change timestamp not null,
     date_of_create timestamp not null,
+    id_solicitacao uuid not null,
     ativo boolean default true,
+    constraint fk_solicitcao foreign key (id_solicitacao) references supplyradar.solicitacao_acesso (id),
     primary key(id)
 );

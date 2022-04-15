@@ -12,7 +12,6 @@ public class UnidadeFederativaTemplateLoader implements TemplateLoader {
     public void load() {
         Fixture.of(UnidadeFederativa.class).addTemplate("valido", new Rule() {
             {
-                add("id", UUID.randomUUID());
                 add("nome", "nome-unidade-federativa-valido");
                 add("sigla", "sigla-unidade-federativa-valido");
             }
