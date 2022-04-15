@@ -31,7 +31,9 @@ create table if not exists supplyradar.solicitacao_acesso
     id uuid not null,
     date_of_change timestamp not null,
     date_of_create timestamp not null,
+    id_usuario uuid not null,
     ativo boolean default true,
+    constraint fk_sol_id_usuario foreign key (id_usuario) references supplyradar.usuario (id),
     primary key(id)
 );
 

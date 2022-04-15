@@ -20,8 +20,8 @@ public class TokenSolicitacaoAcessoRepositoryAdapterTest extends AbstractPersist
     @DisplayName(value = "Deve realizar a pesistência do Token de uma Solicitação de acesso")
     @Test
     void save() {
-        TokenSolicitacaoAcesso token = Fixture.from(TokenSolicitacaoAcesso.class).gimme("valido");
-        TokenSolicitacaoAcesso tokenPersistido = repository.save(token);
+        final TokenSolicitacaoAcesso token = Fixture.from(TokenSolicitacaoAcesso.class).gimme("valido");
+        final TokenSolicitacaoAcesso tokenPersistido = repository.save(token);
         assertThat(tokenPersistido, notNullValue());
         assertThat(tokenPersistido.getId(), notNullValue());
         assertEquals(tokenPersistido.getKey(), token.getKey());
