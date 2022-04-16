@@ -1,13 +1,15 @@
 package br.com.supplyradar.persistence.mapper;
 
 import br.com.supplyradar.domain.commons.SolicitacaoAcesso;
+import br.com.supplyradar.persistence.mapper.factory.PessoaEntityFactory;
+import br.com.supplyradar.persistence.mapper.factory.PessoaFactory;
 import br.com.supplyradar.persistence.model.commons.SolicitacaoAcessoEntity;
 import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 
 @Mapper(builder = @Builder(disableBuilder = true),
-        uses = {UsuarioEntityMapper.class},
+        uses = {UsuarioEntityMapper.class, PessoaEntityFactory.class, PessoaFactory.class},
         nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
 public interface SolicitacaoAcessoEntityMapper {
     SolicitacaoAcesso mapFrom(final SolicitacaoAcessoEntity source);

@@ -16,7 +16,7 @@ import java.util.UUID;
 public class Usuario extends AbstractDomainObject<UUID> implements Visitable<Usuario> {
     private String login;
     private String senha;
-    private PessoaFisica pessoa;
+    private Pessoa pessoa;
     private TipoUsuario tipo;
     private boolean autorizado;
     private List<VinculoUsuario> vinculos;

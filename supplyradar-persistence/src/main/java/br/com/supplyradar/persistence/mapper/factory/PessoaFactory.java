@@ -7,10 +7,10 @@ import lombok.AllArgsConstructor;
 import org.mapstruct.ObjectFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 @Component
-@AllArgsConstructor
 public class PessoaFactory {
-    private final PessoaJpaRepository repository;
 
     @ObjectFactory
     public Pessoa build(PessoaEntity pessoaEntity) {
