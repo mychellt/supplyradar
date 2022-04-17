@@ -41,7 +41,7 @@ class CadastrarUsuarioCommandProcessorTest extends AbstractUsuarioTest {
     private PessoaRepository pessoaRepository;
 
     @Mock
-    private TokenSolicitacaoAcessoProcessor tokenSolicitacaoAcessoProcessor;
+    private TokenSolicitacaoAcessoCommandProcessor tokenSolicitacaoAcessoProcessor;
 
     @Mock
     private MailQueue mailQueue;
@@ -69,7 +69,7 @@ class CadastrarUsuarioCommandProcessorTest extends AbstractUsuarioTest {
         final CommandContext commandContext = new CommandContext();
         commandContext.setData(createUsuario);
 
-        Usuario usuarioCadastrado = processor.process(commandContext);
+        final Usuario usuarioCadastrado = processor.process(commandContext);
 
         assertThat(usuarioCadastrado, notNullValue());
         assertThat(usuarioCadastrado.getId(), notNullValue());

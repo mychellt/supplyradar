@@ -7,6 +7,7 @@ import br.com.supplyradar.domain.commons.SolicitacaoAcesso;
 import br.com.supplyradar.domain.commons.TokenSolicitacaoAcesso;
 import br.com.supplyradar.domain.commons.Usuario;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class TokenSolicitacaoAcessoTemplateLoader implements TemplateLoader {
@@ -16,6 +17,8 @@ public class TokenSolicitacaoAcessoTemplateLoader implements TemplateLoader {
             {
                 add("expirado", Boolean.FALSE.toString());
                 add("solicitacao", one(SolicitacaoAcesso.class, "valido"));
+                add("dateOfCreate", LocalDateTime.now());
+                add("dateOfChange", LocalDateTime.now());
             }
         });
         Fixture.of(TokenSolicitacaoAcesso.class).addTemplate("valido-com-id").inherits("valido", new Rule() {

@@ -14,11 +14,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
 @Component
-public class TokenSolicitacaoAcessoProcessor implements Command<TokenSolicitacaoAcesso> {
+public class TokenSolicitacaoAcessoCommandProcessor implements Command<TokenSolicitacaoAcesso> {
     private final TokenSolicitacaoAcessoRepository tokenSolicitacaoAcessoRepository;
 
     @Override
@@ -27,12 +28,15 @@ public class TokenSolicitacaoAcessoProcessor implements Command<TokenSolicitacao
         final String currentDateFormatted = DateUtils.formatCurrentDate("yyyyMMddHHmmss");
 
         try {
-            final TokenSolicitacaoAcesso token = new TokenSolicitacaoAcesso();
+            TokenSolicitacaoAcesso token = new TokenSolicitacaoAcesso();
             token.setExpirado(false);
             token.setKey(createKeyWithMD5(currentDateFormatted));
             token.setSolicitacao(solicitacao);
+            token.setAtivo(Boolean.TRUE);
+            token.setDateOfChange(LocalDateTime.now());
+            token.setDateOfCreate(LocalDateTime.now());
 
-            tokenSolicitacaoAcessoRepository.save(token);
+            token = tokenSolicitacaoAcessoRepository.save(token);
             return token;
 
         } catch (final NoSuchAlgorithmException e) {
