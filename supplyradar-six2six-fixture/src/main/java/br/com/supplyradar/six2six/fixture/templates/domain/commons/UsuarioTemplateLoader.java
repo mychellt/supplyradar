@@ -7,6 +7,9 @@ import br.com.supplyradar.domain.commons.PessoaFisica;
 import br.com.supplyradar.domain.commons.TipoUsuario;
 import br.com.supplyradar.domain.commons.Usuario;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 public class UsuarioTemplateLoader implements TemplateLoader {
     @Override
     public void load() {
@@ -17,6 +20,15 @@ public class UsuarioTemplateLoader implements TemplateLoader {
                 add("tipo", TipoUsuario.OPERADOR);
                 add("autorizado", Boolean.TRUE.toString());
                 add("pessoa", one(PessoaFisica.class, "valido"));
+                add("dateOfChange", LocalDateTime.now());
+                add("dateOfCreate", LocalDateTime.now());
+            }
+        });
+
+        Fixture.of(Usuario.class).addTemplate("valido-com-id").inherits("valido", new Rule(){
+            {
+                add("id", UUID.randomUUID());
+                add("pessoa", one(PessoaFisica.class, "valido-com-id"));
             }
         });
     }

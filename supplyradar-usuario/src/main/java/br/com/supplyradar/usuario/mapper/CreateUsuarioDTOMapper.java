@@ -7,7 +7,7 @@ import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 
 @Mapper(builder = @Builder(disableBuilder = true))
-public interface UsuarioDTOMapper {
+public interface CreateUsuarioDTOMapper {
     CreateUsuario mapFrom(final CreateUsuarioDTO createUsuarioDTO);
     UsuarioCadastradoDTO mapFrom(final CreateUsuario usuario);
 }

@@ -3,7 +3,7 @@ package br.com.supplyradar.usuario.controller;
 import br.com.supplyradar.core.command.CommandContext;
 import br.com.supplyradar.domain.exceptions.MandatoryFieldException;
 import br.com.supplyradar.usuario.dto.CreateUsuarioDTO;
-import br.com.supplyradar.usuario.mapper.UsuarioDTOMapper;
+import br.com.supplyradar.usuario.mapper.CreateUsuarioDTOMapper;
 import br.com.supplyradar.usuario.processor.CadastrarUsuarioCommandProcessor;
 import br.com.supplyradar.usuario.validator.CadastrarUsuarioValidator;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CadastrarUsuarioController {
     private final CadastrarUsuarioCommandProcessor cadastrarUsuarioCommandProcessor;
     private final CadastrarUsuarioValidator cadastrarUsuarioValidator;
-    private final UsuarioDTOMapper usuarioDTOMapper;
+    private final CreateUsuarioDTOMapper usuarioDTOMapper;
 
     @PostMapping(path = "/cadastrar")
     public ResponseEntity<Void> create(final @RequestBody CreateUsuarioDTO createUsuarioDTO) {

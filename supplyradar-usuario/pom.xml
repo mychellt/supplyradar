@@ -18,6 +18,12 @@
             <groupId>br.com.supplyradar</groupId>
             <artifactId>supplyradar-mail</artifactId>
             <version>${project.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>br.com.supplyradar</groupId>
+                    <artifactId>supplyradar-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>

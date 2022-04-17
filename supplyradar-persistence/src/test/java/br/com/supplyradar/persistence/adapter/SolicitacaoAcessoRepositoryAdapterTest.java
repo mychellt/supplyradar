@@ -8,6 +8,7 @@ import br.com.supplyradar.domain.commons.SolicitacaoAcesso;
 import br.com.supplyradar.domain.commons.TokenSolicitacaoAcesso;
 import br.com.supplyradar.domain.commons.Usuario;
 import br.com.supplyradar.persistence.AbstractPersistenceTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class SolicitacaoAcessoRepositoryAdapterTest extends AbstractPersistenceT
     void save() {
         final SolicitacaoAcesso solicitacao = Fixture.from(SolicitacaoAcesso.class).gimme("valido");
         final Usuario usuario = Fixture.from(Usuario.class).gimme("valido");
-        Usuario usuarioPersistido = usuarioRepository.save(usuario);
+        final Usuario usuarioPersistido = usuarioRepository.save(usuario);
         solicitacao.setUsuario(usuarioPersistido);
 
         final SolicitacaoAcesso solicitacaoPersistida = repository.save(solicitacao);
@@ -38,5 +39,11 @@ public class SolicitacaoAcessoRepositoryAdapterTest extends AbstractPersistenceT
         assertThat(solicitacaoPersistida.getUsuario().getId(), notNullValue());
         assertThat(solicitacaoPersistida.getUsuario().getPessoa(), notNullValue());
         assertThat(solicitacaoPersistida.getUsuario().getPessoa().getId(), notNullValue());
+        assertThat(solicitacaoPersistida.getUsuario().getPessoa().getId(), notNullValue());
+        assertEquals(solicitacaoPersistida.getUsuario().getPessoa().getTipo(), solicitacao.getUsuario().getPessoa().getTipo());
+        assertEquals(solicitacaoPersistida.getUsuario().getPessoa().getEmail(), solicitacao.getUsuario().getPessoa().getEmail());
+        assertEquals(solicitacaoPersistida.getUsuario().getPessoa().getTelefone(), solicitacao.getUsuario().getPessoa().getTelefone());
+        assertThat(solicitacaoPersistida.getUsuario().getPessoa().getDateOfChange(), notNullValue());
+        assertThat(solicitacaoPersistida.getUsuario().getPessoa().getDateOfCreate(), notNullValue());
     }
 }

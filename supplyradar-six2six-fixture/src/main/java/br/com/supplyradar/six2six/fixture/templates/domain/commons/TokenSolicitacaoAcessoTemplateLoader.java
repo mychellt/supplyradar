@@ -14,9 +14,14 @@ public class TokenSolicitacaoAcessoTemplateLoader implements TemplateLoader {
     public void load() {
         Fixture.of(TokenSolicitacaoAcesso.class).addTemplate("valido", new Rule() {
             {
-                add("id", UUID.randomUUID());
                 add("expirado", Boolean.FALSE.toString());
                 add("solicitacao", one(SolicitacaoAcesso.class, "valido"));
+            }
+        });
+        Fixture.of(TokenSolicitacaoAcesso.class).addTemplate("valido-com-id").inherits("valido", new Rule() {
+            {
+                add("id", UUID.randomUUID());
+                add("solicitacao", one(SolicitacaoAcesso.class, "valido-com-id"));
             }
         });
     }

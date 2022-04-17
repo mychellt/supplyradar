@@ -20,5 +20,11 @@ public class SolicitacaoAcessoTemplateLoader implements TemplateLoader {
                 add("ativo", Boolean.TRUE.toString());
             }
         });
+        Fixture.of(SolicitacaoAcesso.class).addTemplate("valido-com-id").inherits("valido", new Rule() {
+            {
+                add("id", UUID.randomUUID());
+                add("usuario", one(Usuario.class, "valido-com-id"));
+            }
+        });
     }
 }

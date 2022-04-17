@@ -55,15 +55,13 @@ public class CadastrarUsuarioCommandProcessor implements Command<Usuario> {
         pessoa.setEmail(Email.builder().address(createUsuario.getEmail()).build());
         pessoa.setTelefone(createUsuario.getTelefone());
         pessoa.setTipo(TipoPessoa.PESSOA_FISICA);
-        pessoa.setCpfPassaporte(createUsuario.isEstrangeiro() ? createUsuario.getPassaporte() : createUsuario.getCpf());
+        pessoa.setCpfPassaporte(createUsuario.getCpfPassaporte());
         pessoa.setNome(createUsuario.getNome());
         pessoa.setAtivo(Boolean.TRUE);
         pessoa.setDateOfChange(LocalDateTime.now());
         pessoa.setDateOfCreate(LocalDateTime.now());
 
-        pessoaRepository.save(pessoa);
-
-        final Usuario usuario = new Usuario();
+        Usuario usuario = new Usuario();
         usuario.setPessoa(pessoa);
         usuario.setAtivo(Boolean.TRUE);
         usuario.setSenha(createUsuario.getSenha());
@@ -72,7 +70,7 @@ public class CadastrarUsuarioCommandProcessor implements Command<Usuario> {
         usuario.setDateOfChange(LocalDateTime.now());
         usuario.setDateOfCreate(LocalDateTime.now());
 
-        usuarioRepository.save(usuario);
+        usuario = usuarioRepository.save(usuario);
 
         final SolicitacaoAcesso solicitacaoAcesso = new SolicitacaoAcesso();
         solicitacaoAcesso.setUsuario(usuario);

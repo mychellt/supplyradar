@@ -5,6 +5,7 @@ import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 import br.com.supplyradar.domain.commons.*;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class PessoaFisicaTemplateLoader implements TemplateLoader {
@@ -18,6 +19,13 @@ public class PessoaFisicaTemplateLoader implements TemplateLoader {
                 add("tipo", TipoPessoa.PESSOA_FISICA);
                 add("cpfPassaporte", "fake-cpf-passaporte");
                 add("passaporte", Boolean.FALSE.toString());
+                add("dateOfChange", LocalDateTime.now());
+                add("dateOfCreate", LocalDateTime.now());
+            }
+        });
+        Fixture.of(PessoaFisica.class).addTemplate("valido-com-id").inherits("valido", new Rule() {
+            {
+                add("id", UUID.randomUUID());
             }
         });
     }

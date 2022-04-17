@@ -10,6 +10,7 @@ import java.util.UUID;
 @Setter
 @Getter
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class CreateUsuario extends AbstractDomainObject<UUID> implements Visitable<CreateUsuario> {
 	private String login;
@@ -20,8 +21,7 @@ public class CreateUsuario extends AbstractDomainObject<UUID> implements Visitab
 	private String tipo;
 	private boolean aceitaTermoAdesao;
 	private boolean concordaPoliticaPrivacidade;
-	private String cpf;
-	private String passaporte;
+	private String cpfPassaporte;
 	private boolean estrangeiro;
 	private String telefone;
 	private String nome;
