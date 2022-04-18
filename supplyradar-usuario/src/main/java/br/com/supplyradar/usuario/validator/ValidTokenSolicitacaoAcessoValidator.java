@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 
 import static br.com.fluentvalidator.predicate.LogicalPredicate.not;
+import static br.com.fluentvalidator.predicate.ObjectPredicate.instanceOf;
 
 @Component
 public class ValidTokenSolicitacaoAcessoValidator extends AbstractValidator<UUID> {
@@ -21,7 +22,7 @@ public class ValidTokenSolicitacaoAcessoValidator extends AbstractValidator<UUID
                 .critical();
 
         ruleFor(key -> key)
-                .must(ObjectPredicate.instanceOf(UUID.class))
+                .must(instanceOf(UUID.class))
                 .withMessage("Chave de verificação inválida")
                 .withFieldName("key")
                 .withAttempedValue(String::valueOf)

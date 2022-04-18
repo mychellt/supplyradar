@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.ArrayDeque;
 
@@ -32,6 +33,13 @@ public class RestControllerExceptionHandler {
         final ErrorResponse errorResponse = ErrorResponse.builder().message("Recurso não encontrado").code(HttpStatus.NOT_FOUND.value()).build();
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
+
+    @ExceptionHandler
+    ResponseEntity<Object> handleException(final MethodArgumentTypeMismatchException ex) {
+        final ErrorResponse errorResponse = ErrorResponse.builder().message("Tipo de dado informado inválido").code(HttpStatus.BAD_REQUEST.value()).build();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
 
     @ExceptionHandler
     ResponseEntity<Object> handleException(final MandatoryFieldException ex) {

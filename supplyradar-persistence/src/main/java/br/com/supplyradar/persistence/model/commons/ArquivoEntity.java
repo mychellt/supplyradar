@@ -10,7 +10,9 @@ import java.util.UUID;
 
 @Setter
 @Getter
-@MappedSuperclass
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "arquivo", schema = "supplyradar")
+@Entity
 public abstract class ArquivoEntity extends AbstractEntity<UUID> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

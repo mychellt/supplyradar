@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @PrimaryKeyJoinColumn(name="id")
-@Table(name = "pessoa_juridica")
+@Table(name = "pessoa_juridica", schema = "supplyradar")
 @NoArgsConstructor
 public class PessoaJuridicaEntity extends PessoaEntity {
 	

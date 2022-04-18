@@ -14,7 +14,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="estatuto_empresa")
+@PrimaryKeyJoinColumn(name="id")
+@Table(name="estatuto_empresa", schema = "supplyradar")
 @DynamicUpdate
 public class EstatutoEmpresaEntity extends ArquivoEntity {
 	@ManyToOne
