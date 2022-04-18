@@ -3,6 +3,7 @@ package br.com.supplyradar.persistence.mapper.factory;
 import br.com.supplyradar.domain.commons.*;
 import br.com.supplyradar.persistence.adapter.jpa.PessoaJpaRepository;
 import br.com.supplyradar.persistence.model.commons.PessoaEntity;
+import br.com.supplyradar.persistence.model.commons.PessoaFisicaEntity;
 import lombok.AllArgsConstructor;
 import org.mapstruct.ObjectFactory;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,13 @@ public class PessoaFactory {
         pessoa.setTelefone(pessoaEntity.getTelefone());
         pessoa.setTipo(pessoaEntity.getTipo());
         pessoa.setEmail(Email.builder().address(pessoaEntity.getEmail()).build());
+
+        if(pessoa.isPessoaFisica()){
+            assert pessoa instanceof PessoaFisica;
+            ((PessoaFisica)pessoa).setNome(((PessoaFisicaEntity)pessoaEntity).getNome());
+            ((PessoaFisica)pessoa).setCpfPassaporte(((PessoaFisicaEntity)pessoaEntity).getCpfPassaporte());
+            ((PessoaFisica)pessoa).setPassaporte(((PessoaFisicaEntity)pessoaEntity).isPassaporte());
+        }
         return pessoa;
     }
 }

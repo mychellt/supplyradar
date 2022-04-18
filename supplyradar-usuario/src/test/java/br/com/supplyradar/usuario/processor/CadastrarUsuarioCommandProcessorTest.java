@@ -41,7 +41,7 @@ class CadastrarUsuarioCommandProcessorTest extends AbstractUsuarioTest {
     private PessoaRepository pessoaRepository;
 
     @Mock
-    private TokenSolicitacaoAcessoCommandProcessor tokenSolicitacaoAcessoProcessor;
+    private GerarTokenSolicitacaoAcessoCommandProcessor tokenSolicitacaoAcessoProcessor;
 
     @Mock
     private MailQueue mailQueue;

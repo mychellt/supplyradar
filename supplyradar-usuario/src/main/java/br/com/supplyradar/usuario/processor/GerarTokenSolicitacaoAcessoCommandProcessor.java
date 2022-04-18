@@ -19,7 +19,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Component
-public class TokenSolicitacaoAcessoCommandProcessor implements Command<TokenSolicitacaoAcesso> {
+public class GerarTokenSolicitacaoAcessoCommandProcessor implements Command<TokenSolicitacaoAcesso> {
     private final TokenSolicitacaoAcessoRepository tokenSolicitacaoAcessoRepository;
 
     @Override

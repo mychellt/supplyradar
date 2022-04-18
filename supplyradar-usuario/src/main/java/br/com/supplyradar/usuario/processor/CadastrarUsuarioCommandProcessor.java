@@ -28,7 +28,7 @@ public class CadastrarUsuarioCommandProcessor implements Command<Usuario> {
     private final UsuarioRepository usuarioRepository;
     private final SolicitacaoAcessoRepository solicitacaoAcessoRepository;
     private final PessoaRepository pessoaRepository;
-    private final TokenSolicitacaoAcessoCommandProcessor tokenSolicitacaoAcessoProcessor;
+    private final GerarTokenSolicitacaoAcessoCommandProcessor tokenSolicitacaoAcessoProcessor;
     private final MailQueue mailQueue;
 
     @Override

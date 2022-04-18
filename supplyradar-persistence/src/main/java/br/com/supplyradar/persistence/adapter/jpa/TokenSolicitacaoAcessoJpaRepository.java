@@ -6,5 +6,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import java.util.UUID;
 
 public interface TokenSolicitacaoAcessoJpaRepository extends PagingAndSortingRepository<TokenSolicitacaoAcessoEntity, UUID> {
-
+    TokenSolicitacaoAcessoEntity findByKey(String key);
 }

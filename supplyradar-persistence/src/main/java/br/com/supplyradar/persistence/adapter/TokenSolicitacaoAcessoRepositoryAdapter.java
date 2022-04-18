@@ -15,7 +15,12 @@ public class TokenSolicitacaoAcessoRepositoryAdapter implements TokenSolicitacao
     private final TokenSolicitacaoAcessoJpaRepository jpa;
 
     @Override
-    public TokenSolicitacaoAcesso save(TokenSolicitacaoAcesso tokenSolicitacaoAcesso) {
+    public TokenSolicitacaoAcesso save(final TokenSolicitacaoAcesso tokenSolicitacaoAcesso) {
         return mapper.mapFrom(jpa.save(mapper.mapFrom(tokenSolicitacaoAcesso)));
+    }
+
+    @Override
+    public TokenSolicitacaoAcesso findByKey(final String key) {
+        return mapper.mapFrom(jpa.findByKey(key));
     }
 }

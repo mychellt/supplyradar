@@ -5,14 +5,11 @@ import br.com.supplyradar.core.command.CommandContext;
 import br.com.supplyradar.core.persistence.TokenSolicitacaoAcessoRepository;
 import br.com.supplyradar.domain.commons.SolicitacaoAcesso;
 import br.com.supplyradar.domain.commons.TokenSolicitacaoAcesso;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -22,8 +19,8 @@ import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith({MockitoExtension.class})
-class TokenSolicitacaoAcessoCommandProcessorTest extends AbstractUsuarioTest {
-    private TokenSolicitacaoAcessoCommandProcessor processor;
+class GerarTokenSolicitacaoAcessoCommandProcessorTest extends AbstractUsuarioTest {
+    private GerarTokenSolicitacaoAcessoCommandProcessor processor;
 
     @Mock
     private TokenSolicitacaoAcessoRepository tokenSolicitacaoAcessoRepository;
@@ -32,7 +29,7 @@ class TokenSolicitacaoAcessoCommandProcessorTest extends AbstractUsuarioTest {
     public void setUp() {
         final TokenSolicitacaoAcesso tokenSolicitacaoAcesso = Fixture.from(TokenSolicitacaoAcesso.class).gimme("valido-com-id");
         lenient().when(tokenSolicitacaoAcessoRepository.save(any(TokenSolicitacaoAcesso.class))).thenReturn(tokenSolicitacaoAcesso);
-        processor = new TokenSolicitacaoAcessoCommandProcessor(tokenSolicitacaoAcessoRepository);
+        processor = new GerarTokenSolicitacaoAcessoCommandProcessor(tokenSolicitacaoAcessoRepository);
     }
 
     @DisplayName(value = "Deve ser capz de gerar um token de acesso para o usuário.")
