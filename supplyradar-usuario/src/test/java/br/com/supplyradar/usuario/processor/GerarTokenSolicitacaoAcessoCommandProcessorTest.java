@@ -26,7 +26,7 @@ class GerarTokenSolicitacaoAcessoCommandProcessorTest extends AbstractUsuarioTes
     private TokenSolicitacaoAcessoRepository tokenSolicitacaoAcessoRepository;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         final TokenSolicitacaoAcesso tokenSolicitacaoAcesso = Fixture.from(TokenSolicitacaoAcesso.class).gimme("valido-com-id");
         lenient().when(tokenSolicitacaoAcessoRepository.save(any(TokenSolicitacaoAcesso.class))).thenReturn(tokenSolicitacaoAcesso);
         processor = new GerarTokenSolicitacaoAcessoCommandProcessor(tokenSolicitacaoAcessoRepository);
@@ -34,7 +34,7 @@ class GerarTokenSolicitacaoAcessoCommandProcessorTest extends AbstractUsuarioTes
 
     @DisplayName(value = "Deve ser capz de gerar um token de acesso para o usuário.")
     @Test
-    public void process() {
+    void process() {
         final SolicitacaoAcesso solicitacaoAcesso = Fixture.from(SolicitacaoAcesso.class).gimme("valido-com-id");
         final CommandContext commandContext = new CommandContext();
         commandContext.setData(solicitacaoAcesso);
