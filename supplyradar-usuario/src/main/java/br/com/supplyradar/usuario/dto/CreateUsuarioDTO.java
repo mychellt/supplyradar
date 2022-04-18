@@ -20,8 +20,7 @@ public class CreateUsuarioDTO {
     private String tipo;
     private boolean aceitaTermoAdesao;
     private boolean concordaPoliticaPrivacidade;
-    private String cpf;
-    private String passaporte;
+    private String cpfPassaporte;
     private boolean estrangeiro;
     private String telefone;
     private String nome;

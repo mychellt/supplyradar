@@ -38,9 +38,6 @@ class CadastrarUsuarioCommandProcessorTest extends AbstractUsuarioTest {
     private SolicitacaoAcessoRepository solicitacaoAcessoRepository;
 
     @Mock
-    private PessoaRepository pessoaRepository;
-
-    @Mock
     private GerarTokenSolicitacaoAcessoCommandProcessor tokenSolicitacaoAcessoProcessor;
 
     @Mock
@@ -53,7 +50,7 @@ class CadastrarUsuarioCommandProcessorTest extends AbstractUsuarioTest {
         final Usuario usuario = Fixture.from(Usuario.class).gimme("valido-com-id");
         final SolicitacaoAcesso solicitacaoAcesso = Fixture.from(SolicitacaoAcesso.class).gimme("valido-com-id");
         final TokenSolicitacaoAcesso tokenSolicitacaoAcesso = Fixture.from(TokenSolicitacaoAcesso.class).gimme("valido-com-id");
-        processor =  new CadastrarUsuarioCommandProcessor(usuarioRepository, solicitacaoAcessoRepository, pessoaRepository, tokenSolicitacaoAcessoProcessor, mailQueue);
+        processor =  new CadastrarUsuarioCommandProcessor(usuarioRepository, solicitacaoAcessoRepository, tokenSolicitacaoAcessoProcessor, mailQueue);
 
         lenient().doNothing().when(mailQueue).push(any(MailMessage.class));
         lenient().when(usuarioRepository.save(any(Usuario.class))).thenReturn(usuario);

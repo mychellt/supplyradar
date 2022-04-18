@@ -62,21 +62,12 @@ public class CadastrarUsuarioValidator extends AbstractValidator<CreateUsuarioDT
                 .withAttempedValue(CreateUsuarioDTO::getTelefone)
                 .critical();
 
-
         ruleFor(user -> user)
-                .must(Predicate.not(stringEmptyOrNull(CreateUsuarioDTO::getCpf)))
+                .must(Predicate.not(stringEmptyOrNull(CreateUsuarioDTO::getCpfPassaporte)))
                 .when(CreateUsuarioDTO::isNotEstrangeiro)
                 .withMessage("Campo obrigatório não informado")
-                .withFieldName("cpf")
-                .withAttempedValue(CreateUsuarioDTO::getCpf)
-                .critical();
-
-        ruleFor(user -> user)
-                .must(Predicate.not(stringEmptyOrNull(CreateUsuarioDTO::getPassaporte)))
-                .when(CreateUsuarioDTO::isEstrangeiro)
-                .withMessage("Campo obrigatório não informado")
-                .withFieldName("passaporte")
-                .withAttempedValue(CreateUsuarioDTO::getPassaporte)
+                .withFieldName("cpfPassaporte")
+                .withAttempedValue(CreateUsuarioDTO::getCpfPassaporte)
                 .critical();
     }
 }

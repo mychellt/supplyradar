@@ -27,7 +27,6 @@ import static java.util.Objects.nonNull;
 public class CadastrarUsuarioCommandProcessor implements Command<Usuario> {
     private final UsuarioRepository usuarioRepository;
     private final SolicitacaoAcessoRepository solicitacaoAcessoRepository;
-    private final PessoaRepository pessoaRepository;
     private final GerarTokenSolicitacaoAcessoCommandProcessor tokenSolicitacaoAcessoProcessor;
     private final MailQueue mailQueue;
 
@@ -83,7 +82,7 @@ public class CadastrarUsuarioCommandProcessor implements Command<Usuario> {
         final CommandContext commandContext = new CommandContext();
         commandContext.setData(solicitacaoAcesso);
 
-        TokenSolicitacaoAcesso tokenSolicitacaoAcesso = tokenSolicitacaoAcessoProcessor.process(commandContext);
+        tokenSolicitacaoAcessoProcessor.process(commandContext);
 
         final MailMessage mailMessage = MailMessage.builder()
                 .from("supplyradarsmart@gmail.com")

@@ -1,12 +1,10 @@
-package br.com.supplyradar.usuario.processor.six2six.fixture.templates;
+package br.com.supplyradar.six2six.fixture.templates.domain.commons;
 
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 import br.com.supplyradar.domain.commons.CreateUsuario;
-import br.com.supplyradar.domain.commons.PessoaFisica;
 import br.com.supplyradar.domain.commons.TipoUsuario;
-import br.com.supplyradar.domain.commons.Usuario;
 
 public class CreaateUsuarioTemplateLoader implements TemplateLoader {
     private String login;

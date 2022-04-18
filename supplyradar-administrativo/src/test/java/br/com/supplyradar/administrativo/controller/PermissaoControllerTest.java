@@ -2,14 +2,12 @@ package br.com.supplyradar.administrativo.controller;
 
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
-import br.com.supplyradar.administrativo.processor.permissao.ListPermissaoCommandProcessor;
+import br.com.supplyradar.administrativo.mapper.PermissaoMapper;
+import br.com.supplyradar.administrativo.processor.permissao.*;
 import br.com.supplyradar.administrativo.validator.PermissaoMandatoryFieldValidator;
 import br.com.supplyradar.core.command.CommandContext;
 import br.com.supplyradar.domain.commons.Permissao;
 import br.com.supplyradar.administrativo.dto.PermissaoDTO;
-import br.com.supplyradar.administrativo.processor.permissao.CreatePermissaoCommandProcessor;
-import br.com.supplyradar.administrativo.processor.permissao.FetchPermissaoCommandProcessor;
-import br.com.supplyradar.administrativo.processor.permissao.UpdatePermissaoCommandProcessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,7 +38,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @EnableWebMvc
 @WebMvcTest(PermissaoController.class)
 @ContextConfiguration(classes = PermissaoControllerTest.class)
-@ComponentScan(basePackageClasses = {PermissaoController.class, PermissaoMandatoryFieldValidator.class})
+@ComponentScan(basePackageClasses = {PermissaoController.class, PermissaoMandatoryFieldValidator.class, PermissaoMapper.class})
 public class PermissaoControllerTest {
 
     @Autowired
@@ -58,6 +56,9 @@ public class PermissaoControllerTest {
     @MockBean
     private ListPermissaoCommandProcessor listPermissaoCommandProcessor;
 
+    @MockBean
+    private DeletePermissaoCommandProcessor deletePermissaoCommandProcessor;
+
     @Spy
     private PermissaoMandatoryFieldValidator permissaoMandatoryFieldValidator;
 
@@ -65,8 +66,8 @@ public class PermissaoControllerTest {
 
     @BeforeAll
     public static void setUp() {
-        FixtureFactoryLoader.loadTemplates("br.com.supplyrdar.six2six.fixture.templates.domain.commons");
-        FixtureFactoryLoader.loadTemplates("br.supplyradar.administrativo.six2six.fixture");
+        FixtureFactoryLoader.loadTemplates("br.com.supplyradar.six2six.fixture.templates.domain.commons");
+        FixtureFactoryLoader.loadTemplates("br.com.supplyradar.administrativo.six2six.fixture");
     }
 
     @BeforeEach
@@ -84,6 +85,7 @@ public class PermissaoControllerTest {
         when(updatePermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(permissao);
         when(fetchPermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(null);
         when(listPermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(emptyList());
+        when(deletePermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(permissao);
 
         mockMvc.perform(post("/administrativo/permissao")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -95,6 +97,7 @@ public class PermissaoControllerTest {
         verify(updatePermissaoCommandProcessor, never()).process(commandContextArgumentCaptor.capture());
         verify(fetchPermissaoCommandProcessor, never()).process(commandContextArgumentCaptor.capture());
         verify(listPermissaoCommandProcessor, never()).process(commandContextArgumentCaptor.capture());
+        verify(deletePermissaoCommandProcessor, never()).process(commandContextArgumentCaptor.capture());
         final CommandContext commandContext = commandContextArgumentCaptor.getValue();
         assertThat(commandContext.getData(Permissao.class).getDescricao(), equalTo(permissao.getDescricao()));
     }
@@ -109,6 +112,7 @@ public class PermissaoControllerTest {
         when(updatePermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(permissao);
         when(fetchPermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(null);
         when(listPermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(emptyList());
+        when(deletePermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(permissao);
 
         mockMvc.perform(put("/administrativo/permissao/" + UUID.randomUUID())
                         .contentType(MediaType.APPLICATION_JSON)
@@ -120,6 +124,7 @@ public class PermissaoControllerTest {
         verify(updatePermissaoCommandProcessor, only()).process(commandContextArgumentCaptor.capture());
         verify(fetchPermissaoCommandProcessor, never()).process(commandContextArgumentCaptor.capture());
         verify(listPermissaoCommandProcessor, never()).process(commandContextArgumentCaptor.capture());
+        verify(deletePermissaoCommandProcessor, never()).process(commandContextArgumentCaptor.capture());
         final CommandContext commandContext = commandContextArgumentCaptor.getValue();
         assertThat(commandContext.getData(Permissao.class).getDescricao(), equalTo(permissao.getDescricao()));
     }
@@ -134,6 +139,7 @@ public class PermissaoControllerTest {
         when(updatePermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(null);
         when(fetchPermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(permissao);
         when(listPermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(emptyList());
+        when(deletePermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(permissao);
 
         mockMvc.perform(get("/administrativo/permissao/" + UUID.randomUUID())
                         .contentType(MediaType.APPLICATION_JSON))
@@ -144,7 +150,7 @@ public class PermissaoControllerTest {
         verify(updatePermissaoCommandProcessor, never()).process(commandContextArgumentCaptor.capture());
         verify(createPermissaoCommandProcessor, never()).process(commandContextArgumentCaptor.capture());
         verify(listPermissaoCommandProcessor, never()).process(commandContextArgumentCaptor.capture());
-
+        verify(deletePermissaoCommandProcessor, never()).process(commandContextArgumentCaptor.capture());
     }
 
     @DisplayName(value = "Deve ser capaz de retornar todas as permissões")
@@ -156,7 +162,7 @@ public class PermissaoControllerTest {
         when(updatePermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(null);
         when(fetchPermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(null);
         when(listPermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(List.of(permissao));
-
+        when(deletePermissaoCommandProcessor.process(any(CommandContext.class))).thenReturn(permissao);
 
         mockMvc.perform(get("/administrativo/permissao/")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -167,6 +173,6 @@ public class PermissaoControllerTest {
         verify(updatePermissaoCommandProcessor, never()).process(commandContextArgumentCaptor.capture());
         verify(createPermissaoCommandProcessor, never()).process(commandContextArgumentCaptor.capture());
         verify(listPermissaoCommandProcessor, only()).process(commandContextArgumentCaptor.capture());
-
+        verify(deletePermissaoCommandProcessor, never()).process(commandContextArgumentCaptor.capture());
     }
 }

@@ -26,7 +26,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith({MockitoExtension.class})
 class ValidarTokenSolicitacaoAcessoCommandProcessorTest extends AbstractUsuarioTest {
 
-    private ValidarTokenSolicitacaoAcessoCommandProcessor validarTokenSolicitacaoAcessoCommandProcessor;
+    private ValidTokenSolicitacaoAcessoCommandProcessor validarTokenSolicitacaoAcessoCommandProcessor;
 
     @Mock
     private TokenSolicitacaoAcessoRepository tokenSolicitacaoAcessoRepository;
@@ -36,7 +36,7 @@ class ValidarTokenSolicitacaoAcessoCommandProcessorTest extends AbstractUsuarioT
 
     @BeforeEach
     void setUp() {
-        validarTokenSolicitacaoAcessoCommandProcessor = new ValidarTokenSolicitacaoAcessoCommandProcessor(tokenSolicitacaoAcessoRepository, autorizarUsuarioCommandProcessor);
+        validarTokenSolicitacaoAcessoCommandProcessor = new ValidTokenSolicitacaoAcessoCommandProcessor(tokenSolicitacaoAcessoRepository, autorizarUsuarioCommandProcessor);
     }
 
     @DisplayName(value = "Deve ser capaz de realizar a validação de tokens")

@@ -27,6 +27,7 @@ public class CadastrarUsuarioController {
 
         final CommandContext commandContext = new CommandContext();
         commandContext.setData(usuarioDTOMapper.mapFrom(createUsuarioDTO));
+
         cadastrarUsuarioCommandProcessor.process(commandContext);
         return ResponseEntity.ok().build();
     }

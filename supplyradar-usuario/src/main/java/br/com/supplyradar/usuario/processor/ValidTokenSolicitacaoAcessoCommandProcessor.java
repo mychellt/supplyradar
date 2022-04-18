@@ -16,7 +16,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @Component
-public class ValidarTokenSolicitacaoAcessoCommandProcessor implements Command<TokenSolicitacaoAcesso> {
+public class ValidTokenSolicitacaoAcessoCommandProcessor implements Command<TokenSolicitacaoAcesso> {
     private final TokenSolicitacaoAcessoRepository tokenSolicitacaoAcessoRepository;
     private final AutorizarUsuarioCommandProcessor autorizarUsuarioCommandProcessor;
 
