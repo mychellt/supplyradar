@@ -12,19 +12,12 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>supplyradar-core</artifactId>
+    <artifactId>supplyradar-processo</artifactId>
 
     <dependencies>
-
         <dependency>
             <groupId>br.com.supplyradar</groupId>
-            <artifactId>supplyradar-domain</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>br.com.supplyradar</groupId>
-            <artifactId>supplyradar-six2six-fixture</artifactId>
-            <version>${project.version}</version>
+            <artifactId>supplyradar-core</artifactId>
         </dependency>
     </dependencies>
 

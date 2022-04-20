@@ -3,24 +3,10 @@ package br.com.supplyradar.usuario.six2six.fixture.templates;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
-import br.com.supplyradar.domain.commons.CreateUsuario;
 import br.com.supplyradar.domain.commons.TipoUsuario;
 import br.com.supplyradar.usuario.dto.CreateUsuarioDTO;
 
-public class CreaateUsuarioDTOTemplateLoader implements TemplateLoader {
-    private String login;
-    private String senha;
-    private String email;
-    private String emailConfirmacao;
-    private String senhaConfirmacao;
-    private String tipo;
-    private boolean aceitaTermoAdesao;
-    private boolean concordaPoliticaPrivacidade;
-    private String cpfPassaporte;
-    private boolean estrangeiro;
-    private String telefone;
-    private String nome;
-
+public class CreateUsuarioDTOTemplateLoader implements TemplateLoader {
     @Override
     public void load() {
         Fixture.of(CreateUsuarioDTO.class).addTemplate("valido", new Rule() {

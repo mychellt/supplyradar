@@ -3,25 +3,31 @@ package br.com.supplyradar.administrativo.mapper;
 
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
-import br.com.supplyradar.domain.commons.Permissao;
 import br.com.supplyradar.administrativo.dto.PermissaoDTO;
+import br.com.supplyradar.domain.commons.Permissao;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@ExtendWith({MockitoExtension.class})
+@SpringBootTest(classes = {PermissaoMapperImpl.class})
 class PermissaoMapperUTest {
+
     @Autowired
     private PermissaoMapper mapper;
 
     @BeforeAll
-    public static void setUp() {
-        FixtureFactoryLoader.loadTemplates("br.com.supplyrdar.six2six.fixture.templates.domain.commons");
-        FixtureFactoryLoader.loadTemplates("br.supplyradar.administrativo.six2six.fixture");
+    public static void before() {
+        FixtureFactoryLoader.loadTemplates("br.com.supplyradar.six2six.fixture.templates.domain.commons");
+        FixtureFactoryLoader.loadTemplates("br.com.supplyradar.administrativo.six2six.fixture");
     }
 
     @DisplayName(value = "Deve ser capaz de realizar o mapeamento do DTO para o Domain")

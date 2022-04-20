@@ -3,6 +3,7 @@ package br.com.supplyradar.administrativo.controller;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 import br.com.supplyradar.administrativo.mapper.PermissaoMapper;
+import br.com.supplyradar.administrativo.mapper.PermissaoMapperImpl;
 import br.com.supplyradar.administrativo.processor.permissao.*;
 import br.com.supplyradar.administrativo.validator.PermissaoMandatoryFieldValidator;
 import br.com.supplyradar.core.command.CommandContext;
@@ -16,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Spy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
@@ -35,10 +37,18 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@EnableWebMvc
-@WebMvcTest(PermissaoController.class)
-@ContextConfiguration(classes = PermissaoControllerTest.class)
-@ComponentScan(basePackageClasses = {PermissaoController.class, PermissaoMandatoryFieldValidator.class, PermissaoMapper.class})
+@AutoConfigureMockMvc
+@ContextConfiguration(classes = {
+        PermissaoController.class,
+        CreatePermissaoCommandProcessor.class,
+        UpdatePermissaoCommandProcessor.class,
+        PermissaoMandatoryFieldValidator.class,
+        FetchPermissaoCommandProcessor.class,
+        ListPermissaoCommandProcessor.class,
+        DeletePermissaoCommandProcessor.class,
+        PermissaoMapperImpl.class
+})
+@WebMvcTest
 public class PermissaoControllerTest {
 
     @Autowired

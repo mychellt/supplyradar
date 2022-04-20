@@ -2,7 +2,10 @@ package br.com.supplyradar.usuario.processor;
 
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith({MockitoExtension.class})
 public abstract class AbstractUsuarioTest {
     @BeforeAll
     protected static void before() {

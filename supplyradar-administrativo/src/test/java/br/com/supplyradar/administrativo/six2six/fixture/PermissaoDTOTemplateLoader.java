@@ -12,8 +12,8 @@ public class PermissaoDTOTemplateLoader implements TemplateLoader {
         Fixture.of(PermissaoDTO.class).addTemplate("valido", new Rule() {
             {
                 add("sigla", "ROLE_DEFAULT");
-                add("nome", "permissao default");
-                add("descricao", "descricao default");
+                add("nome", "fake-nome");
+                add("descricao", "fake-descricao");
                 add("ordem", 0);
                 add("tipo", TipoAtribuicao.TODOS);
             }

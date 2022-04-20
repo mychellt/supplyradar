@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
-	<packaging>pom</packaging>
-	<modules>
-		<module>supplyradar-application</module>
-		<module>supplyradar-core</module>
-		<module>supplyradar-domain</module>
-		<module>supplyradar-services</module>
-		<module>supplyradar-persistence</module>
-		<module>supplyradar-migration</module>
-		<module>supplyradar-six2six-fixture</module>
-		<module>supplyradar-mail</module>
-		<module>supplyradar-notification</module>
-		<module>supplyradar-pagamento</module>
-		<module>supplyradar-agenda</module>
-		<module>supplyradar-busca</module>
-		<module>supplyradar-security</module>
-		<module>supplyradar-e2e</module>
-		<module>supplyradar-administrativo</module>
-		<module>supplyradar-queue</module>
-		<module>supplyradar-file</module>
-		<module>supplyradar-usuario</module>
-	</modules>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -33,7 +12,7 @@
 	<groupId>br.com.supplyradar</groupId>
 	<artifactId>supplyradar</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>supplyradar</name>
+	<packaging>pom</packaging>
 
 	<description>Supply Radar</description>
 
@@ -46,6 +25,7 @@
 		<springfox-version>2.9.2</springfox-version>
 		<fluent-validator-version>1.10.0</fluent-validator-version>
 		<spring.boot.version>2.6.4</spring.boot.version>
+		<jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -164,111 +144,125 @@
 				<version>${project.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>br.com.supplyradar</groupId>
+				<artifactId>supplyradar-processo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
-
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.2.2</version>
+				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-					<archive>
-						<manifest>
-							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-						</manifest>
-					</archive>
+					<useSystemClassLoader>false</useSystemClassLoader>
+					<argLine>${surefire.argLine} -Dfile.encoding=${project.build.sourceEncoding}</argLine>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<inherited>true</inherited>
+				<configuration>
+					<updateReleaseInfo>true</updateReleaseInfo>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<localCheckout>true</localCheckout>
+					<pushChanges>false</pushChanges>
+					<mavenExecutorId>forked-path</mavenExecutorId>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<inherited>true</inherited>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
-
 				<configuration>
-					<source>11</source>
-					<target>11</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
+					<debug>false</debug>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>true</showWarnings>
+					<annotationProcessorPaths>
+
+						<annotationProcessorPath>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-configuration-processor</artifactId>
+							<version>${spring.boot.version}</version>
+						</annotationProcessorPath>
+
+						<annotationProcessorPath>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${org.mapstruct.version}</version>
+						</annotationProcessorPath>
+
+						<annotationProcessorPath>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</annotationProcessorPath>
+
+					</annotationProcessorPaths>
 				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.1.1</version>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-
-						<goals>
-							<goal>jar</goal>
-						</goals>
-
-						<configuration>
-							<doclint>none</doclint>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>3.1.0</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>io.spring.javaformat</groupId>
-				<artifactId>spring-javaformat-maven-plugin</artifactId>
-				<version>0.0.15</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.owasp</groupId>
-				<artifactId>dependency-check-maven</artifactId>
-				<version>6.1.1</version>
-				<configuration>
-					<format>ALL</format>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>test</phase>
-						<goals>
-							<goal>aggregate</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.4</version>
+				<version>${jacoco-maven-plugin.version}</version>
+				<configuration>
+					<excludes>
+						<exclude>**/Application.*</exclude>
+						<exclude>**/constants/**</exclude>
+						<exclude>**/configuration/**</exclude>
+						<exclude>**/dto/**</exclude>
+						<exclude>**/model/**</exclude>
+						<exclude>**/mock/**</exclude>
+						<exclude>**/domain/**</exclude>
+						<exclude>**/pagination/**</exclude>
+						<exclude>**/enum/**</exclude>
+						<exclude>**/exception/**</exclude>
+						<exclude>**/mapper/**/*Impl.*</exclude>
+						<exclude>**/generated-sources/**</exclude>
+						<exclude>**/generated-test-sources/**</exclude>
+						<exclude>**/test/**</exclude>
+					</excludes>
+				</configuration>
 				<executions>
 					<execution>
+						<id>prepare-agent</id>
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
+						<configuration>
+							<propertyName>surefire.argLine</propertyName>
+						</configuration>
 					</execution>
-
 					<execution>
 						<id>report</id>
 						<phase>prepare-package</phase>
@@ -276,7 +270,6 @@
 							<goal>report</goal>
 						</goals>
 					</execution>
-
 					<execution>
 						<id>post-unit-test</id>
 						<phase>test</phase>
@@ -289,20 +282,26 @@
 		</plugins>
 	</build>
 
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>report</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-		</plugins>
-	</reporting>
+	<modules>
+		<module>supplyradar-application</module>
+		<module>supplyradar-core</module>
+		<module>supplyradar-domain</module>
+		<module>supplyradar-services</module>
+		<module>supplyradar-persistence</module>
+		<module>supplyradar-migration</module>
+		<module>supplyradar-six2six-fixture</module>
+		<module>supplyradar-mail</module>
+		<module>supplyradar-notification</module>
+		<module>supplyradar-pagamento</module>
+		<module>supplyradar-agenda</module>
+		<module>supplyradar-busca</module>
+		<module>supplyradar-security</module>
+		<module>supplyradar-e2e</module>
+		<module>supplyradar-administrativo</module>
+		<module>supplyradar-queue</module>
+		<module>supplyradar-file</module>
+		<module>supplyradar-usuario</module>
+		<module>supplyradar-processo</module>
+	</modules>
 
 </project>

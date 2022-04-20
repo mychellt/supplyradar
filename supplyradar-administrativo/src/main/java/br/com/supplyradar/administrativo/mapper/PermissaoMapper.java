@@ -12,5 +12,6 @@ import org.mapstruct.factory.Mappers;
 @Mapper(builder = @Builder(disableBuilder = true))
 public interface PermissaoMapper {
     Permissao mapFrom(PermissaoDTO source);
+
     PermissaoDTO mapFrom(Permissao source);
 }

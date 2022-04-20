@@ -17,8 +17,8 @@ public class PermissaoTemplateLoader implements TemplateLoader {
         Fixture.of(Permissao.class).addTemplate("valido", new Rule() {
             {
                 add("sigla", "ROLE_DEFAULT");
-                add("nome", "permissao default");
-                add("descricao", "descricao default");
+                add("nome", "fake-nome");
+                add("descricao", "fake-descricao");
                 add("ordem", 0);
                 add("tipo", TipoAtribuicao.TODOS);
                 add("dateOfChange", LocalDateTime.now());
