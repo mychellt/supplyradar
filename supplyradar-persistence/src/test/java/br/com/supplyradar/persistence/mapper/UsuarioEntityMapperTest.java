@@ -3,6 +3,8 @@ package br.com.supplyradar.persistence.mapper;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.supplyradar.domain.commons.*;
 import br.com.supplyradar.persistence.AbstractPersistenceTest;
+import br.com.supplyradar.persistence.mapper.factory.PessoaEntityFactory;
+import br.com.supplyradar.persistence.mapper.factory.PessoaFactory;
 import br.com.supplyradar.persistence.model.commons.UsuarioEntity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +15,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest(classes = {UsuarioEntityMapperImpl.class})
+@SpringBootTest(classes = {
+        UsuarioEntityMapperImpl.class,
+        PessoaEntityFactory.class,
+        PessoaFactory.class,
+        EmailEntityMapperImpl.class
+})
 class UsuarioEntityMapperTest extends AbstractMapperTest {
     @Autowired
     private UsuarioEntityMapper mapper;

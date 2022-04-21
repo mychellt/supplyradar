@@ -5,6 +5,7 @@ import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 import br.com.supplyradar.domain.commons.Cidade;
 import br.com.supplyradar.domain.commons.Endereco;
+import br.com.supplyradar.domain.commons.PessoaJuridica;
 import br.com.supplyradar.domain.commons.TipoEndereco;
 
 import java.util.UUID;
@@ -19,8 +20,8 @@ public class EnderecoTemplateLoader implements TemplateLoader {
                 add("numero", "numero-endereco-valido");
                 add("complemento", "complemento-endereco-valido");
                 add("bairro", "bairro-endereco-valido");
-                add("idCidade", UUID.randomUUID());
-                add("idPessoa", UUID.randomUUID());
+                add("cidade", one(Cidade.class, "valido"));
+                add("pessoa", one(PessoaJuridica.class, "valido"));
                 add("tipo", TipoEndereco.COMERCIAL);
             }
         });

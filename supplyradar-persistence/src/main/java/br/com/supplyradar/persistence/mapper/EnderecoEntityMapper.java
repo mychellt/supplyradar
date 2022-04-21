@@ -8,12 +8,15 @@ import br.com.supplyradar.persistence.model.commons.EnderecoEntity;
 import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
-import org.mapstruct.factory.Mappers;
 
 
 @Mapper(builder = @Builder(disableBuilder = true),
         componentModel = "spring",
-        uses = {PessoaEntityMapper.class, PessoaEntityFactory.class, PessoaFactory.class, EmailEntityMapper.class},
+        uses = {PessoaEntityMapper.class,
+                PessoaFactory.class,
+                PessoaEntityFactory.class,
+                EmailEntityMapper.class,
+                CNPJEntityMapper.class},
         nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
 public interface EnderecoEntityMapper {
     Endereco mapFrom(EnderecoEntity source);

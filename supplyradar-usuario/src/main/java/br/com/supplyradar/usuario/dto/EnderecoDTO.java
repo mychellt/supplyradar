@@ -20,5 +20,4 @@ public class EnderecoDTO {
     private String tipo;
     private String cep;
     private UUID idCidade;
-    private UUID idPessoa;
 }

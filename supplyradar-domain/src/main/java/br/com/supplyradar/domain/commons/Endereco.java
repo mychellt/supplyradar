@@ -20,9 +20,9 @@ public class Endereco extends AbstractDomainObject<UUID> implements DomainObject
     private String numero;
     private String complemento;
     private String bairro;
-    private UUID idCidade;
+    private Cidade cidade;
     private TipoEndereco tipo;
-    private UUID idPessoa;
+    private Pessoa pessoa;
 
     @Override
     public void accept(Visitor<Endereco, ?> visitor) {

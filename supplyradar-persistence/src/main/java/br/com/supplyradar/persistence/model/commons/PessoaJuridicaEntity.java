@@ -9,10 +9,10 @@ import java.util.List;
 @Setter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @PrimaryKeyJoinColumn(name="id")
 @Table(name = "pessoa_juridica", schema = "supplyradar")
-@NoArgsConstructor
 public class PessoaJuridicaEntity extends PessoaEntity {
 	
 	@Column(name = "cnpj", unique = true, nullable = false)
@@ -29,7 +29,4 @@ public class PessoaJuridicaEntity extends PessoaEntity {
 	
 	@Column(name = "razao_social")
 	private String razaoSocial;
-	
-	@OneToMany(mappedBy="pessoa", fetch = FetchType.LAZY)
-	private List<EstatutoEmpresaEntity> estatutos;
 }

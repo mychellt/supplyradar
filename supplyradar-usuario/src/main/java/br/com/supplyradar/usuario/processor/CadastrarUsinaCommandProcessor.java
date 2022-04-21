@@ -33,7 +33,7 @@ public class CadastrarUsinaCommandProcessor implements Command<Usina> {
         usina.setPessoa(pessoaJuridica);
         usina.setNome(usinaRequestBody.getNome());
         usina.setWebsite(usina.getWebsite());
-        usina.setTipoUsina(TipoUsina.valueOf(usinaRequestBody.getTipo()));
+        usina.setTipo(TipoUsina.valueOf(usinaRequestBody.getTipo()));
 
         return usinaRepository.save(usina);
     }

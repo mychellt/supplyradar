@@ -1,5 +1,6 @@
 package br.com.supplyradar.persistence.model.commons;
 
+import br.com.supplyradar.domain.assinatura.Contrato;
 import br.com.supplyradar.domain.commons.TipoUsina;
 import lombok.*;
 
@@ -34,6 +35,8 @@ public class UsinaEntity extends EmpresaEntity {
 	@Column(name = "nome")
 	private String nome;
 
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "usina")
-	private List<VinculoUsinaEntity> vinculos;
+	private Contrato contrato;
+
+//	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "usina")
+//	private List<VinculoUsinaEntity> vinculos;
 }

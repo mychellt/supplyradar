@@ -20,8 +20,9 @@ import org.mapstruct.NullValueCheckStrategy;
             PessoaEntityFactory.class,
             PessoaFactory.class,
             EmailEntityMapper.class,
-            CNPJEntityMapper.class
-        })
+            CNPJEntityMapper.class,
+            EnderecoEntityMapper.class
+        }, nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
 public interface PessoaEntityMapper {
     PessoaJuridica mapFrom(PessoaJuridicaEntity source);
     PessoaJuridicaEntity mapFrom(PessoaJuridica source);

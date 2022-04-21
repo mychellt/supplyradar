@@ -6,6 +6,8 @@ import br.com.supplyradar.domain.commons.Cnpj;
 import br.com.supplyradar.domain.commons.PessoaFisica;
 import br.com.supplyradar.domain.commons.PessoaJuridica;
 import br.com.supplyradar.persistence.AbstractPersistenceTest;
+import br.com.supplyradar.persistence.mapper.factory.PessoaEntityFactory;
+import br.com.supplyradar.persistence.mapper.factory.PessoaFactory;
 import br.com.supplyradar.persistence.model.commons.PessoaFisicaEntity;
 import br.com.supplyradar.persistence.model.commons.PessoaJuridicaEntity;
 import org.junit.jupiter.api.BeforeAll;
@@ -20,7 +22,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest(classes = {PessoaEntityMapperImpl.class, EmailEntityMapperImpl.class, CNPJEntityMapperImpl.class})
+@SpringBootTest(classes = {
+        PessoaEntityMapperImpl.class,
+        PessoaFactory.class,
+        PessoaEntityFactory.class,
+        EmailEntityMapperImpl.class,
+        CNPJEntityMapperImpl.class,
+        EnderecoEntityMapperImpl.class
+})
 class PessoaEntityMapperTest extends AbstractMapperTest{
     @Autowired
     private PessoaEntityMapper mapper;

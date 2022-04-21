@@ -9,9 +9,5 @@ import java.util.UUID;
 @Getter
 @Setter
 public abstract class Empresa extends AbstractDomainObject<UUID> {
-	private SituacaoCadastro situacaoCadastro;
-	private Integer descontoPrimeiraAnuidade;
-	private Integer descontoSegundaAnuidade;
-	private Integer descontoTerceiraAnuidade;
-	private String pendencia;
+	private SituacaoCadastro situacao;
 }

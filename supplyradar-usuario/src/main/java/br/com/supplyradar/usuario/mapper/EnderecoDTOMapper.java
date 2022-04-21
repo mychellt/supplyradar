@@ -8,14 +8,10 @@ import br.com.supplyradar.usuario.dto.EnderecoDTO;
 import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 
-@Mapper(builder = @Builder(disableBuilder = true), uses = {PessoaFactory.class, PessoaEntityFactory.class})
+@Mapper(builder = @Builder(disableBuilder = true), componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface EnderecoDTOMapper {
-    @Mapping(ignore = true, target = "dateOfChange")
-    @Mapping(ignore = true, target = "dateOfCreate")
-    @Mapping(ignore = true, target = "id")
-    @Mapping(ignore = true, target = "ativo")
     Endereco mapFrom(final EnderecoDTO enderecoDTO);
-
     EnderecoDTO mapFrom(final Endereco endereco);
 }

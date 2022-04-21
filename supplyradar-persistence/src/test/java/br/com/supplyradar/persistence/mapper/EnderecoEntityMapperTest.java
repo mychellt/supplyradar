@@ -4,6 +4,8 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 import br.com.supplyradar.domain.commons.Endereco;
 import br.com.supplyradar.persistence.AbstractPersistenceTest;
+import br.com.supplyradar.persistence.mapper.factory.PessoaEntityFactory;
+import br.com.supplyradar.persistence.mapper.factory.PessoaFactory;
 import br.com.supplyradar.persistence.model.commons.EnderecoEntity;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +20,12 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith({MockitoExtension.class})
-@SpringBootTest(classes = {EnderecoEntityMapperImpl.class})
+@SpringBootTest(classes = {
+        EnderecoEntityMapperImpl.class,
+        PessoaFactory.class,
+        PessoaEntityFactory.class,
+        EmailEntityMapperImpl.class
+})
 class EnderecoEntityMapperTest  {
     @Autowired
     private EnderecoEntityMapper mapper;

@@ -38,8 +38,7 @@ class UsinaRequestBodyDTOMapperTest extends AbstractUsuarioTest {
         assertEquals(usinaRequestBody.getEndereco().getNumero(), usinaRequestBodyDTO.getEndereco().getNumero());
         assertEquals(usinaRequestBody.getEndereco().getCep(), usinaRequestBodyDTO.getEndereco().getCep());
         assertEquals(usinaRequestBody.getEndereco().getTipo().name(), usinaRequestBodyDTO.getEndereco().getTipo());
-        assertEquals(usinaRequestBody.getEndereco().getIdCidade(), usinaRequestBodyDTO.getEndereco().getIdCidade());
-        assertEquals(usinaRequestBody.getEndereco().getIdPessoa(), usinaRequestBodyDTO.getEndereco().getIdPessoa());
+        assertEquals(usinaRequestBody.getEndereco().getCidade().getId(), usinaRequestBodyDTO.getEndereco().getIdCidade());
     }
 
     @DisplayName(value = "Deve ser capaz de mapear Domain para DTO")
@@ -57,7 +56,6 @@ class UsinaRequestBodyDTOMapperTest extends AbstractUsuarioTest {
         assertEquals(usinaRequestBodyDTO.getEndereco().getNumero(), usinaRequestBody.getEndereco().getNumero());
         assertEquals(usinaRequestBodyDTO.getEndereco().getCep(), usinaRequestBody.getEndereco().getCep());
         assertEquals(usinaRequestBodyDTO.getEndereco().getTipo(), usinaRequestBody.getEndereco().getTipo().name());
-        assertEquals(usinaRequestBodyDTO.getEndereco().getIdCidade(), usinaRequestBody.getEndereco().getIdCidade());
-        assertEquals(usinaRequestBodyDTO.getEndereco().getIdPessoa(), usinaRequestBody.getEndereco().getIdPessoa());
+        assertEquals(usinaRequestBodyDTO.getEndereco().getIdCidade(), usinaRequestBody.getEndereco().getCidade().getId());
     }
 }

@@ -17,7 +17,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 
-@SpringBootTest(classes = {SolicitacaoAcessoEntityMapperImpl.class, UsuarioEntityMapperImpl.class, PessoaEntityFactory.class, PessoaFactory.class})
+@SpringBootTest(classes = {
+        SolicitacaoAcessoEntityMapperImpl.class,
+        UsuarioEntityMapperImpl.class,
+        PessoaEntityFactory.class,
+        PessoaFactory.class,
+        EmailEntityMapperImpl.class})
 public class SolicitacaoAcessoEntityMapperTest extends AbstractMapperTest {
 
     @Autowired
@@ -31,14 +36,14 @@ public class SolicitacaoAcessoEntityMapperTest extends AbstractMapperTest {
         assertThat(solicitacaoAcesso, notNullValue());
         assertThat(solicitacaoAcesso.getId(), notNullValue());
         assertThat(solicitacaoAcesso.getUsuario(), notNullValue());
-        assertEquals(solicitacaoAcessoEntity.getId(), solicitacaoAcesso.getId());
-        assertEquals(solicitacaoAcessoEntity.isAtivo(), solicitacaoAcesso.isAtivo());
-        assertEquals(solicitacaoAcessoEntity.getUsuario().getTipo(), solicitacaoAcesso.getUsuario().getTipo());
-        assertEquals(solicitacaoAcessoEntity.getUsuario().getSenha(), solicitacaoAcesso.getUsuario().getSenha());
-        assertEquals(solicitacaoAcessoEntity.getUsuario().getLogin(), solicitacaoAcesso.getUsuario().getLogin());
-        assertEquals(solicitacaoAcessoEntity.getUsuario().getTipo(), solicitacaoAcesso.getUsuario().getTipo());
-        assertEquals(solicitacaoAcessoEntity.getUsuario().isAtivo(), solicitacaoAcesso.getUsuario().isAtivo());
-        assertEquals(solicitacaoAcessoEntity.getUsuario().isAutorizado(), solicitacaoAcesso.getUsuario().isAutorizado());
+        assertEquals(solicitacaoAcesso.getId(), solicitacaoAcessoEntity.getId());
+        assertEquals(solicitacaoAcesso.isAtivo(), solicitacaoAcessoEntity.isAtivo());
+        assertEquals(solicitacaoAcesso.getUsuario().getTipo(), solicitacaoAcessoEntity.getUsuario().getTipo());
+        assertEquals(solicitacaoAcesso.getUsuario().getSenha(), solicitacaoAcessoEntity.getUsuario().getSenha());
+        assertEquals(solicitacaoAcesso.getUsuario().getLogin(), solicitacaoAcessoEntity.getUsuario().getLogin());
+        assertEquals(solicitacaoAcesso.getUsuario().getTipo(), solicitacaoAcessoEntity.getUsuario().getTipo());
+        assertEquals(solicitacaoAcesso.getUsuario().isAtivo(), solicitacaoAcessoEntity.getUsuario().isAtivo());
+        assertEquals(solicitacaoAcesso.getUsuario().isAutorizado(), solicitacaoAcessoEntity.getUsuario().isAutorizado());
     }
 
     @DisplayName(value = "Deve ser capaz de mapear os dados de Domain para Entity")
@@ -46,8 +51,8 @@ public class SolicitacaoAcessoEntityMapperTest extends AbstractMapperTest {
     void mapFromDomain() {
         final SolicitacaoAcesso solicitacaoAcesso = Fixture.from(SolicitacaoAcesso.class).gimme("valido");
         final SolicitacaoAcessoEntity solicitacaoAcessoEntity = solicitacaoAcessoEntityMapper.mapFrom(solicitacaoAcesso);
-        assertThat(solicitacaoAcesso, notNullValue());
-        assertThat(solicitacaoAcesso.getUsuario(), notNullValue());
+        assertThat(solicitacaoAcessoEntity, notNullValue());
+        assertThat(solicitacaoAcessoEntity.getUsuario(), notNullValue());
         assertEquals(solicitacaoAcessoEntity.getId(), solicitacaoAcesso.getId());
         assertEquals(solicitacaoAcessoEntity.isAtivo(), solicitacaoAcesso.isAtivo());
         assertEquals(solicitacaoAcessoEntity.getUsuario().getTipo(), solicitacaoAcesso.getUsuario().getTipo());

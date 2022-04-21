@@ -6,10 +6,12 @@ import br.com.supplyradar.persistence.model.commons.UnidadeFederativaEntity;
 import org.mapstruct.Builder;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
+import org.mapstruct.NullValueCheckStrategy;
 
 
 @Mapper(builder = @Builder(disableBuilder = true),
-        componentModel = "spring")
+        componentModel = "spring",
+        nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
 public interface UnidadeFederativaEntityMapper {
     UnidadeFederativa mapFrom(UnidadeFederativaEntity source);
     UnidadeFederativaEntity mapFrom(UnidadeFederativa source);

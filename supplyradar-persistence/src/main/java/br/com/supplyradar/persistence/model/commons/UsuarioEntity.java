@@ -2,8 +2,7 @@ package br.com.supplyradar.persistence.model.commons;
 
 import br.com.supplyradar.domain.commons.TipoUsuario;
 import br.com.supplyradar.persistence.model.AbstractEntity;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -13,8 +12,11 @@ import static javax.persistence.CascadeType.PERSIST;
 
 @Setter
 @Getter
-@Table(name = "usuario", schema = "supplyradar")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
+@Table(name = "usuario", schema = "supplyradar")
 public class UsuarioEntity extends AbstractEntity<UUID> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

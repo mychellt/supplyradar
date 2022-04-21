@@ -36,7 +36,7 @@ class EnderecoRepositoryAdapterTest extends AbstractPersistenceTest {
         cidade.setUnidadeFederativa(unidadeFederativaPersistida);
         final Cidade cidadePersistida = cidadeRepository.save(cidade);
 
-        endereco.setIdCidade(cidadePersistida.getId());
+        endereco.setCidade(cidadePersistida);
 
         final Endereco enderecoPersistido = repository.save(endereco);
         assertThat(enderecoPersistido, notNullValue());
