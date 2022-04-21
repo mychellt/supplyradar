@@ -6,14 +6,19 @@ import br.com.supplyradar.persistence.AbstractPersistenceTest;
 import br.com.supplyradar.persistence.model.commons.TokenSolicitacaoAcessoEntity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class TokenSolicitacaoAcessoEntityMapperTest extends AbstractPersistenceTest {
+@ExtendWith({MockitoExtension.class})
+@SpringBootTest(classes = {TokenSolicitacaoAcessoEntityMapperImpl.class, SolicitacaoAcessoEntityMapperImpl.class})
+public class TokenSolicitacaoAcessoEntityMapperTest {
 
     @Autowired
     private TokenSolicitacaoAcessoEntityMapper mapper;
@@ -24,6 +29,8 @@ public class TokenSolicitacaoAcessoEntityMapperTest extends AbstractPersistenceT
         final TokenSolicitacaoAcessoEntity tokenSolicitacaoAcessoEntity = Fixture.from(TokenSolicitacaoAcessoEntity.class).gimme("valido");
         final TokenSolicitacaoAcesso tokenSolicitacaoAcesso = mapper.mapFrom(tokenSolicitacaoAcessoEntity);
         assertThat(tokenSolicitacaoAcesso, notNullValue());
+        assertThat(tokenSolicitacaoAcesso.getSolicitacao(), notNullValue());
+        assertEquals(tokenSolicitacaoAcesso.getKey(), tokenSolicitacaoAcessoEntity.getKey());
     }
 
     @DisplayName(value = "Deve ser capaz de mapear os dados de Domain para Entity")
@@ -32,5 +39,7 @@ public class TokenSolicitacaoAcessoEntityMapperTest extends AbstractPersistenceT
         final TokenSolicitacaoAcesso tokenSolicitacaoAcesso = Fixture.from(TokenSolicitacaoAcesso.class).gimme("valido");
         final TokenSolicitacaoAcessoEntity tokenSolicitacaoAcessoEntity = mapper.mapFrom(tokenSolicitacaoAcesso);
         assertThat(tokenSolicitacaoAcessoEntity, notNullValue());
+        assertThat(tokenSolicitacaoAcessoEntity.getSolicitacao(), notNullValue());
+        assertEquals(tokenSolicitacaoAcessoEntity.getKey(), tokenSolicitacaoAcesso.getKey());
     }
 }

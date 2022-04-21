@@ -17,7 +17,10 @@ public class UsinaRequestBody extends AbstractDomainObject<UUID> implements Visi
     private String inscricaoEstadual;
     private String razaoSocial;
     private String website;
+    private String nome;
+    private String tipo;
     private Endereco endereco;
+    private Endereco enderecoCorrespondencia;
 
     @Override
     public void accept(Visitor<UsinaRequestBody, ?> visitor) {

@@ -1,21 +1,27 @@
 package br.com.supplyradar.persistence.mapper;
 
 import br.com.six2six.fixturefactory.Fixture;
+import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 import br.com.supplyradar.domain.commons.Cnpj;
 import br.com.supplyradar.domain.commons.PessoaFisica;
 import br.com.supplyradar.domain.commons.PessoaJuridica;
 import br.com.supplyradar.persistence.AbstractPersistenceTest;
 import br.com.supplyradar.persistence.model.commons.PessoaFisicaEntity;
 import br.com.supplyradar.persistence.model.commons.PessoaJuridicaEntity;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class PessoaEntityMapperTest extends AbstractPersistenceTest {
+@SpringBootTest(classes = {PessoaEntityMapperImpl.class, EmailEntityMapperImpl.class, CNPJEntityMapperImpl.class})
+class PessoaEntityMapperTest extends AbstractMapperTest{
     @Autowired
     private PessoaEntityMapper mapper;
 

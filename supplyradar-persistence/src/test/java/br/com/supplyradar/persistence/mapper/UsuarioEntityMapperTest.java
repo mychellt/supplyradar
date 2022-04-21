@@ -7,12 +7,14 @@ import br.com.supplyradar.persistence.model.commons.UsuarioEntity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class UsuarioEntityMapperTest extends AbstractPersistenceTest {
+@SpringBootTest(classes = {UsuarioEntityMapperImpl.class})
+class UsuarioEntityMapperTest extends AbstractMapperTest {
     @Autowired
     private UsuarioEntityMapper mapper;
 

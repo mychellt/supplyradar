@@ -1,20 +1,19 @@
 package br.com.supplyradar.persistence.mapper;
 
 import br.com.six2six.fixturefactory.Fixture;
-import br.com.supplyradar.domain.commons.Cidade;
 import br.com.supplyradar.domain.commons.UnidadeFederativa;
-import br.com.supplyradar.persistence.AbstractPersistenceTest;
-import br.com.supplyradar.persistence.model.commons.CidadeEntity;
 import br.com.supplyradar.persistence.model.commons.UnidadeFederativaEntity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class UnidadeFederativaEntityMapperTest extends AbstractPersistenceTest {
+@SpringBootTest(classes = {UnidadeFederativaEntityMapperImpl.class})
+class UnidadeFederativaEntityMapperTest extends AbstractMapperTest {
     @Autowired
     private UnidadeFederativaEntityMapper mapper;
 

@@ -1,21 +1,23 @@
 package br.com.supplyradar.persistence.mapper;
 
-
-import br.com.supplyradar.domain.commons.Endereco;
+import br.com.supplyradar.domain.commons.Usina;
 import br.com.supplyradar.persistence.mapper.factory.PessoaEntityFactory;
 import br.com.supplyradar.persistence.mapper.factory.PessoaFactory;
-import br.com.supplyradar.persistence.model.commons.EnderecoEntity;
+import br.com.supplyradar.persistence.model.commons.UsinaEntity;
 import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.NullValueCheckStrategy;
-import org.mapstruct.factory.Mappers;
-
 
 @Mapper(builder = @Builder(disableBuilder = true),
         componentModel = "spring",
-        uses = {PessoaEntityMapper.class, PessoaEntityFactory.class, PessoaFactory.class, EmailEntityMapper.class},
+        uses = {PessoaEntityFactory.class,
+                PessoaFactory.class,
+                EmailEntityMapper.class},
         nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
-public interface EnderecoEntityMapper {
-    Endereco mapFrom(EnderecoEntity source);
-    EnderecoEntity mapFrom(Endereco source);
+public interface UsinaEntityMapper {
+    UsinaEntity mapFrom(final Usina usina);
+
+    @Mapping(target = "vinculos", ignore = true)
+    Usina mapFrom(final UsinaEntity usinaEntity);
 }

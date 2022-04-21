@@ -8,18 +8,20 @@ import br.com.supplyradar.persistence.mapper.factory.PessoaFactory;
 import br.com.supplyradar.persistence.model.commons.PessoaFisicaEntity;
 import br.com.supplyradar.persistence.model.commons.PessoaJuridicaEntity;
 import org.mapstruct.Builder;
+import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 
 
 @Mapper(builder = @Builder(disableBuilder = true),
+        componentModel = "spring",
+        injectionStrategy = InjectionStrategy.CONSTRUCTOR,
         uses = {
             PessoaEntityFactory.class,
             PessoaFactory.class,
             EmailEntityMapper.class,
             CNPJEntityMapper.class
-        },
-        nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
+        })
 public interface PessoaEntityMapper {
     PessoaJuridica mapFrom(PessoaJuridicaEntity source);
     PessoaJuridicaEntity mapFrom(PessoaJuridica source);

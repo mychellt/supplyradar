@@ -11,6 +11,8 @@ import br.com.supplyradar.persistence.mapper.EnderecoEntityMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.UUID;
+
 @AllArgsConstructor
 @Repository
 public class CidadeRepositoryAdapter implements CidadeRepository {
@@ -20,5 +22,10 @@ public class CidadeRepositoryAdapter implements CidadeRepository {
     @Override
     public Cidade save(Cidade cidade) {
         return mapper.mapFrom(jpa.save(mapper.mapFrom(cidade)));
+    }
+
+    @Override
+    public Cidade findById(UUID id) {
+        return jpa.findById(id).map(mapper::mapFrom).orElse(null);
     }
 }

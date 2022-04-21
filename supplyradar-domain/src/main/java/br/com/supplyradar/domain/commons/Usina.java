@@ -19,11 +19,7 @@ public class Usina extends Empresa {
 	private SubTipoUsina subTipoUsina;
 	private Pessoa pessoa;
 	private String nome;
-	private CreateUsuario administrador;
-	private String certificacoes;
-	private String treinamentos;
 	private String outrasContratacoes;
-	private String art;
 	private List<VinculoUsuarioUsina> vinculos;
 	private List<Departamento> departamentos;
 	private List<Aerogerador> aerogeradores;

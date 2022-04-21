@@ -10,7 +10,7 @@ import java.util.UUID;
 @Setter
 @Getter
 @Builder
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
+@AllArgsConstructor
 @NoArgsConstructor
 public class TokenSolicitacaoAcesso extends AbstractDomainObject<UUID> implements Visitable<TokenSolicitacaoAcesso> {
 	private String key;

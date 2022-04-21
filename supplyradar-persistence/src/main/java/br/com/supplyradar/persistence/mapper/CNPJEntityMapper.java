@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 
 import static java.util.Optional.ofNullable;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CNPJEntityMapper {
     default String toEmailAddress(Cnpj number){
         return ofNullable(number).map(Cnpj::getNumber).orElse(null);

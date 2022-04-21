@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 import static java.util.Optional.ofNullable;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface EmailEntityMapper {
     default String toEmailAddress(Email email){
         return ofNullable(email).map(Email::getAddress).orElse(null);
