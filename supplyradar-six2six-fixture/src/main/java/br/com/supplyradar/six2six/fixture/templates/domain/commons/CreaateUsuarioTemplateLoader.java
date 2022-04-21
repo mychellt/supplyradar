@@ -7,19 +7,6 @@ import br.com.supplyradar.domain.commons.CreateUsuario;
 import br.com.supplyradar.domain.commons.TipoUsuario;
 
 public class CreaateUsuarioTemplateLoader implements TemplateLoader {
-    private String login;
-    private String senha;
-    private String email;
-    private String emailConfirmacao;
-    private String senhaConfirmacao;
-    private String tipo;
-    private boolean aceitaTermoAdesao;
-    private boolean concordaPoliticaPrivacidade;
-    private String cpfPassaporte;
-    private boolean estrangeiro;
-    private String telefone;
-    private String nome;
-
     @Override
     public void load() {
         Fixture.of(CreateUsuario.class).addTemplate("valido", new Rule() {

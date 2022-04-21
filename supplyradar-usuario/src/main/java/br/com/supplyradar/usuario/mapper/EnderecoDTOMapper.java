@@ -11,13 +11,11 @@ import org.mapstruct.Mapping;
 
 @Mapper(builder = @Builder(disableBuilder = true), uses = {PessoaFactory.class, PessoaEntityFactory.class})
 public interface EnderecoDTOMapper {
-    @Mapping(target = "cidade.id", source = "idCidade")
     @Mapping(ignore = true, target = "dateOfChange")
     @Mapping(ignore = true, target = "dateOfCreate")
     @Mapping(ignore = true, target = "id")
     @Mapping(ignore = true, target = "ativo")
     Endereco mapFrom(final EnderecoDTO enderecoDTO);
 
-    @Mapping(target = "idCidade", source = "cidade.id")
     EnderecoDTO mapFrom(final Endereco endereco);
 }

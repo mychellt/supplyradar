@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class CreateUsinaDTO {
+public class UsinaRequestBodyDTO {
     private String cnpj;
     private String inscricaoEstadual;
     private String razaoSocial;

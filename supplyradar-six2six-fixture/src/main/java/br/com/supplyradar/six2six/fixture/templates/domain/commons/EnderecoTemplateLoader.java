@@ -19,8 +19,39 @@ public class EnderecoTemplateLoader implements TemplateLoader {
                 add("numero", "numero-endereco-valido");
                 add("complemento", "complemento-endereco-valido");
                 add("bairro", "bairro-endereco-valido");
-                add("cidade", one(Cidade.class, "valido"));
+                add("idCidade", UUID.randomUUID());
+                add("idPessoa", UUID.randomUUID());
                 add("tipo", TipoEndereco.COMERCIAL);
+            }
+        });
+
+        Fixture.of(Endereco.class).addTemplate("invalido-sem-logradouro").inherits("valido", new Rule() {
+            {
+                add("logradouro", null);
+            }
+        });
+
+        Fixture.of(Endereco.class).addTemplate("invalido-sem-cep").inherits("valido", new Rule() {
+            {
+                add("cep", null);
+            }
+        });
+
+        Fixture.of(Endereco.class).addTemplate("invalido-sem-numero").inherits("valido", new Rule() {
+            {
+                add("numero", null);
+            }
+        });
+
+        Fixture.of(Endereco.class).addTemplate("invalido-sem-bairro").inherits("valido", new Rule() {
+            {
+                add("bairro", null);
+            }
+        });
+
+        Fixture.of(Endereco.class).addTemplate("invalido-sem-id-cidade").inherits("valido", new Rule() {
+            {
+                add("idCidade", null);
             }
         });
     }

@@ -9,7 +9,7 @@ import org.mapstruct.NullValueCheckStrategy;
 @Mapper(builder = @Builder(disableBuilder = true),
         uses = {EnderecoDTOMapper.class},
         nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
-public interface CreateUsinaDTOMapper {
-    UsinaRequestBody mapFrom(final UsinaRequestBodyDTO createUsinaDTO);
+public interface UsinaRequestBodyDTOMapper {
+    UsinaRequestBody mapFrom(final UsinaRequestBodyDTO usinaRequestBodyDTO);
     UsinaRequestBodyDTO mapFrom(final UsinaRequestBody usinaRequestBody);
 }

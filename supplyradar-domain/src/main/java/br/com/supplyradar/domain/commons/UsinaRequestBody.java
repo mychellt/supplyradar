@@ -12,7 +12,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateUsina extends AbstractDomainObject<UUID> implements Visitable<CreateUsina> {
+public class UsinaRequestBody extends AbstractDomainObject<UUID> implements Visitable<UsinaRequestBody> {
     private String cnpj;
     private String inscricaoEstadual;
     private String razaoSocial;
@@ -20,7 +20,7 @@ public class CreateUsina extends AbstractDomainObject<UUID> implements Visitable
     private Endereco endereco;
 
     @Override
-    public void accept(Visitor<CreateUsina, ?> visitor) {
+    public void accept(Visitor<UsinaRequestBody, ?> visitor) {
         visitor.visit(this);
     }
 }
