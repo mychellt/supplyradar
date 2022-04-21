@@ -4,6 +4,7 @@ import br.com.supplyradar.domain.commons.*;
 import br.com.supplyradar.persistence.adapter.jpa.PessoaJpaRepository;
 import br.com.supplyradar.persistence.model.commons.PessoaEntity;
 import br.com.supplyradar.persistence.model.commons.PessoaFisicaEntity;
+import br.com.supplyradar.persistence.model.commons.PessoaJuridicaEntity;
 import lombok.AllArgsConstructor;
 import org.mapstruct.ObjectFactory;
 import org.springframework.stereotype.Component;
@@ -29,6 +30,14 @@ public class PessoaFactory {
             ((PessoaFisica)pessoa).setNome(((PessoaFisicaEntity)pessoaEntity).getNome());
             ((PessoaFisica)pessoa).setCpfPassaporte(((PessoaFisicaEntity)pessoaEntity).getCpfPassaporte());
             ((PessoaFisica)pessoa).setPassaporte(((PessoaFisicaEntity)pessoaEntity).isPassaporte());
+        }
+        else {
+            assert pessoa instanceof PessoaJuridica;
+            ((PessoaJuridica)pessoa).setCnpj(Cnpj.builder().number(((PessoaJuridicaEntity)pessoaEntity).getCnpj()).build());
+            ((PessoaJuridica)pessoa).setRazaoSocial(((PessoaJuridicaEntity)pessoaEntity).getRazaoSocial());
+            ((PessoaJuridica)pessoa).setInscricaoEstadual(((PessoaJuridicaEntity)pessoaEntity).getInscricaoEstadual());
+            ((PessoaJuridica)pessoa).setNomeFantasia(((PessoaJuridicaEntity)pessoaEntity).getNomeFantasia());
+            ((PessoaJuridica)pessoa).setWebsite(((PessoaJuridicaEntity)pessoaEntity).getWebsite());
         }
         return pessoa;
     }
