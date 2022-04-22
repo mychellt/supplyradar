@@ -21,7 +21,6 @@ public class EnderecoDTOTemplateLoader implements TemplateLoader {
                 add("tipo", TipoEndereco.COMERCIAL.name());
                 add("cep", "99.999-99");
                 add("idCidade", UUID.randomUUID());
-                add("idPessoa", UUID.randomUUID());
             }
         });
 

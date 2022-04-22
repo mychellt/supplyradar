@@ -23,10 +23,10 @@ public abstract class PessoaEntity extends AbstractEntity<UUID> {
     @Enumerated(EnumType.STRING)
     private TipoPessoa tipo;
 
-    @Column(nullable = false)
+    @Column(name = "telefone")
     private String telefone;
 
-    @Column(nullable = false)
+    @Column(name = "email")
     private String email;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pessoa", fetch=FetchType.LAZY)

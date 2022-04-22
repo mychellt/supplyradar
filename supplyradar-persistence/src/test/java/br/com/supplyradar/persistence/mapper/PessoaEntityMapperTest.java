@@ -1,20 +1,16 @@
 package br.com.supplyradar.persistence.mapper;
 
 import br.com.six2six.fixturefactory.Fixture;
-import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
-import br.com.supplyradar.domain.commons.Cnpj;
 import br.com.supplyradar.domain.commons.PessoaFisica;
 import br.com.supplyradar.domain.commons.PessoaJuridica;
-import br.com.supplyradar.persistence.AbstractPersistenceTest;
-import br.com.supplyradar.persistence.mapper.factory.PessoaEntityFactory;
+import br.com.supplyradar.persistence.mapper.factory.PessoaFisicaEntityFactory;
 import br.com.supplyradar.persistence.mapper.factory.PessoaFactory;
+import br.com.supplyradar.persistence.mapper.factory.PessoaJuricaEntityFactory;
+import br.com.supplyradar.persistence.mapper.factory.PessoaJuridicaFactory;
 import br.com.supplyradar.persistence.model.commons.PessoaFisicaEntity;
 import br.com.supplyradar.persistence.model.commons.PessoaJuridicaEntity;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -24,8 +20,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(classes = {
         PessoaEntityMapperImpl.class,
+        PessoaJuridicaFactory.class,
+        PessoaFisicaEntityFactory.class,
+        PessoaJuricaEntityFactory.class,
         PessoaFactory.class,
-        PessoaEntityFactory.class,
         EmailEntityMapperImpl.class,
         CNPJEntityMapperImpl.class,
         EnderecoEntityMapperImpl.class

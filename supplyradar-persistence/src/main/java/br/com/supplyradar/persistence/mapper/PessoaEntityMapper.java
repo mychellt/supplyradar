@@ -3,7 +3,7 @@ package br.com.supplyradar.persistence.mapper;
 
 import br.com.supplyradar.domain.commons.PessoaFisica;
 import br.com.supplyradar.domain.commons.PessoaJuridica;
-import br.com.supplyradar.persistence.mapper.factory.PessoaEntityFactory;
+import br.com.supplyradar.persistence.mapper.factory.PessoaFisicaEntityFactory;
 import br.com.supplyradar.persistence.mapper.factory.PessoaFactory;
 import br.com.supplyradar.persistence.model.commons.PessoaFisicaEntity;
 import br.com.supplyradar.persistence.model.commons.PessoaJuridicaEntity;
@@ -17,7 +17,7 @@ import org.mapstruct.NullValueCheckStrategy;
         componentModel = "spring",
         injectionStrategy = InjectionStrategy.CONSTRUCTOR,
         uses = {
-            PessoaEntityFactory.class,
+            PessoaFisicaEntityFactory.class,
             PessoaFactory.class,
             EmailEntityMapper.class,
             CNPJEntityMapper.class,

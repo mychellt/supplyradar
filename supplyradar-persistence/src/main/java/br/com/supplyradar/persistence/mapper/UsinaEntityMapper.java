@@ -1,19 +1,22 @@
 package br.com.supplyradar.persistence.mapper;
 
 import br.com.supplyradar.domain.commons.Usina;
-import br.com.supplyradar.persistence.mapper.factory.PessoaEntityFactory;
-import br.com.supplyradar.persistence.mapper.factory.PessoaFactory;
+import br.com.supplyradar.persistence.mapper.factory.FactoryContratoEntityUsina;
+import br.com.supplyradar.persistence.mapper.factory.FactoryContratoUsina;
+import br.com.supplyradar.persistence.mapper.factory.PessoaJuricaEntityFactory;
+import br.com.supplyradar.persistence.mapper.factory.PessoaJuridicaFactory;
 import br.com.supplyradar.persistence.model.commons.UsinaEntity;
-import org.mapstruct.Builder;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.NullValueCheckStrategy;
+import org.mapstruct.*;
 
 @Mapper(builder = @Builder(disableBuilder = true),
         componentModel = "spring",
-        uses = {PessoaEntityFactory.class,
-                PessoaFactory.class,
-                EmailEntityMapper.class},
+        uses = {PessoaJuricaEntityFactory.class,
+                PessoaJuridicaFactory.class,
+                FactoryContratoUsina.class,
+                FactoryContratoEntityUsina.class,
+                EmailEntityMapper.class,
+                CycleAvoidingMappingJpaContext.class
+        },
         nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
 public interface UsinaEntityMapper {
     UsinaEntity mapFrom(final Usina usina);

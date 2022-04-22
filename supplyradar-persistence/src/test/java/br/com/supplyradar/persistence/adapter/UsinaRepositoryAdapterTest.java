@@ -2,8 +2,10 @@ package br.com.supplyradar.persistence.adapter;
 
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.supplyradar.core.persistence.UsinaRepository;
+import br.com.supplyradar.domain.commons.PessoaJuridica;
 import br.com.supplyradar.domain.commons.Usina;
 import br.com.supplyradar.persistence.AbstractPersistenceTest;
+import br.com.supplyradar.persistence.model.commons.PessoaJuridicaEntity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -35,5 +37,12 @@ class UsinaRepositoryAdapterTest extends AbstractPersistenceTest {
         assertEquals(usinaPersistida.getWebsite(), usina.getWebsite());
         assertEquals(usinaPersistida.getTipo(), usina.getTipo());
         assertEquals(usinaPersistida.getSituacao(), usina.getSituacao());
+        assertEquals(usinaPersistida.getPessoa().getEmail().getAddress(), usina.getPessoa().getEmail().getAddress());
+        assertEquals(usinaPersistida.getPessoa().getTelefone(), usina.getPessoa().getTelefone());
+        assertEquals(usinaPersistida.getPessoa().getTipo(), usina.getPessoa().getTipo());
+        assertEquals(((PessoaJuridica)usinaPersistida.getPessoa()).getInscricaoEstadual(), ((PessoaJuridica)usina.getPessoa()).getInscricaoEstadual());
+        assertEquals(((PessoaJuridica)usinaPersistida.getPessoa()).getRazaoSocial(), ((PessoaJuridica)usina.getPessoa()).getRazaoSocial());
+        assertEquals(((PessoaJuridica)usinaPersistida.getPessoa()).getCnpj().getNumber(), ((PessoaJuridica)usina.getPessoa()).getCnpj().getNumber());
+        assertEquals(((PessoaJuridica)usinaPersistida.getPessoa()).getNomeFantasia(), ((PessoaJuridica)usina.getPessoa()).getNomeFantasia());
     }
 }

@@ -1,8 +1,6 @@
 package br.com.supplyradar.persistence.mapper;
 
 import br.com.supplyradar.domain.commons.SolicitacaoAcesso;
-import br.com.supplyradar.persistence.mapper.factory.PessoaEntityFactory;
-import br.com.supplyradar.persistence.mapper.factory.PessoaFactory;
 import br.com.supplyradar.persistence.model.commons.SolicitacaoAcessoEntity;
 import org.mapstruct.*;
 

@@ -4,11 +4,9 @@ package br.com.supplyradar.persistence.mapper;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.supplyradar.domain.commons.PessoaJuridica;
 import br.com.supplyradar.domain.commons.Usina;
-import br.com.supplyradar.persistence.mapper.factory.PessoaEntityFactory;
-import br.com.supplyradar.persistence.mapper.factory.PessoaFactory;
+import br.com.supplyradar.persistence.mapper.factory.*;
 import br.com.supplyradar.persistence.model.commons.PessoaJuridicaEntity;
 import br.com.supplyradar.persistence.model.commons.UsinaEntity;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +19,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(classes = {
         UsinaEntityMapperImpl.class,
-        PessoaEntityFactory.class,
-        PessoaFactory.class,
+        PessoaJuridicaFactory.class,
+        PessoaJuricaEntityFactory.class,
+        FactoryContratoEntityUsina.class,
         EmailEntityMapperImpl.class
 })
 class UsinaEntityMapperTest extends AbstractMapperTest {

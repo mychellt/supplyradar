@@ -27,6 +27,6 @@ public class PessoaJuridicaEntity extends PessoaEntity {
 	@Column(name = "website")
 	private String website;
 	
-	@Column(name = "razao_social")
+	@Column(name = "razao_social", nullable = false)
 	private String razaoSocial;
 }

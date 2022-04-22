@@ -20,7 +20,7 @@ public class EnderecoTemplateLoader implements TemplateLoader {
                 add("numero", "numero-endereco-valido");
                 add("complemento", "complemento-endereco-valido");
                 add("bairro", "bairro-endereco-valido");
-                add("cidade", one(Cidade.class, "valido"));
+                add("cidade", one(Cidade.class, "valido-com-id"));
                 add("pessoa", one(PessoaJuridica.class, "valido"));
                 add("tipo", TipoEndereco.COMERCIAL);
             }

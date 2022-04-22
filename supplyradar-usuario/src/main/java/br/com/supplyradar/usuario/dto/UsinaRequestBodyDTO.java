@@ -15,5 +15,8 @@ public class UsinaRequestBodyDTO {
     private String inscricaoEstadual;
     private String razaoSocial;
     private String website;
+    private String nome;
+    private String tipo;
     private EnderecoDTO endereco;
+    private EnderecoDTO enderecoCorrespondencia;
 }

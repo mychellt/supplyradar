@@ -30,6 +30,7 @@ class UsinaRequestBodyDTOMapperTest extends AbstractUsuarioTest {
         UsinaRequestBody usinaRequestBody = usinaRequestBodyDTOMapper.mapFrom(usinaRequestBodyDTO);
         assertThat(usinaRequestBody, notNullValue());
         assertThat(usinaRequestBody.getEndereco(), notNullValue());
+        assertThat(usinaRequestBody.getEndereco().getCidade(), notNullValue());
         assertEquals(usinaRequestBody.getCnpj(), usinaRequestBodyDTO.getCnpj());
         assertEquals(usinaRequestBody.getWebsite(), usinaRequestBodyDTO.getWebsite());
         assertEquals(usinaRequestBody.getRazaoSocial(), usinaRequestBodyDTO.getRazaoSocial());
@@ -48,6 +49,7 @@ class UsinaRequestBodyDTOMapperTest extends AbstractUsuarioTest {
         UsinaRequestBodyDTO usinaRequestBodyDTO = usinaRequestBodyDTOMapper.mapFrom(usinaRequestBody);
         assertThat(usinaRequestBodyDTO, notNullValue());
         assertThat(usinaRequestBodyDTO.getEndereco(), notNullValue());
+        assertThat(usinaRequestBodyDTO.getEndereco().getIdCidade(), notNullValue());
         assertEquals(usinaRequestBodyDTO.getCnpj(), usinaRequestBody.getCnpj());
         assertEquals(usinaRequestBodyDTO.getWebsite(), usinaRequestBody.getWebsite());
         assertEquals(usinaRequestBodyDTO.getRazaoSocial(), usinaRequestBody.getRazaoSocial());

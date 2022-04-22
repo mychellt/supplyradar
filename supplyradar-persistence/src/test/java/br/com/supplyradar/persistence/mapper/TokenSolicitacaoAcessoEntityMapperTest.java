@@ -2,8 +2,7 @@ package br.com.supplyradar.persistence.mapper;
 
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.supplyradar.domain.commons.TokenSolicitacaoAcesso;
-import br.com.supplyradar.persistence.AbstractPersistenceTest;
-import br.com.supplyradar.persistence.mapper.factory.PessoaEntityFactory;
+import br.com.supplyradar.persistence.mapper.factory.PessoaFisicaEntityFactory;
 import br.com.supplyradar.persistence.mapper.factory.PessoaFactory;
 import br.com.supplyradar.persistence.model.commons.TokenSolicitacaoAcessoEntity;
 import org.junit.jupiter.api.DisplayName;
@@ -21,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith({MockitoExtension.class})
 @SpringBootTest(classes = {
         UsuarioEntityMapperImpl.class,
-        PessoaEntityFactory.class,
+        PessoaFisicaEntityFactory.class,
         PessoaFactory.class,
         EmailEntityMapperImpl.class,
         CNPJEntityMapperImpl.class,

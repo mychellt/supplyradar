@@ -17,5 +17,11 @@ public class CidadeTemplateLoader implements TemplateLoader {
                 add("nome", "nome-cidade-valido");
             }
         });
+
+        Fixture.of(Cidade.class).addTemplate("valido-com-id").inherits("valido", new Rule() {
+            {
+                add("id", UUID.randomUUID());
+            }
+        });
     }
 }

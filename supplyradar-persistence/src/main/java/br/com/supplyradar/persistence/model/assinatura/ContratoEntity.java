@@ -14,6 +14,7 @@ import java.util.UUID;
 @Setter
 @Getter
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "contrato", schema = "supplyradar")
 public abstract class ContratoEntity extends AbstractEntity<UUID> {
 	@Id
