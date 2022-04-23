@@ -1,5 +1,5 @@
 package br.com.supplyradar.domain.commons;
 
-public enum TipoPrestacaoServico {
+public enum TipoServicoPrestado {
 	FORNECIMENTO, SUBCONTRATACAO
 }

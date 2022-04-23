@@ -10,8 +10,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public abstract class VinculoUsuario extends AbstractDomainObject<UUID> {
-	private CreateUsuario usuario;
+public abstract class Vinculo extends AbstractDomainObject<UUID> {
 	private String email;
 	private List<AtribuicaoVinculo> atribuicoes;
 	private boolean bloqueado;

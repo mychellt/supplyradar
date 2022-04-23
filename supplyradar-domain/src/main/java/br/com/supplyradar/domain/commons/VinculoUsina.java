@@ -2,7 +2,6 @@ package br.com.supplyradar.domain.commons;
 
 import br.com.supplyradar.domain.suporte.Chamado;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import java.util.Set;
 
@@ -11,7 +10,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class VinculoUsuarioUsina extends VinculoUsuario {
+public class VinculoUsina extends Vinculo {
 	private Usina usina;
 	private Cargo cargo;
 	private Set<Chamado> chamados;

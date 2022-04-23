@@ -2,7 +2,7 @@ package br.com.supplyradar.domain.commons;
 
 
 import br.com.supplyradar.domain.assinatura.ContratoFornecedor;
-import br.com.supplyradar.domain.processo.CodigoFornecedorProcesso;
+import br.com.supplyradar.domain.processo.IdContratacao;
 import br.com.supplyradar.domain.visitors.Visitable;
 import br.com.supplyradar.domain.visitors.Visitor;
 import lombok.*;
@@ -16,19 +16,14 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class Fornecedor extends Empresa implements Visitable<Fornecedor> {
-	private String descricaoAtuacao;
-	private String descricaoResumida;
+	private Atuacao atuacao;
+	private Atendimento atendimento;
 	private Pessoa pessoa;
-	private boolean atendimentoContingencia;
-	private boolean atendimento24hrs;
-	private String outrasCertificacoes;
-	private List<VinculoUsuarioFornecedor> vinculos;
+	private List<VinculoFornecedor> vinculos;
 	private List<Servico> servicos;
 	private List<Produto> produtos;
-	private List<CategoriaFornecedor> categorias;
-	private CreateUsuario administrador;
+	private Usuario administrador;
 	private ContratoFornecedor contrato;
-	private CodigoFornecedorProcesso codigo;
 
 	@Override
 	public void accept(Visitor<Fornecedor, ?> visitor) {

@@ -11,7 +11,7 @@ import java.util.UUID;
 @Getter
 @Setter
 public abstract class Contrato extends AbstractDomainObject<UUID> {
-	private Date dataVigencia;
+	private Date vigencia;
 	private List<AnexoContrato> anexos;
 	private String pendencia;
 }

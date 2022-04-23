@@ -14,13 +14,13 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CodigoFornecedorProcesso extends AbstractDomainObject<UUID> implements Visitable<CodigoFornecedorProcesso> {
+public class IdContratacao extends AbstractDomainObject<UUID> implements Visitable<IdContratacao> {
 	private String codigo;
 	private Fornecedor fornecedor;
 	private Processo processo;
 
 	@Override
-	public void accept(Visitor<CodigoFornecedorProcesso, ?> visitor) {
+	public void accept(Visitor<IdContratacao, ?> visitor) {
 		visitor.visit(this);
 	}
 }

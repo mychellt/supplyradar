@@ -3,7 +3,6 @@ package br.com.supplyradar.domain.commons;
 import br.com.supplyradar.domain.assinatura.ContratoUsina;
 import lombok.*;
 
-import java.util.Date;
 import java.util.List;
 
 
@@ -17,6 +16,6 @@ public class Usina extends Empresa {
 	private TipoUsina tipo;
 	private Pessoa pessoa;
 	private String nome;
-	private List<VinculoUsuarioUsina> vinculos;
+	private List<VinculoUsina> vinculos;
 	private ContratoUsina contrato;
 }

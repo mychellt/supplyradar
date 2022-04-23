@@ -14,7 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 public class CategoriaFornecedor extends AbstractDomainObject<UUID> implements Visitable<CategoriaFornecedor> {
-	private TipoPrestacaoServico tipoPrestacaoServico;
+	private TipoServicoPrestado tipoServicoPrestado;
 	private SetorCategoria setorCategoria;
 	private Categoria categoria;
 	private Fornecedor fornecedor;

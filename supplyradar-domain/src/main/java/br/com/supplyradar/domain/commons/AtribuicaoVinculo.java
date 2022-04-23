@@ -13,6 +13,6 @@ import java.util.UUID;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class AtribuicaoVinculo extends AbstractDomainObject<UUID> {
     private Permissao permissao;
-    private VinculoUsuario vinculo;
+    private Vinculo vinculo;
     private boolean atribuido;
 }

@@ -19,6 +19,7 @@ public class PessoaJuricaEntityFactory {
 
     @ObjectFactory
     public PessoaEntity build(Pessoa pessoa) {
+        assert pessoa instanceof  PessoaJuridica;
         PessoaJuridicaEntity pessoaEntity = new PessoaJuridicaEntity();
         pessoaEntity.setId(pessoa.getId());
         pessoaEntity.setDateOfCreate(pessoa.getDateOfCreate());

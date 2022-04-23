@@ -15,13 +15,13 @@ import java.util.UUID;
 @NoArgsConstructor
 @PrimaryKeyJoinColumn(name="id")
 @Entity
-@Table(name = "vinculo_usina", schema = "supplyradar")
-public class VinculoUsinaEntity extends VinculoEntity {
+@Table(name = "vinculo_fornecedor", schema = "supplyradar")
+public class VinculoFornecedorEntity extends VinculoEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private UUID id;
 
 	@ManyToOne
-	@JoinColumn(name = "id_usina")
-	private UsinaEntity usina;
+	@JoinColumn(name = "id_fornecedor")
+	private FornecedorEntity fornecedor;
 }

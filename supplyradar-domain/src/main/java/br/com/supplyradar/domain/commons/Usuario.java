@@ -19,7 +19,7 @@ public class Usuario extends AbstractDomainObject<UUID> implements Visitable<Usu
     private Pessoa pessoa;
     private TipoUsuario tipo;
     private boolean autorizado;
-    private List<VinculoUsuario> vinculos;
+    private List<Vinculo> vinculos;
 
     @Override
     public void accept(Visitor<Usuario, ?> visitor) {

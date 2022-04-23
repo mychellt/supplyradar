@@ -173,6 +173,14 @@ create table if not exists supplyradar.usina
     constraint fk_u_id_pessoa foreign key (id_pessoa) references supplyradar.pessoa (id)
 );
 
+create table if not exists supplyradar.fornecedor
+(
+    id uuid not null,
+    date_of_change timestamp not null,
+    date_of_create timestamp not null,
+    ativo boolean default true,
+    primary key(id)
+);
 
 create table if not exists supplyradar.contrato_usina
 (

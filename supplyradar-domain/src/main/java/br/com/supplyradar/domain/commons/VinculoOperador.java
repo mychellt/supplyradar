@@ -2,17 +2,16 @@ package br.com.supplyradar.domain.commons;
 
 import br.com.supplyradar.domain.suporte.Chamado;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import java.util.Set;
+
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class VinculoUsuarioFornecedor extends VinculoUsuario {
-	private Fornecedor fornecedor;
-	private Cargo cargo;
+public class VinculoOperador extends Vinculo {
+	private String email;
 	private Set<Chamado> chamados;
 }

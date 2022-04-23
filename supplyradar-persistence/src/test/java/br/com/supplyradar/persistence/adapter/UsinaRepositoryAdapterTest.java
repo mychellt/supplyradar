@@ -44,5 +44,28 @@ class UsinaRepositoryAdapterTest extends AbstractPersistenceTest {
         assertEquals(((PessoaJuridica)usinaPersistida.getPessoa()).getRazaoSocial(), ((PessoaJuridica)usina.getPessoa()).getRazaoSocial());
         assertEquals(((PessoaJuridica)usinaPersistida.getPessoa()).getCnpj().getNumber(), ((PessoaJuridica)usina.getPessoa()).getCnpj().getNumber());
         assertEquals(((PessoaJuridica)usinaPersistida.getPessoa()).getNomeFantasia(), ((PessoaJuridica)usina.getPessoa()).getNomeFantasia());
+
+        Usina usinaRecuperada = usinaRepository.findById(usinaPersistida.getId());
+
+        assertThat(usinaRecuperada, notNullValue());
+        assertThat(usinaRecuperada.getId(), notNullValue());
+        assertThat(usinaRecuperada.getPessoa(), notNullValue());
+        assertThat(usinaRecuperada.getSituacao(), notNullValue());
+        assertThat(usinaRecuperada.getNome(), emptyOrNullString());
+        assertThat(usinaRecuperada.getWebsite(), emptyOrNullString());
+        assertThat(usinaRecuperada.getSituacao(), notNullValue());
+        assertThat(usinaRecuperada.getPessoa().getId(), notNullValue());
+        assertEquals(usinaRecuperada.getNome(), usina.getNome());
+        assertEquals(usinaRecuperada.getWebsite(), usina.getWebsite());
+        assertEquals(usinaRecuperada.getTipo(), usina.getTipo());
+        assertEquals(usinaRecuperada.getSituacao(), usina.getSituacao());
+        assertEquals(usinaRecuperada.getPessoa().getEmail().getAddress(), usina.getPessoa().getEmail().getAddress());
+        assertEquals(usinaRecuperada.getPessoa().getTelefone(), usina.getPessoa().getTelefone());
+        assertEquals(usinaRecuperada.getPessoa().getTipo(), usina.getPessoa().getTipo());
+        assertEquals(((PessoaJuridica)usinaRecuperada.getPessoa()).getInscricaoEstadual(), ((PessoaJuridica)usina.getPessoa()).getInscricaoEstadual());
+        assertEquals(((PessoaJuridica)usinaRecuperada.getPessoa()).getRazaoSocial(), ((PessoaJuridica)usina.getPessoa()).getRazaoSocial());
+        assertEquals(((PessoaJuridica)usinaRecuperada.getPessoa()).getCnpj().getNumber(), ((PessoaJuridica)usina.getPessoa()).getCnpj().getNumber());
+        assertEquals(((PessoaJuridica)usinaRecuperada.getPessoa()).getNomeFantasia(), ((PessoaJuridica)usina.getPessoa()).getNomeFantasia());
+
     }
 }

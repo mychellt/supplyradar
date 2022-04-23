@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
-public class FactoryContratoEntityUsina {
+public class ContratoUsinaEntityFactory {
 
     @ObjectFactory
     public ContratoEntity build(Contrato contrato) {
@@ -18,7 +18,7 @@ public class FactoryContratoEntityUsina {
         contratoUsinaEntity.setDateOfChange(contrato.getDateOfChange());
         contratoUsinaEntity.setDateOfCreate(contrato.getDateOfCreate());
         contratoUsinaEntity.setId(contrato.getId());
-        contratoUsinaEntity.setVigencia(contrato.getDataVigencia());
+        contratoUsinaEntity.setVigencia(contrato.getVigencia());
         contratoUsinaEntity.setPendencia(contrato.getPendencia());
         return contratoUsinaEntity;
     }

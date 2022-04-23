@@ -16,7 +16,7 @@ import java.util.UUID;
 public class Produto extends AbstractDomainObject<UUID> implements Visitable<Produto> {
 	private Categoria categoria;
 	private Fornecedor fornecedor;
-	private TipoPrestacaoServico tipoPrestacaoServico;
+	private TipoServicoPrestado tipoServicoPrestado;
 	private Categoria raizPrecificacao;
 	private Categoria categoriaDetalhamentoIdentificacao;
 

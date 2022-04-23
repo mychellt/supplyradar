@@ -40,6 +40,6 @@ public class UsinaEntity extends EmpresaEntity {
 	@JoinColumn(name = "id_contrato")
 	private ContratoEntity contrato;
 
-//	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "usina")
-//	private List<VinculoUsinaEntity> vinculos;
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "usina")
+	private List<VinculoUsinaEntity> vinculos;
 }

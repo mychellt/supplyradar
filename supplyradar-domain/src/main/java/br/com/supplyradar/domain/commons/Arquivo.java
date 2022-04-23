@@ -16,6 +16,6 @@ public abstract class Arquivo{
 	private String nome;
 	private String descricao;
 	private String path;
-	protected byte[] conteudoArquivo;
 	private File file;
+	protected byte[] conteudoArquivo;
 }

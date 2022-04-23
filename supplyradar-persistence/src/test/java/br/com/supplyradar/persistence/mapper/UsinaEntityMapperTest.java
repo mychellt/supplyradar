@@ -21,8 +21,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         UsinaEntityMapperImpl.class,
         PessoaJuridicaFactory.class,
         PessoaJuricaEntityFactory.class,
-        FactoryContratoEntityUsina.class,
-        EmailEntityMapperImpl.class
+        ContratoUsinaEntityFactory.class,
+        ContratoUsinaFactory.class,
+        EmailEntityMapperImpl.class,
+        CycleAvoidingMappingJpaContext.class
 })
 class UsinaEntityMapperTest extends AbstractMapperTest {
     @Autowired

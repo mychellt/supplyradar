@@ -4,6 +4,7 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 import br.com.supplyradar.domain.commons.PessoaFisica;
+import br.com.supplyradar.domain.commons.PessoaJuridica;
 import br.com.supplyradar.domain.commons.TipoUsuario;
 import br.com.supplyradar.domain.commons.Usuario;
 
@@ -29,6 +30,12 @@ public class UsuarioTemplateLoader implements TemplateLoader {
             {
                 add("id", UUID.randomUUID());
                 add("pessoa", one(PessoaFisica.class, "valido-com-id"));
+            }
+        });
+
+        Fixture.of(Usuario.class).addTemplate("valido-pessoa-juridica").inherits("valido", new Rule(){
+            {
+                add("pessoa", one(PessoaJuridica.class, "valido"));
             }
         });
     }

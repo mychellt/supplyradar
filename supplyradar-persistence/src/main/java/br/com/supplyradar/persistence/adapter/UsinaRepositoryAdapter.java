@@ -7,6 +7,8 @@ import br.com.supplyradar.persistence.mapper.UsinaEntityMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.UUID;
+
 @AllArgsConstructor
 @Repository
 public class UsinaRepositoryAdapter implements UsinaRepository {
@@ -16,5 +18,10 @@ public class UsinaRepositoryAdapter implements UsinaRepository {
     @Override
     public Usina save(Usina usina) {
         return usinaEntityMapper.mapFrom(jpa.save(usinaEntityMapper.mapFrom(usina)));
+    }
+
+    @Override
+    public Usina findById(UUID id) {
+        return jpa.findById(id).map(usinaEntityMapper::mapFrom).orElse(null);
     }
 }
