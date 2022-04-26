@@ -86,11 +86,11 @@ public class CadastrarUsinaValidator extends AbstractValidator<UsinaRequestBodyD
                 .withAttempedValue(e -> ofNullable(e.getEndereco()).map(EnderecoDTO::getLogradouro).orElse(""))
                 .critical();
 
-        ruleFor(body -> ofNullable(body.getEndereco()).map(EnderecoDTO::getIdCidade).orElse(null))
-                .must(instanceOf(UUID.class))
+        ruleFor(UsinaRequestBodyDTO::getEndereco)
+                .must(e -> e.getIdCidade() != null)
                 .when(Objects::nonNull)
                 .withMessage("Campo obrigatório não informado ou inválido")
-                .withFieldName("endereco_correspondencia.idCidade")
+                .withFieldName("endereco.idCidade")
                 .withAttempedValue(e -> ofNullable(e.getEndereco()).map(EnderecoDTO::getIdCidade).orElse(null))
                 .critical();
     }
@@ -129,8 +129,8 @@ public class CadastrarUsinaValidator extends AbstractValidator<UsinaRequestBodyD
                 .withAttempedValue(e -> ofNullable(e.getEnderecoCorrespondencia()).map(EnderecoDTO::getLogradouro).orElse(""))
                 .critical();
 
-        ruleFor(body -> ofNullable(body.getEnderecoCorrespondencia()).map(EnderecoDTO::getIdCidade).orElse(null))
-                .must(instanceOf(UUID.class))
+        ruleFor(UsinaRequestBodyDTO::getEndereco)
+                .must( e -> e.getIdCidade() != null)
                 .when(Objects::nonNull)
                 .withMessage("Campo obrigatório não informado ou inválido")
                 .withFieldName("endereco_correspondencia.idCidade")

@@ -5,6 +5,7 @@ import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 import br.com.supplyradar.domain.commons.CreateUsuario;
 import br.com.supplyradar.domain.commons.Endereco;
+import br.com.supplyradar.domain.commons.TipoUsina;
 import br.com.supplyradar.usuario.dto.UsinaRequestBodyDTO;
 import br.com.supplyradar.usuario.dto.EnderecoDTO;
 
@@ -15,9 +16,12 @@ public class UsinaRequestBodyDTOTemplateLoader implements TemplateLoader {
             {
                add("cnpj", "000.000.00-0000/00");
                add("inscricaoEstadual", "123456789");
+               add("tipo", TipoUsina.EOLICA_OFFSHORE.name());
+               add("nome", "fake-nome");
                add("razaoSocial", "fake-razao-social");
                add("website", "http://website.com");
                add("endereco", one(EnderecoDTO.class, "valido"));
+               add("enderecoCorrespondencia", one(EnderecoDTO.class, "valido"));
             }
         });
 

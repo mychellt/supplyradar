@@ -7,6 +7,8 @@ import br.com.supplyradar.persistence.mapper.FornecedorEntityMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.UUID;
+
 @RequiredArgsConstructor
 @Repository
 public class FornecedorRepositoryAdapter implements FornecedorRepository {
@@ -15,5 +17,10 @@ public class FornecedorRepositoryAdapter implements FornecedorRepository {
     @Override
     public Fornecedor save(Fornecedor fornecedor) {
         return mapper.mapFrom(jpa.save(mapper.mapFrom(fornecedor)));
+    }
+
+    @Override
+    public Fornecedor findById(UUID id) {
+        return jpa.findById(id).map(mapper::mapFrom).orElse(null);
     }
 }
