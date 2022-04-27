@@ -3,9 +3,11 @@ package br.com.supplyradar.usuario.controller;
 import br.com.supplyradar.core.command.CommandContext;
 import br.com.supplyradar.domain.api.FornecedorRequestBody;
 import br.com.supplyradar.domain.commons.Usina;
+import br.com.supplyradar.domain.exceptions.MandatoryFieldException;
 import br.com.supplyradar.usuario.dto.FornecedorRequestBodyDTO;
 import br.com.supplyradar.usuario.mapper.FornecedorRequestBodyDTOMapper;
 import br.com.supplyradar.usuario.processor.CriarFornecedorCommandProcessor;
+import br.com.supplyradar.usuario.validator.CriarFornecedorValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class FornecedorController {
     private final CriarFornecedorCommandProcessor criarFornecedorCommandProcessor;
     private final FornecedorRequestBodyDTOMapper fornecedorRequestBodyDTOMapper;
+    private final CriarFornecedorValidator criarFornecedorValidator;
 
     @PostMapping
     public ResponseEntity<Usina> create(final @RequestBody FornecedorRequestBodyDTO fornecedorRequestBodyDTO) {
+
+        criarFornecedorValidator.validate(fornecedorRequestBodyDTO).isInvalidThrow(MandatoryFieldException.class);
 
         final FornecedorRequestBody fornecedorRequestBody = fornecedorRequestBodyDTOMapper.mapFrom(fornecedorRequestBodyDTO);
 

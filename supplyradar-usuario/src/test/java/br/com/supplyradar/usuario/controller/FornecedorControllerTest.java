@@ -3,16 +3,19 @@ package br.com.supplyradar.usuario.controller;
 
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.supplyradar.core.command.CommandContext;
+import br.com.supplyradar.core.configuration.RestControllerExceptionHandler;
 import br.com.supplyradar.domain.commons.Fornecedor;
 import br.com.supplyradar.usuario.dto.FornecedorRequestBodyDTO;
 import br.com.supplyradar.usuario.mapper.FornecedorRequestBodyDTOMapperImpl;
 import br.com.supplyradar.usuario.processor.AbstractUsuarioTest;
 import br.com.supplyradar.usuario.processor.CriarFornecedorCommandProcessor;
+import br.com.supplyradar.usuario.validator.CriarFornecedorValidator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -22,9 +25,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.stream.Stream;
+
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -32,7 +36,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration(classes = {
         FornecedorController.class,
         CriarFornecedorCommandProcessor.class,
-        FornecedorRequestBodyDTOMapperImpl.class
+        FornecedorRequestBodyDTOMapperImpl.class,
+        CriarFornecedorValidator.class,
+        RestControllerExceptionHandler.class
 })
 @WebMvcTest
 class FornecedorControllerTest extends AbstractUsuarioTest {
@@ -66,5 +72,32 @@ class FornecedorControllerTest extends AbstractUsuarioTest {
                         .is(HttpStatus.OK.value()));
 
         verify(criarFornecedorProcessor).process(any(CommandContext.class));
+    }
+
+    @DisplayName(value = "Não deve ser capaz de cadastrar o fornecedor quando os dados obrigatórios não foram informados.")
+    @ParameterizedTest
+    @MethodSource(value = "getBodyToFail")
+    void createFail(final FornecedorRequestBodyDTO body) throws Exception {
+
+        mockMvc.perform(post("/fornecedores")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(body)))
+                .andExpect(status()
+                        .is(HttpStatus.BAD_REQUEST.value()));
+
+        verify(criarFornecedorProcessor, never()).process(any(CommandContext.class));
+
+    }
+
+    private static Stream<FornecedorRequestBodyDTO> getBodyToFail() {
+        return Stream.of(
+                Fixture.from(FornecedorRequestBodyDTO.class).gimme("invalido-sem-cnpj"),
+                Fixture.from(FornecedorRequestBodyDTO.class).gimme("invalido-sem-razao-social"),
+                Fixture.from(FornecedorRequestBodyDTO.class).gimme("invalido-sem-nome-fantasia"),
+                Fixture.from(FornecedorRequestBodyDTO.class).gimme("invalido-sem-telefone"),
+                Fixture.from(FornecedorRequestBodyDTO.class).gimme("invalido-sem-experiencias"),
+                Fixture.from(FornecedorRequestBodyDTO.class).gimme("invalido-sem-fornecimentos"),
+                Fixture.from(FornecedorRequestBodyDTO.class).gimme("invalido-sem-endereco-valido")
+        );
     }
 }
