@@ -35,14 +35,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc
 @ContextConfiguration(classes = {
-        CadastrarUsinaController.class,
+        UsinaController.class,
         UsinaRequestBodyDTOMapperImpl.class,
         EnderecoDTOMapperImpl.class,
         CadastrarUsinaValidator.class,
         RestControllerExceptionHandler.class
 })
 @WebMvcTest
-public class CadastrarUsinaControllerTest extends AbstractUsuarioTest {
+public class UsinaControllerTest extends AbstractUsuarioTest {
     @Autowired
     private MockMvc mockMvc;
 

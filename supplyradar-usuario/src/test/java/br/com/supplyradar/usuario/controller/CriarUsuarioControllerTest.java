@@ -12,9 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Spy;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -32,12 +30,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc
 @ContextConfiguration(classes = {
-        CadastrarUsuarioController.class,
+        CriarUsuarioController.class,
         CadastrarUsuarioCommandProcessor.class,
         CadastrarUsuarioValidator.class, CreateUsuarioDTOMapper.class
 })
 @WebMvcTest
-class CadastrarUsuarioControllerTest extends AbstractUsuarioTest {
+class CriarUsuarioControllerTest extends AbstractUsuarioTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -65,7 +63,7 @@ class CadastrarUsuarioControllerTest extends AbstractUsuarioTest {
     void create() throws Exception {
         CreateUsuarioDTO createUsuarioDTO = Fixture.from(CreateUsuarioDTO.class).gimme("valido");
 
-        mockMvc.perform(post("/public/usuario/cadastrar")
+        mockMvc.perform(post("/public/usuarios")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(createUsuarioDTO)))
                 .andExpect(status().is(200));

@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = {UsinaRequestBodyDTOMapperImpl.class, EnderecoDTOMapperImpl.class})
-class UsinaRequestBodyDTOMapperTest extends AbstractUsuarioTest {
+class UsinaRequestBodyDTOMapperTest extends AbstractMapperTest {
     @Autowired
     private UsinaRequestBodyDTOMapper usinaRequestBodyDTOMapper;
 

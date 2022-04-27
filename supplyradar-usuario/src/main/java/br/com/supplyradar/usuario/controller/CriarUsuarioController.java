@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping(path = "/public/usuario")
-public class CadastrarUsuarioController {
+@RequestMapping(path = "/public/usuarios")
+public class CriarUsuarioController {
     private final CadastrarUsuarioCommandProcessor cadastrarUsuarioCommandProcessor;
     private final CadastrarUsuarioValidator cadastrarUsuarioValidator;
     private final CreateUsuarioDTOMapper usuarioDTOMapper;
 
-    @PostMapping(path = "/cadastrar")
+    @PostMapping
     public ResponseEntity<Void> create(final @RequestBody CreateUsuarioDTO createUsuarioDTO) {
         cadastrarUsuarioValidator.validate(createUsuarioDTO).isInvalidThrow(MandatoryFieldException.class);
 

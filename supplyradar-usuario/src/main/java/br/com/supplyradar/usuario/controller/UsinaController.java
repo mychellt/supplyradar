@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping(path = "/usina")
-public class CadastrarUsinaController {
+@RequestMapping(path = "/usinas")
+public class UsinaController {
 
     private final CadastrarUsinaCommandProcessor cadastrarUsinaCommandProcessor;
     private final UsinaRequestBodyDTOMapper usinaRequestBodyDTOMapper;
