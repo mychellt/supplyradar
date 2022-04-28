@@ -4,6 +4,7 @@ import br.com.supplyradar.domain.assinatura.TipoAssinatura;
 import br.com.supplyradar.domain.commons.Pessoa;
 import br.com.supplyradar.domain.processo.TipoCategoria;
 import br.com.supplyradar.persistence.model.AbstractEntity;
+import br.com.supplyradar.persistence.model.commons.PessoaEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -45,8 +47,8 @@ public class OfertaEntity extends AbstractEntity<UUID> {
 
     @ManyToOne
     @JoinColumn(name = "id_pessoa")
-    private Pessoa pessoa;
+    private PessoaEntity pessoa;
 
     @Column(name = "validade")
-    private Date validade;
+    private LocalDate validade;
 }

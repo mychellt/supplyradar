@@ -2,12 +2,19 @@ package br.com.supplyradar.persistence.mapper;
 
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.supplyradar.domain.assinatura.Oferta;
+import br.com.supplyradar.persistence.mapper.factory.PessoaJuricaEntityFactory;
+import br.com.supplyradar.persistence.mapper.factory.PessoaJuridicaFactory;
 import br.com.supplyradar.persistence.model.assinatura.OfertaEntity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(classes = {OfertaEntityMapperImpl.class})
+@SpringBootTest(classes = {
+        OfertaEntityMapperImpl.class,
+        PessoaJuricaEntityFactory.class,
+        PessoaJuridicaFactory.class,
+        EmailEntityMapperImpl.class
+})
 class OfertaEntityMapperTest extends AbstractMapperTest {
 
     @DisplayName(value = "Deve realizar o map de Domain para Entity.")

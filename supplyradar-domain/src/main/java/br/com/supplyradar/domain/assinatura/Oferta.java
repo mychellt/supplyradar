@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -26,7 +27,7 @@ public class Oferta extends AbstractDomainObject<UUID> {
     private boolean ilimitado;
     private BigDecimal taxa;
     private Pessoa pessoa;
-    private Date validade;
+    private LocalDate validade;
 
     public boolean isOfertaProduto() {
         return ofNullable(tipoCategoria).map(it -> it.equals(TipoCategoria.PRODUTO)).orElse(false);
