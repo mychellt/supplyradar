@@ -2,8 +2,8 @@ package br.com.supplyradar.usuario.mapper;
 
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.supplyradar.domain.commons.UsinaRequestBody;
+import br.com.supplyradar.usuario.AbstractTest;
 import br.com.supplyradar.usuario.dto.UsinaRequestBodyDTO;
-import br.com.supplyradar.usuario.processor.AbstractUsuarioTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = {UsinaRequestBodyDTOMapperImpl.class, EnderecoDTOMapperImpl.class})
-class UsinaRequestBodyDTOMapperTest extends AbstractMapperTest {
+class UsinaRequestBodyDTOMapperTest extends AbstractTest {
     @Autowired
     private UsinaRequestBodyDTOMapper usinaRequestBodyDTOMapper;
 

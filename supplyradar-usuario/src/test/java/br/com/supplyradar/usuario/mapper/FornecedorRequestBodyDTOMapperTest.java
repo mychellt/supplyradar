@@ -1,5 +1,6 @@
 package br.com.supplyradar.usuario.mapper;
 
+import br.com.supplyradar.usuario.AbstractTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,7 +10,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = {FornecedorRequestBodyDTOMapperImpl.class})
-public class FornecedorRequestBodyDTOMapperTest extends AbstractMapperTest {
+public class FornecedorRequestBodyDTOMapperTest extends AbstractTest {
     @Autowired
     private FornecedorRequestBodyDTOMapper fornecedorRequestBodyDTOMapper;
 

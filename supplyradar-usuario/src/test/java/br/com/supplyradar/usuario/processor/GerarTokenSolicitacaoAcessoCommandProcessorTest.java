@@ -5,6 +5,7 @@ import br.com.supplyradar.core.command.CommandContext;
 import br.com.supplyradar.core.persistence.TokenSolicitacaoAcessoRepository;
 import br.com.supplyradar.domain.commons.SolicitacaoAcesso;
 import br.com.supplyradar.domain.commons.TokenSolicitacaoAcesso;
+import br.com.supplyradar.usuario.AbstractTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,7 @@ import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith({MockitoExtension.class})
-class GerarTokenSolicitacaoAcessoCommandProcessorTest extends AbstractUsuarioTest {
+class GerarTokenSolicitacaoAcessoCommandProcessorTest extends AbstractTest {
     private GerarTokenSolicitacaoAcessoCommandProcessor processor;
 
     @Mock

@@ -13,4 +13,5 @@ public interface PermissaoRepository {
     List<Permissao> findAll();
     Optional<Permissao> findOne(final UUID id);
     void remove(final UUID id);
+    List<Permissao> findAllForFornecedor();
 }

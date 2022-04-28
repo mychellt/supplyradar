@@ -13,5 +13,4 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ContratoFornecedor extends Contrato {
 	private Fornecedor fornecedor;
-	
 }

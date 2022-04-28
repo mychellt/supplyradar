@@ -1,5 +1,6 @@
 package br.com.supplyradar.persistence.model.assinatura;
 
+import br.com.supplyradar.domain.commons.Vigencia;
 import br.com.supplyradar.persistence.model.AbstractEntity;
 import lombok.*;
 import org.hibernate.annotations.LazyCollection;
@@ -21,9 +22,8 @@ public abstract class ContratoEntity extends AbstractEntity<UUID> {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
 
-	@Column(name="vigencia")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date vigencia;
+	@Embedded
+	private VigenciaEntity vigencia;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "contrato", fetch=FetchType.LAZY, cascade = CascadeType.REMOVE)

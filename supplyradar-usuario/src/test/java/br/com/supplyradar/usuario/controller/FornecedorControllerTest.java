@@ -5,9 +5,9 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.supplyradar.core.command.CommandContext;
 import br.com.supplyradar.core.configuration.RestControllerExceptionHandler;
 import br.com.supplyradar.domain.commons.Fornecedor;
+import br.com.supplyradar.usuario.AbstractTest;
 import br.com.supplyradar.usuario.dto.FornecedorRequestBodyDTO;
 import br.com.supplyradar.usuario.mapper.FornecedorRequestBodyDTOMapperImpl;
-import br.com.supplyradar.usuario.processor.AbstractUsuarioTest;
 import br.com.supplyradar.usuario.processor.CriarFornecedorCommandProcessor;
 import br.com.supplyradar.usuario.validator.CriarFornecedorValidator;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -41,7 +41,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         RestControllerExceptionHandler.class
 })
 @WebMvcTest
-class FornecedorControllerTest extends AbstractUsuarioTest {
+class FornecedorControllerTest extends AbstractTest {
     @Autowired
     private MockMvc mockMvc;
 

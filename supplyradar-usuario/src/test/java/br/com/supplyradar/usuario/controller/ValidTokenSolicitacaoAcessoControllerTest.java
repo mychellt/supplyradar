@@ -3,17 +3,14 @@ package br.com.supplyradar.usuario.controller;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.supplyradar.core.command.CommandContext;
 import br.com.supplyradar.domain.commons.TokenSolicitacaoAcesso;
-import br.com.supplyradar.usuario.processor.AbstractUsuarioTest;
+import br.com.supplyradar.usuario.AbstractTest;
 import br.com.supplyradar.usuario.processor.ValidTokenSolicitacaoAcessoCommandProcessor;
 import br.com.supplyradar.usuario.validator.ValidTokenSolicitacaoAcessoValidator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.mockito.Spy;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -21,7 +18,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.UUID;
@@ -39,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         ValidTokenSolicitacaoAcessoCommandProcessor.class
 })
 @WebMvcTest
-class ValidTokenSolicitacaoAcessoControllerTest extends AbstractUsuarioTest {
+class ValidTokenSolicitacaoAcessoControllerTest extends AbstractTest {
     @Autowired
     private MockMvc mockMvc;
 

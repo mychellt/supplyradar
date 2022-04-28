@@ -6,6 +6,7 @@ import br.com.supplyradar.persistence.adapter.jpa.PermissaoJpaRepository;
 import br.com.supplyradar.persistence.mapper.PermissaoEntityMapper;
 import br.com.supplyradar.persistence.model.commons.PermissaoEntity;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
@@ -54,5 +55,13 @@ public class PermissaoRepositoryAdapter implements PermissaoRepository {
     @Override
     public void remove(UUID id) {
         jpa.deleteById(id);
+    }
+
+    @Override
+    public List<Permissao> findAllForFornecedor() {
+        return emptyIfNull(jpa.findAllForFornecedor())
+                .stream()
+                .map(mapper::mapFrom)
+                .collect(Collectors.toList());
     }
 }

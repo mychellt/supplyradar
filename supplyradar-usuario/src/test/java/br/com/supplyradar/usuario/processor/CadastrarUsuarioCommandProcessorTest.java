@@ -11,6 +11,7 @@ import br.com.supplyradar.domain.commons.*;
 import br.com.supplyradar.domain.exceptions.DomainException;
 import br.com.supplyradar.domain.exceptions.UsuarioJaExisteException;
 import br.com.supplyradar.domain.mail.MailMessage;
+import br.com.supplyradar.usuario.AbstractTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -29,7 +30,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @ExtendWith({MockitoExtension.class})
-class CadastrarUsuarioCommandProcessorTest extends AbstractUsuarioTest {
+class CadastrarUsuarioCommandProcessorTest extends AbstractTest {
 
     @Mock
     private UsuarioRepository usuarioRepository;

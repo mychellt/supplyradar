@@ -2,6 +2,7 @@ package br.com.supplyradar.persistence.mapper.factory;
 
 import br.com.supplyradar.domain.assinatura.Contrato;
 import br.com.supplyradar.domain.assinatura.ContratoUsina;
+import br.com.supplyradar.domain.commons.Vigencia;
 import br.com.supplyradar.persistence.model.assinatura.ContratoEntity;
 import lombok.AllArgsConstructor;
 import org.mapstruct.ObjectFactory;
@@ -17,8 +18,7 @@ public class ContratoUsinaFactory {
         contratoUsina.setDateOfChange(contratoEntity.getDateOfChange());
         contratoUsina.setDateOfCreate(contratoEntity.getDateOfCreate());
         contratoUsina.setId(contratoEntity.getId());
-        contratoUsina.setVigencia(contratoEntity.getVigencia());
-        contratoUsina.setPendencia(contratoEntity.getPendencia());
+        contratoUsina.setVigencia(Vigencia.builder().fim(contratoEntity.getVigencia()).build());
         return contratoUsina;
     }
 }

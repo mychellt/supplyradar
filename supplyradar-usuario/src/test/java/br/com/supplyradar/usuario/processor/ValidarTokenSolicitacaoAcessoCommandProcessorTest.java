@@ -5,6 +5,7 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.supplyradar.core.command.CommandContext;
 import br.com.supplyradar.core.persistence.TokenSolicitacaoAcessoRepository;
 import br.com.supplyradar.domain.commons.TokenSolicitacaoAcesso;
+import br.com.supplyradar.usuario.AbstractTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -24,7 +25,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @ExtendWith({MockitoExtension.class})
-class ValidarTokenSolicitacaoAcessoCommandProcessorTest extends AbstractUsuarioTest {
+class ValidarTokenSolicitacaoAcessoCommandProcessorTest extends AbstractTest {
 
     private ValidTokenSolicitacaoAcessoCommandProcessor validarTokenSolicitacaoAcessoCommandProcessor;
 

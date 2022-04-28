@@ -5,6 +5,7 @@ import br.com.supplyradar.domain.visitors.Visitable;
 import br.com.supplyradar.domain.visitors.Visitor;
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter

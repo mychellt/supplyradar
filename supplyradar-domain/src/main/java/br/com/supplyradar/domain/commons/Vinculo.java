@@ -12,6 +12,6 @@ import java.util.UUID;
 @Setter
 public abstract class Vinculo extends AbstractDomainObject<UUID> {
 	private String email;
-	private List<AtribuicaoVinculo> atribuicoes;
+	private List<PermissaoVinculo> permissoes;
 	private boolean bloqueado;
 }

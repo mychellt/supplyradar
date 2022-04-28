@@ -11,7 +11,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-public class AtribuicaoVinculo extends AbstractDomainObject<UUID> {
+public class PermissaoVinculo extends AbstractDomainObject<UUID> {
     private Permissao permissao;
     private Vinculo vinculo;
     private boolean atribuido;

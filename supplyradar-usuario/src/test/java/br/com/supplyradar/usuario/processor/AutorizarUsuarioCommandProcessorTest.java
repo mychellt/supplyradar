@@ -7,6 +7,7 @@ import br.com.supplyradar.core.persistence.UsuarioRepository;
 import br.com.supplyradar.domain.commons.TokenSolicitacaoAcesso;
 import br.com.supplyradar.domain.commons.Usuario;
 import br.com.supplyradar.domain.exceptions.DomainException;
+import br.com.supplyradar.usuario.AbstractTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +23,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith({MockitoExtension.class})
-public class AutorizarUsuarioCommandProcessorTest extends AbstractUsuarioTest {
+public class AutorizarUsuarioCommandProcessorTest extends AbstractTest {
     private AutorizarUsuarioCommandProcessor autorizarUsuarioCommandProcessor;
 
     @Mock

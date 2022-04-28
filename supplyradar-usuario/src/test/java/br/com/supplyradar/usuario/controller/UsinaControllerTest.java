@@ -4,10 +4,10 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.supplyradar.core.command.CommandContext;
 import br.com.supplyradar.domain.commons.Usina;
 import br.com.supplyradar.core.configuration.RestControllerExceptionHandler;
+import br.com.supplyradar.usuario.AbstractTest;
 import br.com.supplyradar.usuario.dto.UsinaRequestBodyDTO;
 import br.com.supplyradar.usuario.mapper.UsinaRequestBodyDTOMapperImpl;
 import br.com.supplyradar.usuario.mapper.EnderecoDTOMapperImpl;
-import br.com.supplyradar.usuario.processor.AbstractUsuarioTest;
 import br.com.supplyradar.usuario.processor.CadastrarUsinaCommandProcessor;
 import br.com.supplyradar.usuario.validator.CadastrarUsinaValidator;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -42,7 +42,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         RestControllerExceptionHandler.class
 })
 @WebMvcTest
-public class UsinaControllerTest extends AbstractUsuarioTest {
+public class UsinaControllerTest extends AbstractTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -66,7 +66,7 @@ public class UsinaControllerTest extends AbstractUsuarioTest {
     void create() throws Exception {
         UsinaRequestBodyDTO usinaRequestBodyDTO = Fixture.from(UsinaRequestBodyDTO.class).gimme("valido");
 
-        mockMvc.perform(post("/usina")
+        mockMvc.perform(post("/usinas")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(usinaRequestBodyDTO)))
                 .andExpect(status()
@@ -80,7 +80,7 @@ public class UsinaControllerTest extends AbstractUsuarioTest {
     @MethodSource(value = "getBodyToFail")
     void createFail(final UsinaRequestBodyDTO usinaRequestBodyDTO) throws Exception {
 
-        mockMvc.perform(post("/usina")
+        mockMvc.perform(post("/usinas")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(usinaRequestBodyDTO)))
                 .andExpect(status()
