@@ -3,8 +3,8 @@ package br.com.supplyradar.persistence.mapper;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.supplyradar.domain.commons.PessoaFisica;
 import br.com.supplyradar.domain.commons.PessoaJuridica;
-import br.com.supplyradar.persistence.mapper.factory.PessoaFisicaEntityFactory;
 import br.com.supplyradar.persistence.mapper.factory.PessoaFactory;
+import br.com.supplyradar.persistence.mapper.factory.PessoaFisicaEntityFactory;
 import br.com.supplyradar.persistence.mapper.factory.PessoaJuricaEntityFactory;
 import br.com.supplyradar.persistence.mapper.factory.PessoaJuridicaFactory;
 import br.com.supplyradar.persistence.model.commons.PessoaFisicaEntity;
@@ -36,7 +36,7 @@ class PessoaEntityMapperTest extends AbstractMapperTest{
     @Test
     void mapFromEntity() {
         PessoaFisicaEntity pessoaFisicaEntity = Fixture.from(PessoaFisicaEntity.class).gimme("valido");
-        PessoaFisica pessoaFisica = mapper.mapFrom(pessoaFisicaEntity);
+        PessoaFisica pessoaFisica = (PessoaFisica) mapper.mapFrom(pessoaFisicaEntity);
         assertThat(pessoaFisica, notNullValue());
         assertThat(pessoaFisica.getId(), notNullValue());
         assertEquals(pessoaFisica.getNome(), pessoaFisicaEntity.getNome());
@@ -48,7 +48,7 @@ class PessoaEntityMapperTest extends AbstractMapperTest{
         assertEquals(pessoaFisica.getDateOfCreate(), pessoaFisicaEntity.getDateOfCreate());
 
         PessoaJuridicaEntity pessoaJuridicaEntity = Fixture.from(PessoaJuridicaEntity.class).gimme("valido");
-        PessoaJuridica pessoaJuridica = mapper.mapFrom(pessoaJuridicaEntity);
+        PessoaJuridica pessoaJuridica = (PessoaJuridica) mapper.mapFrom(pessoaJuridicaEntity);
         assertThat(pessoaJuridica, notNullValue());
         assertThat(pessoaJuridica.getId(), notNullValue());
         assertEquals(pessoaJuridica.getCnpj().getNumber(), pessoaJuridicaEntity.getCnpj());
@@ -66,7 +66,7 @@ class PessoaEntityMapperTest extends AbstractMapperTest{
     @Test
     void mapFromDomain() {
         PessoaFisica pessoaFisica = Fixture.from(PessoaFisica.class).gimme("valido");
-        PessoaFisicaEntity pessoaFisicaEntity = mapper.mapFrom(pessoaFisica);
+        PessoaFisicaEntity pessoaFisicaEntity = (PessoaFisicaEntity) mapper.mapFrom(pessoaFisica);
         assertThat(pessoaFisicaEntity, notNullValue());
         assertEquals(pessoaFisicaEntity.getNome(), pessoaFisica.getNome());
         assertEquals(pessoaFisicaEntity.getTelefone(), pessoaFisica.getTelefone());
@@ -77,7 +77,7 @@ class PessoaEntityMapperTest extends AbstractMapperTest{
         assertEquals(pessoaFisicaEntity.getDateOfCreate(), pessoaFisica.getDateOfCreate());
 
         PessoaJuridica pessoaJuridica = Fixture.from(PessoaJuridica.class).gimme("valido");
-        PessoaJuridicaEntity pessoaJuridicaEntity = mapper.mapFrom(pessoaJuridica);
+        PessoaJuridicaEntity pessoaJuridicaEntity = (PessoaJuridicaEntity) mapper.mapFrom(pessoaJuridica);
         assertThat(pessoaJuridicaEntity, notNullValue());
         assertEquals(pessoaJuridicaEntity.getTelefone(), pessoaJuridica.getTelefone());
         assertEquals(pessoaJuridicaEntity.isAtivo(), pessoaJuridica.isAtivo());

@@ -5,10 +5,7 @@ import br.com.supplyradar.domain.commons.Pessoa;
 import br.com.supplyradar.domain.processo.TipoCategoria;
 import br.com.supplyradar.persistence.model.AbstractEntity;
 import br.com.supplyradar.persistence.model.commons.PessoaEntity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -20,6 +17,9 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Entity
+@Table(name = "oferta", schema = "supplyradar")
 public class OfertaEntity extends AbstractEntity<UUID> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

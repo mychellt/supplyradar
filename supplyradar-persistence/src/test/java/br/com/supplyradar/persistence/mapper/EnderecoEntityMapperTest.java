@@ -9,6 +9,7 @@ import br.com.supplyradar.persistence.mapper.factory.PessoaJuricaEntityFactory;
 import br.com.supplyradar.persistence.mapper.factory.PessoaJuridicaFactory;
 import br.com.supplyradar.persistence.model.commons.EnderecoEntity;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,17 +33,24 @@ class EnderecoEntityMapperTest  {
     @Autowired
     private EnderecoEntityMapper mapper;
 
+    private CycleAvoidingMappingJpaContext context;
+
     @BeforeAll
     protected static void setUp() {
         FixtureFactoryLoader.loadTemplates("br.com.supplyradar.persistence.six2six.fixture.templates");
         FixtureFactoryLoader.loadTemplates("br.com.supplyradar.six2six.fixture.templates.domain.commons");
     }
 
+    @BeforeEach
+    public void beforeEach() {
+        context = new CycleAvoidingMappingJpaContext();
+    }
+
     @DisplayName(value = "Deve ser capaz de mapear os dados de Entity para Domain")
     @Test
     void mapFromEntity() {
         EnderecoEntity enderecoEntity = Fixture.from(EnderecoEntity.class).gimme("valido");
-        Endereco endereco = mapper.mapFrom(enderecoEntity);
+        Endereco endereco = mapper.mapFrom(enderecoEntity, context);
         assertThat(endereco, notNullValue());
         assertEquals(endereco.isAtivo(), enderecoEntity.isAtivo());
         assertEquals(endereco.getDateOfChange(), enderecoEntity.getDateOfChange());
@@ -53,7 +61,7 @@ class EnderecoEntityMapperTest  {
     @Test
     void mapFromDomain() {
         Endereco endereco = Fixture.from(Endereco.class).gimme("valido");
-        EnderecoEntity enderecoEntity = mapper.mapFrom(endereco);
+        EnderecoEntity enderecoEntity = mapper.mapFrom(endereco, context);
         assertThat(enderecoEntity, notNullValue());
         assertEquals(enderecoEntity.isAtivo(), endereco.isAtivo());
         assertEquals(enderecoEntity.getDateOfChange(), endereco.getDateOfChange());
